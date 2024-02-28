@@ -2,11 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://www.imbb.forth.gr/en/'>Institute of Molecular Biology & Biotechnology of the Foundation for Research and Technology Hellas</a>
-          #Foundation for Research & Technology - Hellas
-          #<a href='https://maps.app.goo.gl/LtCLYstWZkCKa7U99'>Comparative Genomics Lab</a>
-          #Nikolaou Plastira 100 GR-70013, Heraklion, Crete
-          #GREECE
+subtitle: <a href='https://maps.app.goo.gl/jR7jgFtHsvR47b8p7'>Institute of Molecular Biology & Biotechnology of the Foundation for Research and Technology Hellas</a>
 
 profile:
   align: left
