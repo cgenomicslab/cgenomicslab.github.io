@@ -1,34 +1,34 @@
 {
-  "basics": {
+    "basics": {
     "name": "Alexandros Pittis",
     "label": "Biologist",
     "image": "",
     "email": "alexandros.pitti@imbb.forth.gr",
     "phone": "+30 2810 39 1024",
     "url": "https://www.imbb.forth.gr/el/research-el/evolution-development-cell-biology-el",
-      "summary": "Comparative Genomics",
-    "location": {
+    "summary": "Comparative Genomics",
+      "location": {
       "address": "Nikolaou Plastira 100",
       "postalCode": "70013",
       "city": "Heraklion",
       "countryCode": "Greece",
       "region": "Crete"
-    },
-    "profiles": [
+      },
+	"profiles": [
       {
         "network": "Twitter",
         "username": "alxndrs_pittis",
         "url": "https://twitter.com/alxndrs_pittis"
       }
     ]
-  },
-  "work": [
+    },
+    "work": [
     {
 	"name": "Institute of Molecular Biology & Biotechnology, Foundation for Research & Technology - Hellas (IMBB-FORTH)",
 	"position": "Researcher C",
       "url": "https://www.imbb.forth.gr/el/research-el/evolution-development-cell-biology-el",
       "startDate": "2024-01-01",
-      "endDate": "",
+      "endDate": "2024-02-28",
       "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
       "highlights": ["Relativity"]
     }
