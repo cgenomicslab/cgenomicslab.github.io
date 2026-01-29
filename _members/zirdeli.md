@@ -8,5 +8,4 @@ email: iordana_zirdeli@imbb.forth.gr
 email2: iordanazir@gmail.com
 github: jordanz9
 twitter:
-website: https://imbb.forth.gr/en/research/Alexandros-Pittis.62/
 ---
