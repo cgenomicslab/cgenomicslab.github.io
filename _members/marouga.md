@@ -1,7 +1,7 @@
 ---
 name: Athena Marouga
 startdate: 2026-01-01
-position: Msc Student
+position: MSc Student
 image: /static/img/members/amarou_alt.jpeg
 altimage: /static/img/members/amarou.jpeg
 email: athina_marougka@imbb.forth.gr
