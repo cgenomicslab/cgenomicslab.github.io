@@ -10,29 +10,28 @@ group: research
 <h1 class="section-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Research</h1>
 
 <p class="research-intro">
-We use computational biology, comparative genomics, and single-cell transcriptomics to study questions 
-on sequence and functional diversity, genome evolution, protein/gene family evolution, and cellular evolution.
+Current projects in the lab span neurotransmission diversity, cell type evolution, olfactory system evolution and combinatorial code origins, and signaling channel evolution.
 </p>
 
 <div class="research-areas" style="margin-top: 2rem;">
 <div class="research-area" style="margin-bottom: 2rem;">
-<h3>Comparative Genomics</h3>
-<p>Analyzing genome sequences across the tree of life to uncover evolutionary patterns and genomic innovations. We compare genomes from diverse organisms to understand the genetic basis of phenotypic diversity and adaptation.</p>
+<h3>Diversity of synaptic neurotransmission</h3>
+<p>synaptic machinery across animals and animal relatives, inference of the system in Opisthokonta through its characterization in fungi, phylogenetics-scRNAseq-function integration.</p>
 </div>
 
 <div class="research-area" style="margin-bottom: 2rem;">
-<h3>Gene Family Evolution</h3>
-<p>Tracing the ancestry and diversification of gene families to understand how molecular functions emerged. We use phylogenetic methods to reconstruct the evolutionary history of protein families and identify key innovations.</p>
+<h3>Cell type Evolution</h3>
+<p>Cross-animals cell atlas, neuronal origins, cell type diversification.</p>
 </div>
 
 <div class="research-area" style="margin-bottom: 2rem;">
-<h3>Single-Cell Transcriptomics</h3>
-<p>Applying single-cell and single-nucleus RNA sequencing to characterize cellular diversity and evolution. We study how cell types have evolved across species and developmental stages.</p>
+<h3>Signaling Receptors Evolution</h3>
+<p>GPCR Class A/C phylogenetics, Protein Language Model based classifier for Olfactory Receptor (OR) - odorant interactions prediction, Ancestral RORs Reconstruction, Combinatorial code emergence and expansion, Glutamate signaling evolution, protein domain phylogenetics, single-cell expression patterns across animals.</p>
 </div>
 
 <div class="research-area" style="margin-bottom: 2rem;">
-<h3>Computational Methods</h3>
-<p>Developing bioinformatics pipelines to extract evolutionary insights from large-scale datasets. We build tools and workflows for comparative genomics analysis.</p>
+<h3>Protein site co-evolution</h3>
+<p>Statistical methods for intra- and inter-protein interactions, sequence-function prediction.</p>
 </div>
 </div>
 
