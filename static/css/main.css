@@ -10,15 +10,17 @@
 }
 
 :root {
-    --primary: #1a5f7a;
-    --primary-light: #2a7f9f;
-    --primary-dark: #134a5f;
-    --primary-bg: #e8f4f7;
-    --text: #333;
+    --primary: #B9375E;          /* Pink funk */
+    --primary-light: #FFE0E9;    /* Baby pink */
+    --primary-dark: #8a2a47;     /* Darker pink */
+    --primary-bg: #FFE0E9;       /* Baby pink */
+    --accent: #BE9A60;           /* Golden hues */
+    --accent-green: #CEDDBB;     /* Dream green */
+    --text: #434343;             /* Dark gray */
     --text-light: #555;
     --text-muted: #777;
     --bg: #fff;
-    --bg-alt: #f7f9fa;
+    --bg-alt: #f9f9f9;
     --border: #e0e0e0;
 }
 

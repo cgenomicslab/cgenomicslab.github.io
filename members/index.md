@@ -90,52 +90,105 @@ group: members
 {% endif %}
 {:/nomarkdown}
 
-<!-- Lab Timeline - Simple Table Version -->
+<!-- Lab Timeline -->
 <div class="timeline-section" style="margin-top: 3rem;">
 <h3 class="alumni-title">Lab Timeline</h3>
 
-<div class="timeline-legend" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.85rem;">
-<span><span style="display: inline-block; width: 12px; height: 12px; background: #e63946; border-radius: 2px; margin-right: 4px;"></span>Group Leader</span>
-<span><span style="display: inline-block; width: 12px; height: 12px; background: #f4a261; border-radius: 2px; margin-right: 4px;"></span>Postdoc</span>
-<span><span style="display: inline-block; width: 12px; height: 12px; background: #e9c46a; border-radius: 2px; margin-right: 4px;"></span>PhD</span>
-<span><span style="display: inline-block; width: 12px; height: 12px; background: #2a9d8f; border-radius: 2px; margin-right: 4px;"></span>MSc</span>
-<span><span style="display: inline-block; width: 12px; height: 12px; background: #a8dadc; border-radius: 2px; margin-right: 4px;"></span>Undergraduate</span>
+<style>
+.timeline-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+.timeline-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.legend-box {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+.timeline-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+.timeline-name {
+  width: 100px;
+  text-align: right;
+  padding-right: 1rem;
+  font-size: 0.9rem;
+  color: #434343;
+  font-weight: 500;
+}
+.timeline-bar {
+  height: 14px;
+  border-radius: 3px;
+  min-width: 8px;
+}
+.timeline-date {
+  padding-left: 0.75rem;
+  font-size: 0.8rem;
+  color: #666;
+  white-space: nowrap;
+}
+.timeline-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 100px;
+  margin-top: 0.75rem;
+  padding-right: 100px;
+  font-size: 0.75rem;
+  color: #888;
+  border-top: 1px solid #ddd;
+  padding-top: 0.5rem;
+}
+</style>
+
+<div class="timeline-legend">
+<span><span class="legend-box" style="background: #B9375E;"></span>Group Leader</span>
+<span><span class="legend-box" style="background: #BE9A60;"></span>Postdoc</span>
+<span><span class="legend-box" style="background: #e9c46a;"></span>PhD</span>
+<span><span class="legend-box" style="background: #CEDDBB;"></span>MSc</span>
+<span><span class="legend-box" style="background: #FFE0E9;"></span>Undergraduate</span>
 </div>
 
 {::nomarkdown}
-<div class="timeline-list" style="display: flex; flex-direction: column; gap: 0.5rem;">
+<div class="timeline-container">
 {% assign all_people = site.members | concat: site.alumni | sort: "startdate" %}
 {% for member in all_people %}
 {% assign pos = member.position | downcase %}
-{% if pos contains "group leader" or pos contains "principal investigator" %}
-  {% assign barcolor = "#e63946" %}
+{% if pos contains "group leader" or pos contains "principal investigator" or pos contains "pi" %}
+  {% assign barcolor = "#B9375E" %}
 {% elsif pos contains "postdoc" %}
-  {% assign barcolor = "#f4a261" %}
+  {% assign barcolor = "#BE9A60" %}
 {% elsif pos contains "phd" %}
   {% assign barcolor = "#e9c46a" %}
 {% elsif pos contains "msc" or pos contains "master" %}
-  {% assign barcolor = "#2a9d8f" %}
+  {% assign barcolor = "#CEDDBB" %}
 {% elsif pos contains "undergraduate" or pos contains "bsc" %}
-  {% assign barcolor = "#a8dadc" %}
+  {% assign barcolor = "#FFE0E9" %}
 {% else %}
-  {% assign barcolor = "#9b59b6" %}
+  {% assign barcolor = "#434343" %}
 {% endif %}
-<div class="timeline-row" style="display: flex; align-items: center; gap: 1rem;">
-<div class="timeline-name" style="width: 140px; text-align: right; font-size: 0.9rem; color: #333;">{{ member.name | split: " " | first }}</div>
-<div class="timeline-bar-container" style="flex: 1; height: 16px; background: #f0f0f0; border-radius: 3px; position: relative;">
-<div class="timeline-bar" style="position: absolute; left: {% assign startyear = member.startdate | date: '%Y' | plus: 0 %}{% assign startpct = startyear | minus: 2023 | times: 33 %}{% if startpct < 0 %}{% assign startpct = 0 %}{% endif %}{{ startpct }}%; width: {% if member.enddate %}{% assign endyear = member.enddate | date: '%Y' | plus: 0 %}{% else %}{% assign endyear = 2027 %}{% endif %}{% assign duration = endyear | minus: startyear | times: 33 %}{% if duration < 5 %}{% assign duration = 5 %}{% endif %}{{ duration }}%; height: 100%; background: {{ barcolor }}; border-radius: 3px;"></div>
-</div>
-<div class="timeline-years" style="width: 80px; font-size: 0.8rem; color: #666;">{{ member.startdate | date: "%Y" }}–{% if member.enddate %}{{ member.enddate | date: "%Y" }}{% else %}now{% endif %}</div>
+<div class="timeline-row">
+<div class="timeline-name">{{ member.name | split: " " | first }}</div>
+<div class="timeline-bar" style="background: {{ barcolor }}; margin-left: {% assign sy = member.startdate | date: '%Y' | plus: 0 %}{% assign sm = member.startdate | date: '%m' | plus: 0 %}{% assign startoff = sy | minus: 2024 | times: 100 | plus: sm | times: 8 %}{% if startoff < 0 %}{% assign startoff = 0 %}{% endif %}{{ startoff }}px; width: {% if member.enddate %}{% assign ey = member.enddate | date: '%Y' | plus: 0 %}{% assign em = member.enddate | date: '%m' | plus: 0 %}{% else %}{% assign ey = 2026 %}{% assign em = 2 %}{% endif %}{% assign months = ey | minus: sy | times: 12 | plus: em | minus: sm %}{% if months < 2 %}{% assign months = 2 %}{% endif %}{% assign barwidth = months | times: 8 %}{{ barwidth }}px;"></div>
+<div class="timeline-date">{{ member.startdate | date: "%b %Y" }}–{% if member.enddate %}{{ member.enddate | date: "%b %Y" }}{% else %}present{% endif %}</div>
 </div>
 {% endfor %}
 </div>
 {:/nomarkdown}
 
-<div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #888; margin-top: 0.5rem; padding-left: 150px;">
+<div class="timeline-axis">
 <span>2024</span>
 <span>2025</span>
 <span>2026</span>
-<span>2027</span>
 </div>
 
 </div>
