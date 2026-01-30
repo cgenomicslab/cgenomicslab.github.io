@@ -10,7 +10,7 @@
 }
 
 :root {
-    --primary: #6a8f46;          /* Pink funk */
+    --primary: #B9375E;          /* Pink funk */
     --primary-light: #FFE0E9;    /* Baby pink */
     --primary-dark: #8a2a47;     /* Darker pink */
     --primary-bg: #FFE0E9;       /* Baby pink */
