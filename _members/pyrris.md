@@ -5,7 +5,7 @@ position: PhD Student
 image: /static/img/members/ypyrris.jpg
 altimage: /static/img/members/ypyrris_alt.jpg
 email: yannis.pyrris@gmail.com
-<!-- email2:  -->
+# email2:
 orcid:
 scholar:
 github:

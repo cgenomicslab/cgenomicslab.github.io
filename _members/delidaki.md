@@ -5,7 +5,7 @@ position: MSc Student
 image: /static/img/members/edelidaki.jpg
 altimage: /static/img/members/edelidaki_alt.jpg
 email: evadelidaki@gmail.com
-<!-- email2:  -->
+# email2:
 orcid:
 scholar:
 github:

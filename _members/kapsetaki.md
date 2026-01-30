@@ -5,7 +5,7 @@ position: MSc Student
 image: /static/img/members/akapsetaki.jpg
 altimage: /static/img/members/akapsetaki_alt.jpg
 email: ameliakaps@gmail.com
-<!-- email2:  -->
+# email2:
 orcid:
 scholar:
 github:
