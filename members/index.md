@@ -13,18 +13,12 @@ group: members
 <div class="members-grid">
 {% assign current_members = site.members | where_exp: "m", "m.enddate == nil" %}
 
-{% comment %}
-Sorting: Group Leader → Postdocs → PhD → MSc → Undergraduate → Other
-Within each group: by startdate, then alphabetically
-{% endcomment %}
-
 {% assign group_leaders = current_members | where_exp: "m", "m.position contains 'Group Leader' or m.position contains 'Principal Investigator' or m.position contains 'PI'" | sort: "name" | sort: "startdate" %}
 {% assign postdocs = current_members | where_exp: "m", "m.position contains 'Postdoc' or m.position contains 'Post-doc' or m.position contains 'Postdoctoral'" | sort: "name" | sort: "startdate" %}
 {% assign phds = current_members | where_exp: "m", "m.position contains 'PhD' or m.position contains 'Ph.D.' or m.position contains 'Doctoral'" | sort: "name" | sort: "startdate" %}
 {% assign mscs = current_members | where_exp: "m", "m.position contains 'MSc' or m.position contains 'M.Sc.' or m.position contains 'Master'" | sort: "name" | sort: "startdate" %}
 {% assign undergrads = current_members | where_exp: "m", "m.position contains 'Undergraduate' or m.position contains 'BSc' or m.position contains 'B.Sc.' or m.position contains 'Bachelor'" | sort: "name" | sort: "startdate" %}
 
-{% comment %}Others: anyone not in the above categories{% endcomment %}
 {% assign categorized = "" | split: "" %}
 {% for m in group_leaders %}{% assign categorized = categorized | push: m.name %}{% endfor %}
 {% for m in postdocs %}{% assign categorized = categorized | push: m.name %}{% endfor %}
@@ -40,7 +34,6 @@ Within each group: by startdate, then alphabetically
 {% endfor %}
 {% assign others = others | sort: "name" | sort: "startdate" %}
 
-{% comment %}Combine all in order{% endcomment %}
 {% assign sorted_members = group_leaders | concat: postdocs | concat: phds | concat: mscs | concat: undergrads | concat: others %}
 
 {% for member in sorted_members %}
@@ -97,111 +90,55 @@ Within each group: by startdate, then alphabetically
 {% endif %}
 {:/nomarkdown}
 
-{::nomarkdown}
-<!-- Lab Timeline -->
+<!-- Lab Timeline - Simple Table Version -->
 <div class="timeline-section" style="margin-top: 3rem;">
 <h3 class="alumni-title">Lab Timeline</h3>
-{% assign stretch = 60 %}
-{% assign yheight = 16 %}
-{% assign yspacing = 18 %}
-{% assign fontsize = 12 %}
-{% assign yearoffset = 2023 %}
-{% assign majortick = 0.05 %}
-{% assign minortick = 0.025 %}
-{% assign legendboxsize = 20 %}
-{% assign legendboxspacing = 24 %}
-{% assign people = site.members | concat: site.alumni | sort: "startdate" %}
-{% assign finalyear = "now" | date: "%Y" | plus: 1 %}
-<svg width="100%" height="auto" viewBox="0 0 {{ finalyear | minus: yearoffset | plus: majortick | times: stretch }} {{ people.size | plus: 1 | times: yspacing | plus: 180 }}" xmlns="http://www.w3.org/2000/svg" style="max-width: 800px;">
-{% assign i = 0 %}
-{% for year in (yearoffset..finalyear)%}
-  {% assign year5 = year | modulo: 5 %}
-  {% if year5 == 0 %}
-    {% assign tick = majortick %}
-    <text x="{{ fontsize | divided_by: 4.0 | divided_by: stretch | plus: tick | plus: year | minus: yearoffset | times: stretch }}" y="{{ i | times: yspacing | plus: fontsize }}" font-family="sans-serif" font-size="{{ fontsize }}" fill="black">{{ year }}</text>
-  {% else %}
-    {% assign tick = minortick %}
-  {% endif %}
-  <rect x="{{ year | minus: yearoffset | times: stretch }}" y="0" width="{{ tick | times: stretch }}" height="{{ yheight }}" fill="black" />
-{% endfor %}
-{% assign i = i | plus: 1 %}
-{% for member in people %}
-{% assign tenures = member.startdate.size | minus: 1 %}
-  {% for tenure in (0..tenures) %}
-    {% assign startyear = member.startdate[tenure] | date: "%Y" | minus: yearoffset %}
-    {% assign startmonth = member.startdate[tenure] | date: "%m" | minus: 1 | divided_by: 12.0 %}
-    {% assign start = startyear | plus: startmonth %}
-    {% if member.enddate[tenure] %}
-      {% assign endyear = member.enddate[tenure] | date: "%Y" | minus: yearoffset %}
-      {% assign endmonth = member.enddate[tenure] | date: "%m" | minus: 1 | divided_by: 12.0 %}
-      {% assign end = endyear | plus: endmonth %}
-    {% else %}
-      {% assign endyear = "now" | date: "%Y" | minus: yearoffset %}
-      {% assign endmonth = "now" | date: "%m" | minus: 1 | divided_by: 12.0 %}
-      {% assign end = endyear | plus: endmonth %}
-    {% endif %}
-    {% assign duration = end | minus: start %}
-    {% if duration < 0.083 %}
-      {% assign duration = 0.083 %}
-    {% endif %}
-    {% if member.timeline_group %}
-      {% assign position = member.timeline_group | downcase %}
-    {% elsif member.timeline_positions %}
-      {% assign position = member.timeline_positions[tenure] | downcase %}
-    {% else %}
-      {% assign position = member.position | downcase %}
-    {% endif %}
-    {% if position contains "principal investigator" or position contains "group leader" %}
-      {% assign color = "#e63946" %}
-    {% elsif position contains "postdoctoral" or position contains "postdoc" %}
-      {% assign color = "#f4a261" %}
-    {% elsif position contains "phd" or position contains "graduate student" %}
-      {% assign color = "#e9c46a" %}
-    {% elsif position contains "msc" or position contains "master" %}
-      {% assign color = "#2a9d8f" %}
-    {% elsif position contains "undergraduate" or position contains "bsc" %}
-      {% assign color = "#a8dadc" %}
-    {% elsif position contains "staff" or position contains "programmer" or position contains "technician" %}
-      {% assign color = "#457b9d" %}
-    {% elsif position contains "intern" or position contains "summer" or position contains "visitor" %}
-      {% assign color = "#6c757d" %}
-    {% else %}
-      {% assign color = "#9b59b6" %}
-    {% endif %}
-    <rect x="{{ start | times: stretch }}" y="{{ i | times: yspacing }}" width="{{ duration | times: stretch }}" height="{{ yheight }}" fill="{{ color }}" rx="2" />
-    {% if tenure == 0 %}
-      <text text-anchor="end" x="{{ fontsize | divided_by: -4.0 | divided_by: stretch | plus: start | times: stretch | minus: 5 }}" y="{{ i | times: yspacing | plus: fontsize | minus: 2 }}" font-family="sans-serif" font-size="{{ fontsize }}" fill="#333">{% if member.timeline_name %}{{ member.timeline_name }}{% else %}{{ member.name | split: " " | first }}{% endif %}</text>
-    {% endif %}
-  {% endfor %}
-{% assign i = i | plus: 1 %}
-{% endfor %}
 
-<!-- Legend -->
-{% assign legendy = i | times: yspacing | plus: 20 %}
-{% assign fontsize = 11 %}
-<rect x="10" y="{{ legendy }}" width="{{ legendboxsize }}" height="{{ legendboxsize }}" fill="#e63946" rx="2" />
-<text x="{{ legendboxsize | plus: 15 }}" y="{{ legendy | plus: 15 }}" font-family="sans-serif" font-size="{{ fontsize }}" fill="#333">Group Leader / PI</text>
-{% assign legendy = legendy | plus: legendboxspacing %}
-<rect x="10" y="{{ legendy }}" width="{{ legendboxsize }}" height="{{ legendboxsize }}" fill="#f4a261" rx="2" />
-<text x="{{ legendboxsize | plus: 15 }}" y="{{ legendy | plus: 15 }}" font-family="sans-serif" font-size="{{ fontsize }}" fill="#333">Postdoctoral Fellow</text>
-{% assign legendy = legendy | plus: legendboxspacing %}
-<rect x="10" y="{{ legendy }}" width="{{ legendboxsize }}" height="{{ legendboxsize }}" fill="#e9c46a" rx="2" />
-<text x="{{ legendboxsize | plus: 15 }}" y="{{ legendy | plus: 15 }}" font-family="sans-serif" font-size="{{ fontsize }}" fill="#333">PhD Student</text>
-{% assign legendy = legendy | plus: legendboxspacing %}
-<rect x="10" y="{{ legendy }}" width="{{ legendboxsize }}" height="{{ legendboxsize }}" fill="#2a9d8f" rx="2" />
-<text x="{{ legendboxsize | plus: 15 }}" y="{{ legendy | plus: 15 }}" font-family="sans-serif" font-size="{{ fontsize }}" fill="#333">MSc Student</text>
-{% assign legendy = legendy | plus: legendboxspacing %}
-<rect x="10" y="{{ legendy }}" width="{{ legendboxsize }}" height="{{ legendboxsize }}" fill="#a8dadc" rx="2" />
-<text x="{{ legendboxsize | plus: 15 }}" y="{{ legendy | plus: 15 }}" font-family="sans-serif" font-size="{{ fontsize }}" fill="#333">Undergraduate</text>
-{% assign legendy = legendy | plus: legendboxspacing %}
-<rect x="10" y="{{ legendy }}" width="{{ legendboxsize }}" height="{{ legendboxsize }}" fill="#457b9d" rx="2" />
-<text x="{{ legendboxsize | plus: 15 }}" y="{{ legendy | plus: 15 }}" font-family="sans-serif" font-size="{{ fontsize }}" fill="#333">Staff / Technician</text>
-{% assign legendy = legendy | plus: legendboxspacing %}
-<rect x="10" y="{{ legendy }}" width="{{ legendboxsize }}" height="{{ legendboxsize }}" fill="#6c757d" rx="2" />
-<text x="{{ legendboxsize | plus: 15 }}" y="{{ legendy | plus: 15 }}" font-family="sans-serif" font-size="{{ fontsize }}" fill="#333">Visitor / Intern</text>
-</svg>
+<div class="timeline-legend" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.85rem;">
+<span><span style="display: inline-block; width: 12px; height: 12px; background: #e63946; border-radius: 2px; margin-right: 4px;"></span>Group Leader</span>
+<span><span style="display: inline-block; width: 12px; height: 12px; background: #f4a261; border-radius: 2px; margin-right: 4px;"></span>Postdoc</span>
+<span><span style="display: inline-block; width: 12px; height: 12px; background: #e9c46a; border-radius: 2px; margin-right: 4px;"></span>PhD</span>
+<span><span style="display: inline-block; width: 12px; height: 12px; background: #2a9d8f; border-radius: 2px; margin-right: 4px;"></span>MSc</span>
+<span><span style="display: inline-block; width: 12px; height: 12px; background: #a8dadc; border-radius: 2px; margin-right: 4px;"></span>Undergraduate</span>
+</div>
+
+{::nomarkdown}
+<div class="timeline-list" style="display: flex; flex-direction: column; gap: 0.5rem;">
+{% assign all_people = site.members | concat: site.alumni | sort: "startdate" %}
+{% for member in all_people %}
+{% assign pos = member.position | downcase %}
+{% if pos contains "group leader" or pos contains "principal investigator" %}
+  {% assign barcolor = "#e63946" %}
+{% elsif pos contains "postdoc" %}
+  {% assign barcolor = "#f4a261" %}
+{% elsif pos contains "phd" %}
+  {% assign barcolor = "#e9c46a" %}
+{% elsif pos contains "msc" or pos contains "master" %}
+  {% assign barcolor = "#2a9d8f" %}
+{% elsif pos contains "undergraduate" or pos contains "bsc" %}
+  {% assign barcolor = "#a8dadc" %}
+{% else %}
+  {% assign barcolor = "#9b59b6" %}
+{% endif %}
+<div class="timeline-row" style="display: flex; align-items: center; gap: 1rem;">
+<div class="timeline-name" style="width: 140px; text-align: right; font-size: 0.9rem; color: #333;">{{ member.name | split: " " | first }}</div>
+<div class="timeline-bar-container" style="flex: 1; height: 16px; background: #f0f0f0; border-radius: 3px; position: relative;">
+<div class="timeline-bar" style="position: absolute; left: {% assign startyear = member.startdate | date: '%Y' | plus: 0 %}{% assign startpct = startyear | minus: 2023 | times: 33 %}{% if startpct < 0 %}{% assign startpct = 0 %}{% endif %}{{ startpct }}%; width: {% if member.enddate %}{% assign endyear = member.enddate | date: '%Y' | plus: 0 %}{% else %}{% assign endyear = 2027 %}{% endif %}{% assign duration = endyear | minus: startyear | times: 33 %}{% if duration < 5 %}{% assign duration = 5 %}{% endif %}{{ duration }}%; height: 100%; background: {{ barcolor }}; border-radius: 3px;"></div>
+</div>
+<div class="timeline-years" style="width: 80px; font-size: 0.8rem; color: #666;">{{ member.startdate | date: "%Y" }}–{% if member.enddate %}{{ member.enddate | date: "%Y" }}{% else %}now{% endif %}</div>
+</div>
+{% endfor %}
 </div>
 {:/nomarkdown}
+
+<div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #888; margin-top: 0.5rem; padding-left: 150px;">
+<span>2024</span>
+<span>2025</span>
+<span>2026</span>
+<span>2027</span>
+</div>
+
+</div>
 
 <a href="/" class="section-link" style="margin-top: 2rem; display: inline-block;">← Back to home</a>
 
