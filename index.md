@@ -30,7 +30,7 @@ Our research is focused on <strong>computational biology</strong>, <strong>compa
 <div class="research-areas">
 <div class="research-area">
 <h3>Comparative Genomics</h3>
-<p>Analyzing genome sequences across the tree of life to uncover evolutionary patterns and genomic innovations.</p>
+<p>Analyzing genome sequences across the Tree of Life to uncover evolutionary patterns and genomic innovations.</p>
 </div>
 <div class="research-area">
 <h3>Gene Family Evolution</h3>
@@ -45,7 +45,7 @@ Our research is focused on <strong>computational biology</strong>, <strong>compa
 <p>Developing bioinformatics pipelines to extract evolutionary insights from large-scale datasets.</p>
 </div>
 </div>
-<a href="/research" class="section-link">More about our research →</a>
+<a href="/research" class="section-link">More about our projects →</a>
 </div>
 </section>
 {::nomarkdown}
