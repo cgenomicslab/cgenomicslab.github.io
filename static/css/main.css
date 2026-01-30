@@ -103,7 +103,8 @@ a.map-link::after,
 .logo img {
     height: 44px;
     width: auto;
-    filter: brightness(0) invert(1);
+    /* Remove filter to keep original logo colors */
+    /* If logo doesn't show well on teal, use a white version of the logo */
 }
 
 .logo-placeholder {

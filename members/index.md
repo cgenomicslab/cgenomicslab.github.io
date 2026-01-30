@@ -11,8 +11,39 @@ group: members
 
 {::nomarkdown}
 <div class="members-grid">
-{% assign current_members = site.members | where_exp: "m", "m.enddate == nil" | sort: "startdate" %}
-{% for member in current_members %}
+{% assign current_members = site.members | where_exp: "m", "m.enddate == nil" %}
+
+{% comment %}
+Sorting: Group Leader → Postdocs → PhD → MSc → Undergraduate → Other
+Within each group: by startdate, then alphabetically
+{% endcomment %}
+
+{% assign group_leaders = current_members | where_exp: "m", "m.position contains 'Group Leader' or m.position contains 'Principal Investigator' or m.position contains 'PI'" | sort: "name" | sort: "startdate" %}
+{% assign postdocs = current_members | where_exp: "m", "m.position contains 'Postdoc' or m.position contains 'Post-doc' or m.position contains 'Postdoctoral'" | sort: "name" | sort: "startdate" %}
+{% assign phds = current_members | where_exp: "m", "m.position contains 'PhD' or m.position contains 'Ph.D.' or m.position contains 'Doctoral'" | sort: "name" | sort: "startdate" %}
+{% assign mscs = current_members | where_exp: "m", "m.position contains 'MSc' or m.position contains 'M.Sc.' or m.position contains 'Master'" | sort: "name" | sort: "startdate" %}
+{% assign undergrads = current_members | where_exp: "m", "m.position contains 'Undergraduate' or m.position contains 'BSc' or m.position contains 'B.Sc.' or m.position contains 'Bachelor'" | sort: "name" | sort: "startdate" %}
+
+{% comment %}Others: anyone not in the above categories{% endcomment %}
+{% assign categorized = "" | split: "" %}
+{% for m in group_leaders %}{% assign categorized = categorized | push: m.name %}{% endfor %}
+{% for m in postdocs %}{% assign categorized = categorized | push: m.name %}{% endfor %}
+{% for m in phds %}{% assign categorized = categorized | push: m.name %}{% endfor %}
+{% for m in mscs %}{% assign categorized = categorized | push: m.name %}{% endfor %}
+{% for m in undergrads %}{% assign categorized = categorized | push: m.name %}{% endfor %}
+
+{% assign others = "" | split: "" %}
+{% for m in current_members %}
+  {% unless categorized contains m.name %}
+    {% assign others = others | push: m %}
+  {% endunless %}
+{% endfor %}
+{% assign others = others | sort: "name" | sort: "startdate" %}
+
+{% comment %}Combine all in order{% endcomment %}
+{% assign sorted_members = group_leaders | concat: postdocs | concat: phds | concat: mscs | concat: undergrads | concat: others %}
+
+{% for member in sorted_members %}
 <div class="member">
 <div class="member-photo">
 {% if member.image %}
