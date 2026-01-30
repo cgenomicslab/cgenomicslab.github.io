@@ -1,6 +1,6 @@
 /* ============================================
-   CGLab - v2 Minimal Aesthetic
-   Clean, white, no colored backgrounds
+   CGLab - v2.1 Updated Aesthetic
+   Bigger fonts, colored header, visual accents
    ============================================ */
 
 *, *::before, *::after {
@@ -10,22 +10,24 @@
 }
 
 :root {
-    --primary: #2a6b7c;
-    --primary-light: #e8f1f3;
+    --primary: #1a5f7a;
+    --primary-light: #2a7f9f;
+    --primary-dark: #134a5f;
+    --primary-bg: #e8f4f7;
     --text: #333;
-    --text-light: #666;
-    --text-muted: #888;
+    --text-light: #555;
+    --text-muted: #777;
     --bg: #fff;
-    --bg-alt: #f8f9fa;
-    --border: #e5e5e5;
+    --bg-alt: #f7f9fa;
+    --border: #e0e0e0;
 }
 
 body {
     font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--text);
     background: var(--bg);
-    font-size: 17px;
+    font-size: 18px;
 }
 
 a {
@@ -57,27 +59,27 @@ a.map-link::after,
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1050px;
     margin: 0 auto;
     padding: 0 1.5rem;
 }
 
 /* ============================================
-   HEADER
+   HEADER - Now with color!
    ============================================ */
 .header {
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 0;
+    background: var(--primary);
+    padding: 0;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .header-inner {
-    max-width: 1000px;
+    max-width: 1050px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0.9rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -88,46 +90,54 @@ a.map-link::after,
     align-items: center;
     gap: 0.75rem;
     font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--text);
+    font-size: 1.4rem;
+    color: #fff;
+    letter-spacing: 0.3px;
 }
 
 .logo:hover {
     text-decoration: none;
+    opacity: 0.95;
 }
 
 .logo img {
-    height: 36px;
+    height: 44px;
     width: auto;
+    filter: brightness(0) invert(1);
 }
 
 .logo-placeholder {
-    width: 36px;
-    height: 36px;
-    background: var(--primary);
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.2);
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 nav ul {
     display: flex;
-    gap: 2rem;
+    gap: 0.5rem;
     list-style: none;
 }
 
 nav a {
-    color: var(--text);
+    display: block;
+    padding: 0.5rem 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
 }
 
 nav a:hover {
-    color: var(--primary);
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
     text-decoration: none;
 }
 
@@ -141,24 +151,25 @@ nav a:hover {
 
 .nav-toggle span {
     display: block;
-    width: 24px;
+    width: 26px;
     height: 2px;
-    background: var(--text);
-    margin: 5px 0;
+    background: #fff;
+    margin: 6px 0;
     transition: 0.3s;
 }
 
 /* ============================================
-   HERO (v2 - white, minimal, no color)
+   HERO
    ============================================ */
 .hero {
-    padding: 3rem 0;
+    padding: 3.5rem 0;
+    background: var(--bg-alt);
     border-bottom: 1px solid var(--border);
 }
 
 .hero-inner {
     display: flex;
-    gap: 2.5rem;
+    gap: 3rem;
     align-items: center;
 }
 
@@ -167,15 +178,15 @@ nav a:hover {
 }
 
 .hero h1 {
-    font-size: 1.9rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    margin-bottom: 1.25rem;
     color: var(--text);
 }
 
 .hero-intro {
-    font-size: 1rem;
+    font-size: 1.15rem;
     color: var(--text-light);
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
 .hero-intro a {
@@ -183,7 +194,7 @@ nav a:hover {
 }
 
 .hero-figure {
-    max-width: 220px;
+    max-width: 240px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -192,26 +203,19 @@ nav a:hover {
 
 .hero-figure img {
     max-width: 100%;
-    max-height: 200px;
+    max-height: 220px;
     width: auto;
     height: auto;
     object-fit: contain;
-    border-radius: 4px;
+    border-radius: 6px;
     display: block;
-}
-
-/* When image is present, remove placeholder styling */
-.hero-figure:has(img) {
-    border: none;
-    background: transparent;
-    padding: 0;
 }
 
 /* ============================================
    SECTIONS
    ============================================ */
 section {
-    padding: 3rem 0;
+    padding: 3.5rem 0;
     border-bottom: 1px solid var(--border);
 }
 
@@ -219,19 +223,46 @@ section:last-of-type {
     border-bottom: none;
 }
 
+/* Alternate backgrounds for visual interest */
+section:nth-of-type(even) {
+    background: var(--bg-alt);
+}
+
 .section-title {
-    font-size: 1.35rem;
+    font-size: 1.6rem;
     color: var(--text);
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     font-weight: 600;
+    position: relative;
+    padding-bottom: 0.6rem;
+}
+
+/* Colored underline accent */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 45px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
 }
 
 .section-link {
     display: inline-block;
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
     color: var(--primary);
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.section-link:hover {
+    text-decoration: none;
+    border-bottom-color: var(--primary);
 }
 
 /* ============================================
@@ -239,27 +270,46 @@ section:last-of-type {
    ============================================ */
 .research-intro {
     color: var(--text-light);
-    margin-bottom: 1.25rem;
-    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+    font-size: 1.1rem;
+}
+
+.research-intro strong {
+    color: var(--text);
 }
 
 .research-areas {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
+    gap: 1.5rem;
+}
+
+.research-area {
+    padding: 1.25rem;
+    background: var(--bg);
+    border-radius: 6px;
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.research-area:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .research-area h3 {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 600;
     color: var(--primary);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
 }
 
 .research-area p {
     color: var(--text-light);
-    font-size: 0.95rem;
-    line-height: 1.55;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 /* ============================================
@@ -267,8 +317,8 @@ section:last-of-type {
    ============================================ */
 .members-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 2rem;
 }
 
 .member {
@@ -276,10 +326,10 @@ section:last-of-type {
 }
 
 .member-photo {
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    margin: 0 auto 0.5rem;
+    margin: 0 auto 0.75rem;
     overflow: hidden;
     background: var(--bg-alt);
     border: 3px solid var(--border);
@@ -289,32 +339,40 @@ section:last-of-type {
 
 .member:hover .member-photo {
     border-color: var(--primary);
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
 .member-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top; /* Ensures both images align identically */
+    object-position: center top;
     transition: opacity 0.3s ease;
 }
 
 /* Alt image on hover */
+.member-photo img.main-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
 .member-photo img.alt-img {
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0;
+    z-index: 0;
 }
 
 .member:hover .member-photo img.alt-img {
     opacity: 1;
+    z-index: 2;
 }
 
 .member:hover .member-photo img.main-img {
-    position: relative;
-    /* opacity: 0; */
+    opacity: 0;
 }
 
 .member-photo-placeholder {
@@ -325,15 +383,15 @@ section:last-of-type {
     justify-content: center;
     background: var(--bg-alt);
     color: var(--text-muted);
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 300;
 }
 
 .member-name {
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     color: var(--text);
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.15rem;
 }
 
 .member-name a {
@@ -346,17 +404,17 @@ section:last-of-type {
 }
 
 .member-position {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.35rem;
 }
 
 /* Member profile links on homepage */
 .member-links {
     display: flex;
-    gap: 0.4rem;
+    gap: 0.5rem;
     justify-content: center;
-    margin-top: 0.25rem;
+    margin-top: 0.35rem;
 }
 
 .member-links a {
@@ -369,19 +427,26 @@ section:last-of-type {
 }
 
 .member-links svg {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
+}
+
+.member-email-inline {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+    word-break: break-all;
 }
 
 /* Alumni */
 .alumni-section {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
     border-top: 1px solid var(--border);
 }
 
 .alumni-title {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: var(--text);
     margin-bottom: 1rem;
     font-weight: 600;
@@ -390,58 +455,70 @@ section:last-of-type {
 .alumni-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
+    gap: 0.6rem 2rem;
 }
 
 .alumni-item {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-light);
 }
 
 .alumni-item a {
     color: var(--text);
+    font-weight: 500;
 }
 
 .alumni-position {
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.95rem;
 }
 
 .alumni-now {
-    color: var(--text-muted);
-    font-size: 0.8rem;
+    color: var(--primary);
+    font-size: 0.9rem;
     font-style: italic;
 }
 
 /* ============================================
    JOIN
    ============================================ */
+.join-content {
+    font-size: 1.05rem;
+}
+
 .join-content p {
     color: var(--text-light);
-    margin-bottom: 0.75rem;
-    line-height: 1.7;
+    margin-bottom: 1rem;
+    line-height: 1.75;
+}
+
+.join-content h3 {
+    font-size: 1.15rem;
+    margin: 1.75rem 0 0.75rem;
+    color: var(--text);
 }
 
 .join-content ul {
-    margin: 0.5rem 0 0.75rem 1.25rem;
+    margin: 0.75rem 0 1rem 1.5rem;
     color: var(--text-light);
 }
 
 .join-content li {
-    margin-bottom: 0.3rem;
-    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
 }
 
 /* ============================================
-   PUBLICATIONS (simplified)
+   PUBLICATIONS
    ============================================ */
 .publications-intro {
     color: var(--text-light);
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
 }
 
 .publication-item {
-    padding: 0.75rem 0;
+    padding: 1rem 0;
     border-bottom: 1px solid var(--border);
 }
 
@@ -450,8 +527,8 @@ section:last-of-type {
 }
 
 .publication-year {
-    font-size: 0.7rem;
-    color: var(--text-muted);
+    font-size: 0.8rem;
+    color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 0.03em;
     font-weight: 600;
@@ -459,9 +536,9 @@ section:last-of-type {
 
 .publication-title {
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--text);
-    margin: 0.1rem 0;
+    margin: 0.15rem 0;
 }
 
 .publication-title a {
@@ -473,7 +550,7 @@ section:last-of-type {
 }
 
 .publication-authors {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
 }
 
@@ -481,7 +558,7 @@ section:last-of-type {
    NEWS
    ============================================ */
 .news-item {
-    padding: 0.6rem 0;
+    padding: 0.75rem 0;
     border-bottom: 1px solid var(--border);
 }
 
@@ -490,17 +567,18 @@ section:last-of-type {
 }
 
 .news-date {
-    font-size: 0.7rem;
-    color: var(--text-muted);
+    font-size: 0.8rem;
+    color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 0.03em;
+    font-weight: 500;
 }
 
 .news-title {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--text);
-    margin: 0.1rem 0;
+    margin: 0.15rem 0;
 }
 
 .news-title a {
@@ -517,46 +595,46 @@ section:last-of-type {
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1.4fr;
-    gap: 1.5rem;
+    gap: 2rem;
     align-items: start;
 }
 
 .contact-blocks {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .contact-block h3 {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
     color: var(--text);
 }
 
 .contact-block p {
     color: var(--text-light);
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
 /* Profile links */
 .profile-links {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
+    gap: 0.6rem;
+    margin-top: 0.9rem;
     flex-wrap: wrap;
 }
 
 .profile-links a {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
-    font-size: 0.75rem;
+    gap: 0.3rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
-    padding: 0.25rem 0.5rem;
+    padding: 0.35rem 0.6rem;
     background: var(--bg-alt);
-    border-radius: 3px;
+    border-radius: 4px;
     transition: all 0.2s ease;
 }
 
@@ -567,36 +645,39 @@ section:last-of-type {
 }
 
 .profile-links svg {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
 }
 
 /* Map */
 .contact-map {
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .contact-map iframe {
     display: block;
     width: 100%;
-    height: 200px;
+    height: 220px;
     border: none;
 }
 
 .map-link {
     display: block;
-    padding: 0.5rem;
+    padding: 0.6rem;
     background: var(--bg-alt);
     border-top: 1px solid var(--border);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--primary);
     text-align: center;
+    transition: background 0.2s, color 0.2s;
 }
 
 .map-link:hover {
-    background: var(--primary-light);
+    background: var(--primary);
+    color: #fff;
     text-decoration: none;
 }
 
@@ -604,7 +685,7 @@ section:last-of-type {
    TIMELINE FOOTER
    ============================================ */
 .visual-footer {
-    padding: 2rem 0;
+    padding: 2.5rem 0;
     background: var(--bg-alt);
     text-align: center;
     border-top: 1px solid var(--border);
@@ -616,309 +697,48 @@ section:last-of-type {
 }
 
 .visual-footer-caption {
-    margin-top: 0.75rem;
-    font-size: 0.85rem;
+    margin-top: 1rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     font-style: italic;
 }
 
 /* ============================================
-   FOOTER
+   FOOTER - Colored
    ============================================ */
 footer {
-    background: var(--bg);
-    padding: 1.25rem 0;
+    background: var(--primary-dark);
+    padding: 1.5rem 0;
     text-align: center;
-    border-top: 1px solid var(--border);
 }
 
 footer p {
-    color: var(--text-muted);
-    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
 }
 
 footer a {
-    color: var(--text-light);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+footer a:hover {
+    color: #fff;
 }
 
 /* ============================================
    MEMBER PAGE
    ============================================ */
 .member-page {
-    padding: 2rem 0;
+    padding: 2.5rem 0;
 }
 
 .member-header {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: flex-start;
     margin-bottom: 2rem;
 }
 
-.member-photo-large {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: var(--bg-alt);
-    border: 4px solid var(--border);
-    flex-shrink: 0;
-    position: relative;
-}
-
-.member-photo-large img {
-    object-position: center top;
-    /* width: 100%; */
-    /* height: 100%; */
-    /* object-fit: cover; */
-    /* display: block; */
-}
-
-.member-info h1 {
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
-}
-
-.member-position-large {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
-
-.member-email {
-    font-size: 0.9rem;
-    color: var(--text-light);
-}
-
-.member-email-inline {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-top: 0.15rem;
-    word-break: break-all;
-}
-
-.member-description {
-    color: var(--text-light);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-}
-
-.member-content {
-    color: var(--text-light);
-    line-height: 1.7;
-}
-
-.member-content h2 {
-    font-size: 1.1rem;
-    margin: 1.5rem 0 0.75rem;
-    color: var(--text);
-}
-
-.member-content ul {
-    margin-left: 1.25rem;
-}
-
-/* ============================================
-   POST/NEWS PAGE
-   ============================================ */
-.post {
-    padding: 2rem 0;
-}
-
-.post-header {
-    margin-bottom: 2rem;
-}
-
-.post-title {
-    font-size: 1.75rem;
-    margin-bottom: 0.5rem;
-}
-
-.post-meta {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-.post-content {
-    color: var(--text-light);
-    line-height: 1.8;
-}
-
-.post-content p {
-    margin-bottom: 1rem;
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-@media (max-width: 768px) {
-    .nav-toggle {
-        display: block;
-    }
-
-    nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--bg);
-        border-bottom: 1px solid var(--border);
-        display: none;
-    }
-
-    nav.active {
-        display: block;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem;
-    }
-
-    nav li {
-        border-bottom: 1px solid var(--border);
-    }
-
-    nav li:last-child {
-        border-bottom: none;
-    }
-
-    nav a {
-        display: block;
-        padding: 0.75rem 0;
-    }
-
-    .header-inner {
-        position: relative;
-    }
-
-    .hero-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-    }
-
-    .hero h1 {
-        font-size: 1.5rem;
-    }
-
-    .hero-figure {
-    max-width: 160px;
-    }
-
-    .hero-figure img {
-    max-height: 140px;
-    }
-
-    .research-areas {
-        grid-template-columns: 1fr;
-    }
-
-    .members-grid {
-        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-        gap: 1.25rem;
-    }
-
-    .member-photo {
-        width: 75px;
-        height: 75px;
-    }
-
-    .member-header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .alumni-list {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-map iframe {
-        height: 180px;
-    }
-
-    section {
-        padding: 2.5rem 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 1.35rem;
-    }
-
-    .hero-intro {
-        font-size: 0.95rem;
-    }
-
-    .hero-figure {
-    max-width: 140px;
-    }
-
-    .hero-figure img {
-    max-height: 120px;
-    }
-
-    .members-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-    }
-
-    .member-photo {
-        width: 65px;
-        height: 65px;
-    }
-
-    .member-name {
-        font-size: 0.8rem;
-    }
-
-    .member-position {
-        font-size: 0.7rem;
-    }
-
-    .member-links {
-        display: none;
-    }
-
-    .profile-links {
-        justify-content: center;
-    }
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-section[id] {
-    scroll-margin-top: 70px;
-}
-
-/* ===========================================
-   CSS ADDITIONS FOR CGLAB WEBSITE
-   Add this to the end of your main.css file
-   =========================================== */
-
-/* ========================================
-   MEMBER PAGE - Photo Fixes
-   ======================================== */
-
-/* Member page header layout */
-.member-page .member-header {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    align-items: flex-start;
-}
-
-/* Large photo container on member detail page */
 .member-photo-large {
     position: relative;
     width: 200px;
@@ -926,13 +746,15 @@ section[id] {
     min-width: 200px;
     border-radius: 8px;
     overflow: hidden;
-    background: #f5f5f5;
+    background: var(--bg-alt);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .member-photo-large img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     display: block;
 }
 
@@ -961,34 +783,56 @@ section[id] {
     z-index: 2;
 }
 
-/* Member info section */
 .member-info {
     flex: 1;
 }
 
 .member-info h1 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.75rem;
-    font-weight: 500;
+    font-size: 1.9rem;
+    margin-bottom: 0.35rem;
 }
 
 .member-position-large {
-    font-size: 1.1rem;
-    color: #666;
-    margin: 0 0 0.5rem 0;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
 }
 
 .member-email {
-    color: #888;
-    font-size: 0.95rem;
-    margin: 0.25rem 0;
+    font-size: 1rem;
+    color: var(--text-light);
+    margin: 0.3rem 0;
 }
 
-/* Profile links on member page */
+.member-description {
+    color: var(--text-light);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+.member-content {
+    color: var(--text-light);
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.member-content h2 {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.9rem;
+    color: var(--text);
+}
+
+.member-content ul {
+    margin-left: 1.5rem;
+}
+
+.member-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Member info profile links */
 .member-info .profile-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
     margin-top: 1rem;
 }
 
@@ -996,14 +840,14 @@ section[id] {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    color: #666;
+    color: var(--text-muted);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     transition: color 0.2s;
 }
 
 .member-info .profile-links .icon-link:hover {
-    color: #333;
+    color: var(--primary);
 }
 
 .member-info .profile-links .icon-link svg {
@@ -1011,122 +855,42 @@ section[id] {
     height: 16px;
 }
 
-/* Member description */
-.member-description {
-    margin: 2rem 0;
-    line-height: 1.7;
-    color: #444;
+/* ============================================
+   POST/NEWS PAGE
+   ============================================ */
+.post {
+    padding: 2.5rem 0;
 }
 
-/* Member content (markdown body) */
-.member-content {
-    margin: 2rem 0;
-    line-height: 1.7;
+.post-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
 }
 
-.member-content ul {
-    padding-left: 1.5rem;
-    margin: 1rem 0;
+.post-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
-.member-content li {
-    margin: 0.5rem 0;
+.post-meta {
+    color: var(--text-muted);
+    font-size: 1rem;
 }
 
-.member-content h2 {
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin: 2rem 0 1rem;
-    color: #333;
+.post-content {
+    color: var(--text-light);
+    line-height: 1.8;
+    font-size: 1.1rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    .member-page .member-header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .member-photo-large {
-        width: 150px;
-        height: 150px;
-        min-width: 150px;
-    }
-
-    .member-info .profile-links {
-        justify-content: center;
-    }
+.post-content p {
+    margin-bottom: 1.25rem;
 }
 
-/* ========================================
-   MEMBERS GRID - Photo Fixes
-   ======================================== */
-
-.member-photo {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto 0.75rem;
-    background: #f5f5f5;
-}
-
-.member-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.member-photo .main-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-.member-photo .alt-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.member-photo:hover .main-img {
-    opacity: 0;
-}
-
-.member-photo:hover .alt-img {
-    opacity: 1;
-    z-index: 2;
-}
-
-/* ========================================
-   TIMELINE SECTION
-   ======================================== */
-
-.timeline-section {
-    margin-top: 3rem;
-    padding: 1.5rem 0;
-}
-
-.timeline-section h3 {
-    margin-bottom: 1.5rem;
-}
-
-.timeline-section svg {
-    display: block;
-    margin: 0 auto;
-}
-
-/* ========================================
+/* ============================================
    LAB PHOTO SECTION
-   ======================================== */
-
+   ============================================ */
 .lab-photo-section {
     text-align: center;
     margin: 3rem 0;
@@ -1136,57 +900,215 @@ section[id] {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .lab-photo-section h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
 }
 
-/* ========================================
-   ALUMNI SECTION
-   ======================================== */
-
-.alumni-section {
+/* ============================================
+   TIMELINE SECTION
+   ============================================ */
+.timeline-section {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border);
 }
 
-.alumni-title {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 1rem;
+.timeline-section h3 {
+    margin-bottom: 1.5rem;
 }
 
-.alumni-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.timeline-section svg {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
-.alumni-item {
-    font-size: 0.95rem;
-    color: #555;
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+    .research-areas {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-.alumni-item a {
-    color: #333;
-    text-decoration: none;
+@media (max-width: 768px) {
+    body {
+        font-size: 17px;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary);
+        border-bottom: none;
+        display: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 1rem 1rem;
+    }
+
+    nav li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav li:last-child {
+        border-bottom: none;
+    }
+
+    nav a {
+        display: block;
+        padding: 0.9rem 0;
+    }
+
+    .header-inner {
+        position: relative;
+    }
+
+    .hero-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero-figure {
+        max-width: 180px;
+    }
+
+    .hero-figure img {
+        max-height: 160px;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .members-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .member-photo {
+        width: 90px;
+        height: 90px;
+    }
+
+    .member-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .member-photo-large {
+        width: 160px;
+        height: 160px;
+        min-width: 160px;
+    }
+
+    .alumni-list {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .contact-map iframe {
+        height: 200px;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
 }
 
-.alumni-item a:hover {
-    text-decoration: underline;
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-intro {
+        font-size: 1rem;
+    }
+
+    .hero-figure {
+        max-width: 150px;
+    }
+
+    .hero-figure img {
+        max-height: 130px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo img {
+        height: 36px;
+    }
+
+    .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+
+    .member-photo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .member-name {
+        font-size: 0.95rem;
+    }
+
+    .member-position {
+        font-size: 0.85rem;
+    }
+
+    .member-links {
+        display: none;
+    }
+
+    .profile-links {
+        justify-content: center;
+    }
 }
 
-.alumni-position {
-    color: #888;
-    font-size: 0.9rem;
+html {
+    scroll-behavior: smooth;
 }
 
-.alumni-now {
-    color: #666;
-    font-size: 0.85rem;
-    font-style: italic;
+section[id] {
+    scroll-margin-top: 70px;
 }

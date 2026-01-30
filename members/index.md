@@ -9,6 +9,7 @@ group: members
 
 <h1 class="section-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Lab Members</h1>
 
+{::nomarkdown}
 <div class="members-grid">
 {% assign current_members = site.members | where_exp: "m", "m.enddate == nil" | sort: "startdate" %}
 {% for member in current_members %}
@@ -35,14 +36,16 @@ group: members
 </div>
 {% endfor %}
 </div>
+{:/nomarkdown}
 
 <!-- Lab Photo -->
 <div class="lab-photo-section" style="margin: 3rem 0;">
 <h3 class="alumni-title">Lab Photo</h3>
-<img src="/static/img/lab/lab_photo.jpg" alt="CGLab Group Photo" style="width: 100%; max-width: 800px; border-radius: 8px;" onerror="this.style.display='none'; this.parentElement.querySelector('.photo-placeholder').style.display='block';">
-<p class="photo-placeholder" style="display: none; color: #888; font-style: italic;">Add lab photo at: /static/img/lab/lab_photo.jpg</p>
+<img src="/static/img/lab/lab_photo.jpg" alt="CGLab Group Photo" style="width: 100%; max-width: 800px; border-radius: 8px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+<p style="display: none; color: #888; font-style: italic;">Add lab photo at: /static/img/lab/lab_photo.jpg</p>
 </div>
 
+{::nomarkdown}
 <!-- Alumni Section -->
 {% assign alumni = site.alumni | sort: "enddate" | reverse %}
 {% if alumni.size > 0 %}
@@ -61,7 +64,9 @@ group: members
 </div>
 </div>
 {% endif %}
+{:/nomarkdown}
 
+{::nomarkdown}
 <!-- Lab Timeline -->
 <div class="timeline-section" style="margin-top: 3rem;">
 <h3 class="alumni-title">Lab Timeline</h3>
@@ -165,6 +170,7 @@ group: members
 <text x="{{ legendboxsize | plus: 15 }}" y="{{ legendy | plus: 15 }}" font-family="sans-serif" font-size="{{ fontsize }}" fill="#333">Visitor / Intern</text>
 </svg>
 </div>
+{:/nomarkdown}
 
 <a href="/" class="section-link" style="margin-top: 2rem; display: inline-block;">← Back to home</a>
 
