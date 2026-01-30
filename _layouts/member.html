@@ -6,12 +6,12 @@ layout: default
     <div class="member-header">
         <div class="member-photo-large">
             {% if page.image %}
-            <img src="{{ page.image }}" alt="{{ page.name }}" class="main-img">
+            <img src="{{ page.image }}" alt="{{ page.name }}" class="main-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
             {% if page.altimage %}
-            <img src="{{ page.altimage }}" alt="" class="alt-img">
+            <img src="{{ page.altimage }}" alt="" class="alt-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
             {% endif %}
             {% else %}
-            <div class="member-photo-placeholder">{{ page.name | slice: 0 }}{{ page.name | split: ' ' | last | slice: 0 }}</div>
+            <div class="member-photo-placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #888; background: #f0f0f0;">{{ page.name | slice: 0 }}{{ page.name | split: ' ' | last | slice: 0 }}</div>
             {% endif %}
         </div>
         <div class="member-info">
@@ -72,3 +72,119 @@ layout: default
     <a href="/members" class="section-link">← Back to members</a>
 </section>
 </div>
+
+<style>
+/* Inline styles for member page photo - ensures proper display */
+.member-photo-large {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    min-width: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.member-photo-large .alt-img {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.member-photo-large:hover .main-img {
+    opacity: 0;
+}
+
+.member-photo-large:hover .alt-img {
+    opacity: 1;
+}
+
+.member-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+}
+
+.member-info h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.member-position-large {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0 0 0.5rem 0;
+}
+
+.member-email {
+    color: #888;
+    font-size: 0.95rem;
+    margin: 0.25rem 0;
+}
+
+.profile-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.profile-links .icon-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.profile-links .icon-link:hover {
+    color: #333;
+}
+
+.profile-links .icon-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.member-content {
+    margin: 2rem 0;
+    line-height: 1.7;
+}
+
+.member-content ul {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.member-content li {
+    margin: 0.5rem 0;
+}
+
+.member-content h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 2rem 0 1rem;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .member-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .member-photo-large {
+        width: 150px;
+        height: 150px;
+        min-width: 150px;
+    }
+    
+    .profile-links {
+        justify-content: center;
+    }
+}
+</style>
