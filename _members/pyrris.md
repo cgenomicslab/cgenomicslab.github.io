@@ -10,5 +10,5 @@ orcid: 0000-0003-3166-7230
 scholar: https://scholar.google.com/citations?user=eRhL-JcAAAAJ&hl=el&oi=ao
 github:
 
-
 ---
+My main scientific interest is the emergence of novel cellular functions via gene duplication. Duplication is the substrate for functional change or specialization. Currently I am working on the evolution of synaptic machinery in animals. I have found that various components of this machinery were present before neuronal emergence. I am combining phylogenomic analysis and fungal cell biology experiments to try and trace how synaptic functions such as neurotransmitter transport and synthesis evolved even before the split of animals and fungi.
