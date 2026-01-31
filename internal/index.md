@@ -13,6 +13,7 @@ group: internal
 Lab resources and services for CGLab members. These require network access or VPN.
 </p>
 
+{::nomarkdown}
 <div class="internal-grid">
 
 <a href="https://dsm.cgenomicslab.org/" target="_blank" class="internal-card">
@@ -58,6 +59,7 @@ Lab resources and services for CGLab members. These require network access or VP
 </a>
 
 </div>
+{:/nomarkdown}
 
 <div class="internal-note" style="margin-top: 2rem; padding: 1rem; background: #f9f9f9; border-radius: 8px; font-size: 0.9rem; color: #666;">
 <strong>Note:</strong> Access to these services may require being on the lab network or using VPN. Contact the lab administrator if you need access.

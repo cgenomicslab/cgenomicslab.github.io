@@ -148,11 +148,18 @@ function toggleEmail(btn) {
 
 function copyEmail(btn) {
     var emailText = btn.previousElementSibling.textContent;
+    var display = btn.parentElement;
+    var toggleBtn = display.previousElementSibling;
+    
     navigator.clipboard.writeText(emailText).then(function() {
         btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" width="12" height="12"><polyline points="20 6 9 17 4 12"></polyline></svg>';
         setTimeout(function() {
+            // Hide email display and show button again
+            display.style.display = 'none';
+            toggleBtn.style.display = 'inline-flex';
+            // Reset copy button icon
             btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
-        }, 1500);
+        }, 1000);
     });
 }
 </script>
