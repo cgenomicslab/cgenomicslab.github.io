@@ -35,12 +35,12 @@ N. Plastira 100, Vassilika Vouton<br>
 
 <div class="contact-map">
 <iframe
-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3226.8899772741!2d25.0713!3d35.3097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149a5b0369f0c3a3%3A0x2da6f1d2c7c83c0d!2sFORTH%20-%20Foundation%20for%20Research%20and%20Technology%20-%20Hellas!5e1!3m2!1sen!2sgr!4v1700000000000!5m2!1sen!2sgr"
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.980555435395!2d25.069276075546192!3d35.30462035057078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149a570027ec31bd%3A0xaaccc8115f93751f!2sComparative%20Genomics%20Lab%20%40%20IMBB-FORTH!5e1!3m2!1sen!2sgr!4v1769297448751!5m2!1sen!2sgr"
 allowfullscreen=""
 loading="lazy"
 referrerpolicy="no-referrer-when-downgrade">
 </iframe>
-<a href="https://maps.app.goo.gl/kEsXLobs46BUQJfG7" target="_blank" class="map-link">
+<a href="https://maps.app.goo.gl/zGpFGo7fDnC1gNFm7" target="_blank" class="map-link">
 Open in Google Maps ↗
 </a>
 </div>

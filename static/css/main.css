@@ -1115,3 +1115,340 @@ html {
 section[id] {
     scroll-margin-top: 70px;
 }
+/* =========================================
+   CSS ADDITIONS FOR CGLAB WEBSITE
+   Add this to the end of your main.css
+   ========================================= */
+
+/* Internal nav link styling */
+.nav-internal a {
+    color: #B9375E !important;
+    font-weight: 500;
+}
+
+.nav-internal a:hover {
+    color: #8a2847 !important;
+}
+
+/* Mobile nav - ensure menu closes properly */
+@media (max-width: 768px) {
+    nav {
+        transition: all 0.3s ease;
+    }
+    
+    nav:not(.active) {
+        display: none;
+    }
+    
+    nav.active {
+        display: block;
+    }
+}
+
+/* Email toggle button and display */
+.email-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.5rem;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 0.25rem;
+}
+
+.email-toggle-btn:hover {
+    background: #FFE0E9;
+    border-color: #B9375E;
+    color: #B9375E;
+}
+
+.email-label {
+    font-size: 0.7rem;
+}
+
+.email-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 0.4rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #555;
+    margin-top: 0.25rem;
+}
+
+.email-text {
+    font-family: monospace;
+    font-size: 0.7rem;
+    user-select: all;
+}
+
+.email-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    border-radius: 3px;
+}
+
+.email-copy-btn:hover {
+    background: #e5e5e5;
+    color: #333;
+}
+
+/* Hide inline email display (replaced by button) */
+.member-email-inline {
+    display: none;
+}
+
+/* Timeline styles */
+.timeline-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.timeline-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.legend-box {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+}
+
+.timeline-container {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.4rem;
+    height: 22px;
+}
+
+.timeline-name {
+    width: 80px;
+    min-width: 80px;
+    text-align: right;
+    padding-right: 1rem;
+    font-size: 0.85rem;
+    color: #434343;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.timeline-bar-container {
+    position: relative;
+    flex: 1;
+    height: 14px;
+}
+
+.timeline-bar {
+    position: absolute;
+    height: 14px;
+    border-radius: 3px;
+    min-width: 8px;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.timeline-bar:hover {
+    opacity: 0.85;
+    transform: scaleY(1.15);
+}
+
+.timeline-date {
+    width: 140px;
+    min-width: 140px;
+    padding-left: 0.75rem;
+    font-size: 0.75rem;
+    color: #888;
+    white-space: nowrap;
+}
+
+.timeline-axis {
+    position: relative;
+    margin-left: 80px;
+    margin-right: 140px;
+    padding-left: 1rem;
+    height: 24px;
+    border-top: 1px solid #ddd;
+}
+
+.axis-inner {
+    position: relative;
+    height: 100%;
+}
+
+.timeline-axis span {
+    font-size: 0.75rem;
+    color: #888;
+    padding-top: 4px;
+}
+
+@media (max-width: 600px) {
+    .timeline-name {
+        width: 60px;
+        min-width: 60px;
+        font-size: 0.75rem;
+    }
+    
+    .timeline-date {
+        display: none;
+    }
+    
+    .timeline-axis {
+        margin-right: 0;
+    }
+}
+
+/* Internal page styles */
+.internal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.internal-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+.internal-card:hover {
+    border-color: #B9375E;
+    box-shadow: 0 2px 8px rgba(185, 55, 94, 0.1);
+}
+
+.internal-card:hover .internal-arrow {
+    transform: translateX(4px);
+    color: #B9375E;
+}
+
+.internal-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    border-radius: 8px;
+    color: #666;
+}
+
+.internal-card:hover .internal-icon {
+    background: #FFE0E9;
+    color: #B9375E;
+}
+
+.internal-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.internal-info {
+    flex: 1;
+}
+
+.internal-info h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.internal-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.internal-arrow {
+    font-size: 1.25rem;
+    color: #ccc;
+    transition: all 0.2s ease;
+}
+
+/* Alumni section styles */
+.alumni-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.alumni-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #666;
+    margin: 0 0 1rem 0;
+}
+
+.alumni-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.alumni-item {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.alumni-item a {
+    color: #333;
+    text-decoration: none;
+}
+
+.alumni-item a:hover {
+    color: #B9375E;
+}
+
+.alumni-position {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.alumni-now {
+    color: #B9375E;
+    font-size: 0.85rem;
+}
+
+/* Lab photo section */
+.lab-photo-section {
+    margin: 3rem 0;
+}
+
+.lab-photo-section img {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 8px;
+}

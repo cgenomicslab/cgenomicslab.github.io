@@ -93,7 +93,16 @@ Our research is focused on <strong>computational biology</strong>, <strong>compa
 <div class="member-name"><a href="{{ member.url }}">{{ member.name }}</a></div>
 <div class="member-position">{{ member.position }}</div>
 {% if member.email %}
-<div class="member-email-inline">{{ member.email }}</div>
+<button class="email-toggle-btn" onclick="toggleEmail(this)" data-email="{{ member.email }}" title="Show email">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+<span class="email-label">email</span>
+</button>
+<div class="email-display" style="display: none;">
+<span class="email-text"></span>
+<button class="email-copy-btn" onclick="copyEmail(this)" title="Copy to clipboard">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+</button>
+</div>
 {% endif %}
 <div class="member-links">
 {% if member.orcid %}<a href="https://orcid.org/{{ member.orcid }}" target="_blank" class="icon-link" title="ORCID"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg></a>{% endif %}
@@ -123,6 +132,83 @@ Our research is focused on <strong>computational biology</strong>, <strong>compa
 <a href="/members" class="section-link">All members →</a>
 </div>
 </section>
+
+<script>
+function toggleEmail(btn) {
+    var email = btn.getAttribute('data-email');
+    var display = btn.nextElementSibling;
+    var emailText = display.querySelector('.email-text');
+    
+    if (display.style.display === 'none') {
+        emailText.textContent = email;
+        display.style.display = 'inline-flex';
+        btn.style.display = 'none';
+    }
+}
+
+function copyEmail(btn) {
+    var emailText = btn.previousElementSibling.textContent;
+    navigator.clipboard.writeText(emailText).then(function() {
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" width="12" height="12"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+        setTimeout(function() {
+            btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+        }, 1500);
+    });
+}
+</script>
+
+<style>
+.email-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.5rem;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 0.25rem;
+}
+.email-toggle-btn:hover {
+    background: #FFE0E9;
+    border-color: #B9375E;
+    color: #B9375E;
+}
+.email-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 0.4rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #555;
+    margin-top: 0.25rem;
+}
+.email-text {
+    font-family: monospace;
+    font-size: 0.7rem;
+    user-select: all;
+}
+.email-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    border-radius: 3px;
+}
+.email-copy-btn:hover {
+    background: #e5e5e5;
+    color: #333;
+}
+</style>
 {:/nomarkdown}
 <section id="join">
 <div class="container">

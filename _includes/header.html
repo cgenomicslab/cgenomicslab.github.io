@@ -19,7 +19,25 @@
                 <li><a href="/#publications">Publications</a></li>
                 <li><a href="/#news">News</a></li>
                 <li><a href="/#contact">Contact</a></li>
+                <li class="nav-internal"><a href="/internal">Internal</a></li>
             </ul>
         </nav>
     </div>
 </header>
+
+<script>
+// Close mobile menu when a link is clicked
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('nav a');
+    const nav = document.querySelector('nav');
+    
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            // Close the menu on mobile
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
+        });
+    });
+});
+</script>

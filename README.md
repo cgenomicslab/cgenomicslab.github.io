@@ -1,75 +1,96 @@
-# CGLab Website Updates
+# CGLab Website Fixes
 
-These files fix the members page and member detail pages.
+This package contains fixes for the following issues:
 
 ## Changes Made
 
-### 1. `members/index.md` - Updated Members Page
-- Added lab photo section (placeholder - add your photo at `/static/img/lab/lab_photo.jpg`)
-- Added alumni section (now only appears here, not on homepage)
-- Added interactive timeline showing when members joined/left the lab
-- Timeline colors indicate position type (Group Leader, PhD, MSc, etc.)
+### 1. Mobile Menu Auto-Close (`_includes/header.html`)
+- Added JavaScript to close the dropdown menu when a link is clicked
+- Menu now properly dismisses after selection on mobile devices
+- Added "Internal" link in navigation (highlighted in pink)
 
-### 2. `index.md` - Updated Homepage
-- Removed alumni section (alumni now only shown on `/members` page)
-- Cleaner, simpler members display
+### 2. Contact Page Map Fix (`contact/index.md`)
+- Updated map coordinates to match the main page
+- Now correctly points to CGLab @ IMBB-FORTH
 
-### 3. `_layouts/member.html` - Fixed Member Detail Pages
-- Fixed photo display issues with proper positioning
-- Improved hover effect for alt images
-- Added inline styles to ensure photos display correctly regardless of main CSS
+### 3. Internal Resources Page (`internal/index.md`)
+- New page for lab internal resources
+- Links to:
+  - **Synology DSM**: https://dsm.cgenomicslab.org/
+  - **Lab Chat**: https://chat.cgenomicslab.org/
+  - **JupyterHub**: https://jupyter.cgenomicslab.org/
+- Clean card-based design with hover effects
+- Includes note about VPN/network access requirements
+
+### 4. Email Button Instead of Inline Display (`index.md`)
+- Emails are now hidden behind a clickable "email" button
+- Click to reveal the email address
+- Copy button with clipboard functionality
+- Shows checkmark feedback when copied
+
+### 5. Fixed Timeline (`members/index.md`)
+- Rewrote timeline with JavaScript for proper calculations
+- Bars now correctly show member tenure periods
+- Hover effect on bars for better interaction
 - Responsive design for mobile
 
-### 4. `static/css/css_additions.css` - CSS Additions
-- Copy the contents of this file and add to the end of your `main.css`
-- Contains styles for: member photos, timeline, lab photo section, alumni list
+### 6. CSS Additions (`static/css/css_additions.css`)
+- Styles for email toggle button
+- Internal page card styles
+- Timeline improvements
+- Alumni section styling
 
-## Installation
+## Installation Instructions
 
-1. **Replace these files in your repository:**
-   - `members/index.md` → replace existing file
-   - `index.md` → replace existing file
-   - `_layouts/member.html` → replace existing file
+### Step 1: Replace Files
+Copy these files to your repository, replacing existing ones:
 
-2. **Add CSS:**
-   - Open your `static/css/main.css` file
-   - Copy all contents from `static/css/css_additions.css`
-   - Paste at the end of `main.css`
-
-3. **Add lab photo (optional):**
-   - Create folder: `static/img/lab/`
-   - Add your lab photo as `lab_photo.jpg`
-
-4. **Commit and push:**
-   ```bash
-   git add .
-   git commit -m "Fix members page: add timeline, fix photos, reorganize alumni"
-   git push
-   ```
-
-## Timeline Configuration
-
-The timeline uses the `startdate` and `enddate` fields from member files:
-- Members without `enddate` are shown as current (bar extends to present)
-- Colors are assigned based on `position` field:
-  - **Red**: Group Leader / Principal Investigator
-  - **Orange**: Postdoc
-  - **Yellow**: PhD Student
-  - **Teal**: MSc Student
-  - **Light blue**: Undergraduate
-  - **Blue**: Staff / Technician
-  - **Gray**: Visitor / Intern
-
-To customize a member's timeline color, add `timeline_group` to their YAML:
-```yaml
-timeline_group: "PhD Student"
+```
+_includes/header.html    → replace existing
+contact/index.md         → replace existing
+internal/index.md        → NEW FILE (create internal/ folder)
+members/index.md         → replace existing
+index.md                 → replace existing
 ```
 
-## Lab Photo
+### Step 2: Add CSS
+Append the contents of `static/css/css_additions.css` to the end of your `static/css/main.css` file.
 
-To add a lab photo, place it at:
-```
-/static/img/lab/lab_photo.jpg
+### Step 3: Commit and Push
+
+```bash
+git add .
+git commit -m "Fix mobile menu, map, timeline, add internal page and email buttons"
+git push
 ```
 
-Recommended: landscape orientation, at least 800px wide.
+## Features Overview
+
+### Internal Page
+Access at `/internal` - provides quick links to:
+- Synology DSM (file storage)
+- Synology Chat (team communication)
+- JupyterHub (computational notebooks)
+
+### Email Reveal
+- Click the "email" button to show member's email
+- Click the copy icon to copy to clipboard
+- Visual feedback (checkmark) on successful copy
+
+### Timeline
+- Automatically calculates bar positions based on dates
+- Color-coded by position type
+- Hover to highlight
+- Shows date range on right side
+- Responsive: hides dates on mobile
+
+## Customization
+
+### Add More Internal Resources
+Edit `internal/index.md` and add more `<a class="internal-card">` blocks following the existing pattern.
+
+### Timeline Colors
+Edit the `getColor()` function in `members/index.md` to change colors for different position types.
+
+### Timeline Date Range
+The timeline currently shows 2024 to current year + 1. Modify `startYear` and `endYear` in the JavaScript to adjust.
