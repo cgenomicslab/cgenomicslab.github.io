@@ -70,14 +70,11 @@ group: members
 <div class="lab-gallery" id="labGallery">
 <!-- Add your lab photos here. Name them: lab_2024.jpg, lab_2025.jpg, etc. or any name -->
 <!-- Each photo can have a data-label attribute for the caption -->
-<div class="gallery-item" data-label="2025">
-<img src="/static/img/lab/lab_2025.jpg" alt="Lab photo 2025" onerror="this.parentElement.style.display='none';">
+<div class="gallery-item" data-label="2026">
+<img src="/static/img/lab/lab_2026a.jpg" alt="Lab photo 2026" onerror="this.parentElement.style.display='none';">
 </div>
-<div class="gallery-item" data-label="2024">
-<img src="/static/img/lab/lab_2024.jpg" alt="Lab photo 2024" onerror="this.parentElement.style.display='none';">
-</div>
-<div class="gallery-item" data-label="Retreat 2024">
-<img src="/static/img/lab/retreat_2024.jpg" alt="Lab retreat 2024" onerror="this.parentElement.style.display='none';">
+<div class="gallery-item" data-label="2026">
+<img src="/static/img/lab/lab_2026b.jpg" alt="Lab photo 2026" onerror="this.parentElement.style.display='none';">
 </div>
 <!-- Add more photos as needed -->
 </div>
@@ -143,14 +140,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
     ];
-    
+
     // Timeline configuration
     var startYear = 2024;
     var endYear = new Date().getFullYear() + 1;
     var totalMonths = (endYear - startYear + 1) * 12;
     var containerWidth = document.getElementById('timeline-container').offsetWidth - 120;
     var pixelsPerMonth = containerWidth / totalMonths;
-    
+
     function getColor(position) {
         var pos = position.toLowerCase();
         if (pos.includes('group leader') || pos.includes('principal investigator') || pos.includes(' pi')) return '#B9375E';
@@ -160,17 +157,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (pos.includes('undergraduate') || pos.includes('bsc')) return '#FFE0E9';
         return '#434343';
     }
-    
+
     var container = document.getElementById('timeline-container');
     var html = '';
-    
+
     members.forEach(function(member) {
         if (!member.startdate || member.startdate === '') return;
-        
+
         var startParts = member.startdate.split('-');
         var startYear_m = parseInt(startParts[0]);
         var startMonth = parseInt(startParts[1]) || 1;
-        
+
         var endYear_m, endMonth;
         if (member.enddate && member.enddate !== '') {
             var endParts = member.enddate.split('-');
@@ -181,16 +178,16 @@ document.addEventListener('DOMContentLoaded', function() {
             endYear_m = now.getFullYear();
             endMonth = now.getMonth() + 1;
         }
-        
+
         var startOffset = ((startYear_m - startYear) * 12 + (startMonth - 1)) * pixelsPerMonth;
         var endOffset = ((endYear_m - startYear) * 12 + endMonth) * pixelsPerMonth;
         var barWidth = Math.max(endOffset - startOffset, 8);
-        
+
         if (startOffset < 0) startOffset = 0;
-        
+
         var color = getColor(member.position);
         var dateLabel = member.startdate.substring(0, 7) + ' – ' + (member.enddate ? member.enddate.substring(0, 7) : 'present');
-        
+
         html += '<div class="timeline-row">';
         html += '<div class="timeline-name">' + member.name + '</div>';
         html += '<div class="timeline-bar-container">';
@@ -199,9 +196,9 @@ document.addEventListener('DOMContentLoaded', function() {
         html += '<div class="timeline-date">' + dateLabel + '</div>';
         html += '</div>';
     });
-    
+
     container.innerHTML = html;
-    
+
     var axis = document.getElementById('timeline-axis');
     var axisHtml = '';
     for (var y = startYear; y <= endYear; y++) {
