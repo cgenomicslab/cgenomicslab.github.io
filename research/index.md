@@ -10,7 +10,7 @@ group: research
 <h1 class="section-title" style="font-size: 1.5rem; margin-bottom: 1rem;">Research</h1>
 
 <p class="research-intro" style="margin-bottom: 2.5rem; line-height: 1.7;">
-Our research combines computational biology, comparative genomics, and single-cell transcriptomics to understand how biological complexity emerges and evolves. We study the molecular and cellular changes underlying major evolutionary transitions.
+Our research combines computational biology, comparative genomics, molecular genetics and single-cell transcriptomics to understand how biological complexity emerges and evolves. We study the molecular and cellular changes underlying major evolutionary transitions.
 </p>
 
 {::nomarkdown}
