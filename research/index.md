@@ -20,9 +20,9 @@ Our research combines computational biology, comparative genomics, and single-ce
 <div class="project-figure"><img src="/static/img/research/synaptic_diversity.svg" alt="Synaptic neurotransmission diversity"></div>
 <div class="project-content">
 <h2>Diversity of Synaptic Neurotransmission <img src="/static/img/logo/elidek_logo_en.png" alt="HFRI funded" class="funding-logo"></h2>
-<p>We study the synaptic machinery across animals and their relatives to understand the origins and diversification of neural signaling. By characterizing neurotransmission systems in fungi and other opisthokonts, we aim to infer the ancestral state of this fundamental cellular process.</p>
-<p>Our approach integrates phylogenetics with single-cell RNA sequencing and functional data to build a comprehensive picture of how neurons communicate and how this communication system evolved.</p>
-<ul class="project-keywords"><li>Synaptic proteins</li><li>Opisthokonta</li><li>Phylogenetics</li><li>scRNA-seq integration</li></ul>
+<p>We study the synaptic machinery across animals, their relatives, and Fungi to understand the origins and diversification of neural signaling. By characterizing neurotransmission systems in fungi and other opisthokonts, we aim to infer the ancestral state of this fundamental cellular process.</p>
+<p>Our approach integrates phylogenetics with <i>Aspergillus nidulans</i> molecular genetics, functional assays, single-cell RNA sequencing and computational predictions to build a comprehensive picture of how neurons communicate and how this communication system evolved.</p>
+<ul class="project-keywords"><li>Synaptic proteins</li><li>Opisthokonta</li><li>Phylogenetics</li><li>Functional characterization</li><li>scRNA-seq integration</li></ul>
 </div>
 </div>
 
@@ -31,7 +31,7 @@ Our research combines computational biology, comparative genomics, and single-ce
 <div class="project-content">
 <h2>Cell Type Evolution <img src="/static/img/logo/elidek_logo_en.png" alt="HFRI funded" class="funding-logo"></h2>
 <p>We build cross-species cell atlases to trace the evolutionary history of cell types across animals. By comparing single-cell transcriptomic data from diverse organisms, we investigate how neuronal cell types originated and diversified.</p>
-<p>This work addresses fundamental questions about the emergence of cellular complexity and the molecular signatures that define distinct cell populations.</p>
+<p>This work addresses fundamental questions about the emergence of cellular complexity and the molecular signatures that define distinct cell identities.</p>
 <ul class="project-keywords"><li>Cell atlases</li><li>Neuronal origins</li><li>Cell type diversification</li><li>Comparative transcriptomics</li></ul>
 </div>
 </div>
@@ -151,12 +151,12 @@ Our research combines computational biology, comparative genomics, and single-ce
     .research-project.reverse {
         grid-template-columns: 1fr;
     }
-    
+
     .research-project.reverse .project-figure,
     .research-project.reverse .project-content {
         order: unset;
     }
-    
+
     .project-figure {
         max-width: 300px;
     }
