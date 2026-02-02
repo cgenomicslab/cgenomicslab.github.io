@@ -25,7 +25,7 @@ is based at the Institute of Molecular Biology and Biotechnology of the Foundati
 <div class="container">
 <h2 class="section-title">Research</h2>
 <p class="research-intro">
-Our research is focused on <strong>computational biology</strong>, <strong>comparative genomics</strong> and <strong>single-cell/nucleus transcriptomics</strong> methods to address questions on <strong>sequence</strong> and <strong>functional diversity</strong>, <strong>genome</strong>, <strong>protein/gene family</strong>, and <strong>cellular evolution</strong>.
+Our research is focused on <strong>computational biology</strong>, <strong>comparative genomics</strong>, functional genetics and <strong>single-cell/nucleus transcriptomics</strong> methods to address questions on <strong>sequence</strong> and <strong>functional diversity</strong>, <strong>genome</strong>, <strong>protein/gene family</strong>, and <strong>cellular evolution</strong>. We are particularly focused on neural protein machinery, and work on understanding its roots and diversification in animals.
 </p>
 <div class="research-areas">
 <div class="research-area">
