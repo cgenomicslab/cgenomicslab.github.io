@@ -24,7 +24,7 @@ Our research combines computational biology, comparative genomics, and single-ce
 </div>
 </div>
 <div class="project-content">
-<h2>Diversity of Synaptic Neurotransmission</h2>
+<h2>Diversity of Synaptic Neurotransmission <img src="/static/img/logo/elidek_logo_en.png" alt="HFRI funded" class="funding-logo"></h2>
 <p>
 We study the synaptic machinery across animals and their relatives to understand the origins and diversification of neural signaling. By characterizing neurotransmission systems in fungi and other opisthokonts, we aim to infer the ancestral state of this fundamental cellular process.
 </p>
@@ -48,7 +48,7 @@ Our approach integrates phylogenetics with single-cell RNA sequencing and functi
 </div>
 </div>
 <div class="project-content">
-<h2>Cell Type Evolution</h2>
+<h2>Cell Type Evolution <img src="/static/img/logo/elidek_logo_en.png" alt="HFRI funded" class="funding-logo"></h2>
 <p>
 We build cross-species cell atlases to trace the evolutionary history of cell types across animals. By comparing single-cell transcriptomic data from diverse organisms, we investigate how neuronal cell types originated and diversified.
 </p>
@@ -157,6 +157,14 @@ By combining protein domain phylogenetics with single-cell expression data, we i
     position: relative;
 }
 
+.funding-logo {
+    height: 20px;
+    width: auto;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+    opacity: 0.8;
+}
+
 .project-figure img {
     width: 100%;
     border-radius: 8px;
@@ -213,12 +221,12 @@ By combining protein domain phylogenetics with single-cell expression data, we i
     .research-project.reverse {
         grid-template-columns: 1fr;
     }
-    
+
     .research-project.reverse .project-figure,
     .research-project.reverse .project-content {
         order: unset;
     }
-    
+
     .project-figure {
         max-width: 300px;
     }
