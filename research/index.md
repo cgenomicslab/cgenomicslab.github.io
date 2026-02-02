@@ -66,22 +66,22 @@ This work addresses fundamental questions about the emergence of cellular comple
 
 <div class="research-project">
 <div class="project-figure">
-<img src="/static/img/research/gpcr_evolution.png" alt="Signaling receptor evolution" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<img src="/static/img/research/gpcr_evolution.png" alt="GPCR and olfactory system evolution" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 <div class="figure-placeholder" style="display: none;">
-<span>Figure: GPCR Evolution</span>
+<span>Figure: Olfactory System Evolution</span>
 </div>
 </div>
 <div class="project-content">
-<h2>Signaling Receptor Evolution</h2>
+<h2>Olfactory System Evolution</h2>
 <p>
-G protein-coupled receptors (GPCRs) mediate cellular responses to a vast array of signals. We study the phylogenetics of Class A and Class C GPCRs, with particular focus on olfactory receptors and glutamate signaling.
+Olfactory receptors allow animals to detect and discriminate thousands of chemical compounds. We study the phylogenetics of olfactory GPCRs to understand how this sensory system expanded and diversified across animal lineages.
 </p>
 <p>
-Using protein language models, we develop classifiers to predict olfactory receptor-odorant interactions. We reconstruct ancestral receptor sequences to understand how combinatorial coding emerged and expanded during evolution.
+Using protein language models, we develop classifiers to predict olfactory receptor-odorant interactions. We reconstruct ancestral receptor sequences to understand how combinatorial coding emerged, enabling animals to perceive complex olfactory landscapes.
 </p>
 <ul class="project-keywords">
-<li>GPCR phylogenetics</li>
 <li>Olfactory receptors</li>
+<li>GPCR phylogenetics</li>
 <li>Ancestral reconstruction</li>
 <li>Protein language models</li>
 </ul>
@@ -90,24 +90,24 @@ Using protein language models, we develop classifiers to predict olfactory recep
 
 <div class="research-project reverse">
 <div class="project-figure">
-<img src="/static/img/research/coevolution.png" alt="Protein site co-evolution" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<img src="/static/img/research/glutamate.png" alt="Glutamate signaling evolution" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 <div class="figure-placeholder" style="display: none;">
-<span>Figure: Co-evolution</span>
+<span>Figure: Glutamate Signaling</span>
 </div>
 </div>
 <div class="project-content">
-<h2>Protein Site Co-evolution</h2>
+<h2>Glutamate Signaling Evolution</h2>
 <p>
-We develop and apply statistical methods to detect co-evolving residues within and between proteins. These patterns of correlated evolution reveal functional constraints and interaction interfaces.
+Glutamate is the primary excitatory neurotransmitter in vertebrate nervous systems, acting through both ionotropic and metabotropic receptors. We trace the evolutionary history of glutamate signaling components across the tree of life.
 </p>
 <p>
-By combining co-evolution analysis with structural data and experimental information, we aim to predict protein function from sequence alone.
+By combining protein domain phylogenetics with single-cell expression data, we investigate how glutamate receptor families diversified and how their expression patterns differ across cell types and species.
 </p>
 <ul class="project-keywords">
-<li>Co-evolution statistics</li>
-<li>Protein interactions</li>
-<li>Sequence-function prediction</li>
-<li>Structural biology</li>
+<li>Glutamate receptors</li>
+<li>iGluRs and mGluRs</li>
+<li>Domain evolution</li>
+<li>Cross-species expression</li>
 </ul>
 </div>
 </div>
