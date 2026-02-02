@@ -138,7 +138,7 @@ function toggleEmail(btn) {
     var email = btn.getAttribute('data-email');
     var display = btn.nextElementSibling;
     var emailText = display.querySelector('.email-text');
-    
+
     if (display.style.display === 'none') {
         emailText.textContent = email;
         display.style.display = 'inline-flex';
@@ -150,7 +150,7 @@ function copyEmail(btn) {
     var emailText = btn.previousElementSibling.textContent;
     var display = btn.parentElement;
     var toggleBtn = display.previousElementSibling;
-    
+
     // Try modern clipboard API first, with fallback
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(emailText).then(function() {
@@ -175,7 +175,7 @@ function fallbackCopy(text, btn, display, toggleBtn) {
     document.body.appendChild(textarea);
     textarea.focus();
     textarea.select();
-    
+
     try {
         document.execCommand('copy');
         showCopySuccess(btn, display, toggleBtn);
@@ -187,7 +187,7 @@ function fallbackCopy(text, btn, display, toggleBtn) {
             toggleBtn.style.display = 'inline-flex';
         }, 2000);
     }
-    
+
     document.body.removeChild(textarea);
 }
 
@@ -285,6 +285,7 @@ For a publication list, see
 <h3>Alexandros Pittis</h3>
 <p>
 Group Leader · IMBB-FORTH<br>
+<a href="mailto:alexandros.pittis@gmail.com">alexandros.pittis@gmail.com</a><br>
 <a href="mailto:alexandros.pittis@imbb.forth.gr">alexandros.pittis@imbb.forth.gr</a><br>
 +30 2810 391024
 </p>

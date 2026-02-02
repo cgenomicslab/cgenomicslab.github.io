@@ -4,8 +4,8 @@ startdate: 2026-01-01
 position: MSc Student
 image: /static/img/members/amarou.jpg
 altimage: /static/img/members/amarou_alt.jpg
-email: athina_marougka@imbb.forth.gr
-email2: athenamarou@gmail.com
+email: athenamarou@gmail.com
+email2: athina_marougka@imbb.forth.gr
 orcid: 0009-0000-5204-0563
 scholar:
 github: athenamarou
