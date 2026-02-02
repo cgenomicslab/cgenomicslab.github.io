@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="89.271988mm"
+   height="70.640587mm"
+   viewBox="0 0 89.271988 70.640587"
    version="1.1"
    id="svg1"
    inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
@@ -24,8 +24,8 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="0.41410288"
-     inkscape:cx="466.06775"
-     inkscape:cy="872.97146"
+     inkscape:cx="243.90074"
+     inkscape:cy="764.30282"
      inkscape:window-width="2560"
      inkscape:window-height="1302"
      inkscape:window-x="0"
@@ -37,7 +37,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-58.866921,-28.454616)">
     <g
        id="g4982"
        transform="matrix(0.26458333,0,0,0.26458333,-56.303244,16.03114)"
