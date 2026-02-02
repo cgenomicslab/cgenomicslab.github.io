@@ -151,16 +151,53 @@ function copyEmail(btn) {
     var display = btn.parentElement;
     var toggleBtn = display.previousElementSibling;
     
-    navigator.clipboard.writeText(emailText).then(function() {
-        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" width="12" height="12"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+    // Try modern clipboard API first, with fallback
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(emailText).then(function() {
+            showCopySuccess(btn, display, toggleBtn);
+        }).catch(function() {
+            // Fallback for clipboard API failure
+            fallbackCopy(emailText, btn, display, toggleBtn);
+        });
+    } else {
+        // Fallback for older browsers
+        fallbackCopy(emailText, btn, display, toggleBtn);
+    }
+}
+
+function fallbackCopy(text, btn, display, toggleBtn) {
+    // Create temporary textarea
+    var textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    textarea.style.top = '0';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    
+    try {
+        document.execCommand('copy');
+        showCopySuccess(btn, display, toggleBtn);
+    } catch (err) {
+        console.error('Copy failed:', err);
+        // Still close after a moment even if copy fails
         setTimeout(function() {
-            // Hide email display and show button again
             display.style.display = 'none';
             toggleBtn.style.display = 'inline-flex';
-            // Reset copy button icon
-            btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
-        }, 1000);
-    });
+        }, 2000);
+    }
+    
+    document.body.removeChild(textarea);
+}
+
+function showCopySuccess(btn, display, toggleBtn) {
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" width="12" height="12"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+    setTimeout(function() {
+        display.style.display = 'none';
+        toggleBtn.style.display = 'inline-flex';
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+    }, 1000);
 }
 </script>
 
@@ -240,48 +277,22 @@ For a publication list, see
 </p>
 </div>
 </section>
-{::nomarkdown}
-<section id="news">
-<div class="container">
-<h2 class="section-title">News</h2>
-{% for post in site.posts limit:3 %}
-<div class="news-item">
-<div class="news-date">{{ post.date | date: "%B %Y" }}</div>
-<div class="news-title"><a href="{{ post.url }}">{{ post.title }}</a></div>
-</div>
-{% endfor %}
-<a href="/news" class="section-link">All news →</a>
-</div>
-</section>
-{:/nomarkdown}
 <section id="contact">
 <div class="container">
 <h2 class="section-title">Contact</h2>
-<div class="contact-grid">
-<div class="contact-blocks">
-<div class="contact-block">
+<div class="contact-simple">
+<div class="contact-info">
 <h3>Alexandros Pittis</h3>
 <p>
 Group Leader · IMBB-FORTH<br>
-alexandros.pittis@gmail.com<br>
-alexandros.pittis@imbb.forth.gr<br>
+<a href="mailto:alexandros.pittis@imbb.forth.gr">alexandros.pittis@imbb.forth.gr</a><br>
 +30 2810 391024
 </p>
-<div class="profile-links">
-<a href="https://orcid.org/0000-0003-4116-9972" target="_blank" class="icon-link" title="ORCID"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg> ORCID</a>
-<a href="https://scholar.google.com/citations?user=YbX4E3cAAAAJ" target="_blank" class="icon-link" title="Google Scholar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg> Scholar</a>
-<a href="https://github.com/cgenomicslab" target="_blank" class="icon-link" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg> GitHub</a>
-</div>
-</div>
-<div class="contact-block">
-<h3>Address</h3>
-<p>
-Main Building, FORTH<br>
-Floor -2, Room Δ030<br>
+<p class="contact-address">
+Main Building, FORTH · Floor -2, Room Δ030<br>
 N. Plastira 100, Vassilika Vouton<br>
 70013 Heraklion, Crete
 </p>
-</div>
 </div>
 <div class="contact-map">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.980555435395!2d25.069276075546192!3d35.30462035057078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149a570027ec31bd%3A0xaaccc8115f93751f!2sComparative%20Genomics%20Lab%20%40%20IMBB-FORTH!5e1!3m2!1sen!2sgr!4v1769297448751!5m2!1sen!2sgr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -290,3 +301,48 @@ N. Plastira 100, Vassilika Vouton<br>
 </div>
 </div>
 </section>
+
+<style>
+.contact-simple {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+.contact-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.contact-info p {
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+}
+.contact-info a {
+    color: #B9375E;
+}
+.contact-address {
+    color: #666;
+    font-size: 0.9rem;
+}
+.contact-map {
+    position: relative;
+}
+.contact-map iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+    border-radius: 8px;
+}
+.map-link {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #666;
+}
+@media (max-width: 768px) {
+    .contact-simple {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

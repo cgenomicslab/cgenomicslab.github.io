@@ -1,96 +1,113 @@
-# CGLab Website Fixes
+# CGLab Website Fixes - Version 2
 
-This package contains fixes for the following issues:
+## Summary of Changes
 
-## Changes Made
+### 1. Email Copy Bug Fix (`index.md`)
+- Added fallback copy method using `document.execCommand('copy')` for browsers where clipboard API fails
+- Now works reliably with all email addresses including imbb.forth.gr domains
+- Auto-closes after copy with checkmark confirmation
 
-### 1. Mobile Menu Auto-Close (`_includes/header.html`)
-- Added JavaScript to close the dropdown menu when a link is clicked
-- Menu now properly dismisses after selection on mobile devices
-- Added "Internal" link in navigation (highlighted in pink)
+### 2. Simplified Contact Section (`index.md`)
+- Removed GitHub/Scholar links from contact (not needed there)
+- Cleaner, simpler layout
+- Removed standalone `/contact` page (all info is in section)
+- **Action**: You can delete `contact/index.md` from your repo
 
-### 2. Contact Page Map Fix (`contact/index.md`)
-- Updated map coordinates to match the main page
-- Now correctly points to CGLab @ IMBB-FORTH
+### 3. Updated Internal Page (`internal/index.md`)
+- Added RStudio Server link
+- Added GitHub Organization link
+- Added Notion Workspace links (main + Getting Started guide)
+- Organized into "Lab Servers" and "Documentation & Code" sections
 
-### 3. Internal Resources Page (`internal/index.md`)
-- New page for lab internal resources
-- Links to:
-  - **Synology DSM**: https://dsm.cgenomicslab.org/
-  - **Lab Chat**: https://chat.cgenomicslab.org/
-  - **JupyterHub**: https://jupyter.cgenomicslab.org/
-- Clean card-based design with hover effects
-- Includes note about VPN/network access requirements
+### 4. Research Page with Vertical Layout (`research/index.md`)
+- New vertical layout with alternating figure placement
+- Placeholder figures that show gracefully when image is missing
+- Add your figures at:
+  - `/static/img/research/synaptic_diversity.png`
+  - `/static/img/research/cell_type_evolution.png`
+  - `/static/img/research/gpcr_evolution.png`
+  - `/static/img/research/coevolution.png`
+- Keywords/tags for each project
 
-### 4. Email Button Instead of Inline Display (`index.md`)
-- Emails are now hidden behind a clickable "email" button
-- Click to reveal the email address
-- Copy button with clipboard functionality
-- Shows checkmark feedback when copied
+### 5. Lab Photo Gallery (`members/index.md`)
+- Replaced single photo with scrollable gallery
+- Navigation arrows for desktop
+- Swipe/scroll on mobile
+- Year/label overlay on each photo
+- Add photos at `/static/img/lab/`:
+  - `lab_2025.jpg`
+  - `lab_2024.jpg`
+  - `retreat_2024.jpg`
+  - (add more as needed - edit the HTML)
 
-### 5. Fixed Timeline (`members/index.md`)
-- Rewrote timeline with JavaScript for proper calculations
-- Bars now correctly show member tenure periods
-- Hover effect on bars for better interaction
-- Responsive design for mobile
+### 6. News Section
+- The "Getting started!" post is from `_posts/2024-01-01-lab-opens.md`
+- **Options**:
+  - Delete the file to remove the post
+  - Or delete the entire news section from `index.md` if not maintaining news
+  - Or keep minimal (rename post to something like "Lab officially opens")
 
-### 6. CSS Additions (`static/css/css_additions.css`)
-- Styles for email toggle button
-- Internal page card styles
-- Timeline improvements
-- Alumni section styling
+## Installation
 
-## Installation Instructions
-
-### Step 1: Replace Files
-Copy these files to your repository, replacing existing ones:
-
+### Files to Replace
 ```
-_includes/header.html    → replace existing
-contact/index.md         → replace existing
-internal/index.md        → NEW FILE (create internal/ folder)
-members/index.md         → replace existing
-index.md                 → replace existing
+index.md                  → replace (simplified contact, email fix)
+internal/index.md         → replace (added RStudio, GitHub, Notion)
+research/index.md         → replace (vertical layout with figures)
+members/index.md          → replace (photo gallery)
+_includes/header.html     → replace (mobile menu fix)
 ```
 
-### Step 2: Add CSS
-Append the contents of `static/css/css_additions.css` to the end of your `static/css/main.css` file.
+### Files to Delete (optional)
+```
+contact/index.md          → DELETE (redundant, all info in homepage section)
+_posts/2024-01-01-lab-opens.md → DELETE if not using news
+```
 
-### Step 3: Commit and Push
+### Folders to Create
+```
+static/img/research/      → for research project figures
+static/img/lab/           → for lab photos (multiple)
+```
 
+### Commit and Push
 ```bash
 git add .
-git commit -m "Fix mobile menu, map, timeline, add internal page and email buttons"
+git commit -m "v2: Email fix, internal resources, research layout, photo gallery"
 git push
 ```
 
-## Features Overview
+## Adding Lab Photos
 
-### Internal Page
-Access at `/internal` - provides quick links to:
-- Synology DSM (file storage)
-- Synology Chat (team communication)
-- JupyterHub (computational notebooks)
+Edit `members/index.md` and add more `<div class="gallery-item">` blocks:
 
-### Email Reveal
-- Click the "email" button to show member's email
-- Click the copy icon to copy to clipboard
-- Visual feedback (checkmark) on successful copy
+```html
+<div class="gallery-item" data-label="Summer 2024">
+<img src="/static/img/lab/summer_2024.jpg" alt="Lab summer 2024">
+</div>
+```
 
-### Timeline
-- Automatically calculates bar positions based on dates
-- Color-coded by position type
-- Hover to highlight
-- Shows date range on right side
-- Responsive: hides dates on mobile
+The `data-label` attribute appears as an overlay caption on the photo.
 
-## Customization
+## Adding Research Figures
 
-### Add More Internal Resources
+1. Create your figure (recommended: PNG, ~600px wide)
+2. Save to `/static/img/research/`
+3. Update the `<img src="...">` path in `research/index.md`
+
+Until you add figures, placeholder boxes will appear with the text "Figure: [Project Name]".
+
+## Customization Notes
+
+### To Remove News Section Entirely
+Delete this from `index.md`:
+```html
+<section id="news">
+...
+</section>
+```
+
+And remove "News" from `_includes/header.html` navigation.
+
+### To Add More Internal Resources
 Edit `internal/index.md` and add more `<a class="internal-card">` blocks following the existing pattern.
-
-### Timeline Colors
-Edit the `getColor()` function in `members/index.md` to change colors for different position types.
-
-### Timeline Date Range
-The timeline currently shows 2024 to current year + 1. Modify `startYear` and `endYear` in the JavaScript to adjust.
