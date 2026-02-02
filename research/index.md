@@ -18,7 +18,7 @@ Our research combines computational biology, comparative genomics, and single-ce
 
 <div class="research-project">
 <div class="project-figure">
-<img src="/static/img/research/synaptic_diversity.png" alt="Synaptic neurotransmission diversity" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<img src="/static/img/research/synaptic_diversity.svg" alt="Synaptic neurotransmission diversity" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 <div class="figure-placeholder" style="display: none;">
 <span>Figure: Synaptic Diversity</span>
 </div>
@@ -42,7 +42,7 @@ Our approach integrates phylogenetics with single-cell RNA sequencing and functi
 
 <div class="research-project reverse">
 <div class="project-figure">
-<img src="/static/img/research/cell_type_evolution.png" alt="Cell type evolution" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<img src="/static/img/research/cell_type_evolution.svg" alt="Cell type evolution" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 <div class="figure-placeholder" style="display: none;">
 <span>Figure: Cell Type Evolution</span>
 </div>
@@ -66,7 +66,7 @@ This work addresses fundamental questions about the emergence of cellular comple
 
 <div class="research-project">
 <div class="project-figure">
-<img src="/static/img/research/gpcr_evolution.png" alt="GPCR and olfactory system evolution" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<img src="/static/img/research/gpcr_evolution.svg" alt="GPCR and olfactory system evolution" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 <div class="figure-placeholder" style="display: none;">
 <span>Figure: Olfactory System Evolution</span>
 </div>
@@ -90,7 +90,7 @@ Using protein language models, we develop classifiers to predict olfactory recep
 
 <div class="research-project reverse">
 <div class="project-figure">
-<img src="/static/img/research/glutamate.png" alt="Glutamate signaling evolution" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<img src="/static/img/research/glutamate.svg" alt="Glutamate signaling evolution" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 <div class="figure-placeholder" style="display: none;">
 <span>Figure: Glutamate Signaling</span>
 </div>
