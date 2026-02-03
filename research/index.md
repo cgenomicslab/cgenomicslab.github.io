@@ -10,7 +10,7 @@ group: research
 <h1 class="section-title" style="font-size: 1.5rem; margin-bottom: 1rem;">Research</h1>
 
 <p class="research-intro" style="margin-bottom: 2.5rem; line-height: 1.7;">
-Our research combines computational biology, comparative genomics, molecular genetics and single-cell transcriptomics to understand how biological complexity emerges and evolves. We study the molecular and cellular changes underlying major evolutionary transitions.
+Our research combines computational biology, comparative genomics, and single-cell transcriptomics to understand how biological complexity emerges and evolves. We study the molecular and cellular changes underlying major evolutionary transitions.
 </p>
 
 {::nomarkdown}
@@ -20,9 +20,9 @@ Our research combines computational biology, comparative genomics, molecular gen
 <div class="project-figure"><img src="/static/img/research/synaptic_diversity.svg" alt="Synaptic neurotransmission diversity"></div>
 <div class="project-content">
 <h2>Diversity of Synaptic Neurotransmission <img src="/static/img/logo/elidek_logo_en.png" alt="HFRI funded" class="funding-logo"></h2>
-<p>We study the synaptic machinery across animals, their relatives, and Fungi to understand the origins and diversification of neural signaling. By characterizing neurotransmission systems in fungi and other opisthokonts, we aim to infer the ancestral state of this fundamental cellular process.</p>
-<p>Our approach integrates phylogenetics with <i>Aspergillus nidulans</i> molecular genetics, functional assays, single-cell RNA sequencing and computational predictions to build a comprehensive picture of how neurons communicate and how this communication system evolved.</p>
-<ul class="project-keywords"><li>Synaptic proteins</li><li>Opisthokonta</li><li>Phylogenetics</li><li>Functional characterization</li><li>scRNA-seq integration</li></ul>
+<p>We study the synaptic machinery across animals and their relatives to understand the origins and diversification of neural signaling. By characterizing neurotransmission systems in fungi and other opisthokonts, we aim to infer the ancestral state of this fundamental cellular process.</p>
+<p>Our approach integrates phylogenetics with single-cell RNA sequencing and functional data to build a comprehensive picture of how neurons communicate and how this communication system evolved.</p>
+<ul class="project-keywords"><li>Synaptic proteins</li><li>Opisthokonta</li><li>Phylogenetics</li><li>scRNA-seq integration</li></ul>
 </div>
 </div>
 
@@ -31,7 +31,7 @@ Our research combines computational biology, comparative genomics, molecular gen
 <div class="project-content">
 <h2>Cell Type Evolution <img src="/static/img/logo/elidek_logo_en.png" alt="HFRI funded" class="funding-logo"></h2>
 <p>We build cross-species cell atlases to trace the evolutionary history of cell types across animals. By comparing single-cell transcriptomic data from diverse organisms, we investigate how neuronal cell types originated and diversified.</p>
-<p>This work addresses fundamental questions about the emergence of cellular complexity and the molecular signatures that define distinct cell identities.</p>
+<p>This work addresses fundamental questions about the emergence of cellular complexity and the molecular signatures that define distinct cell populations.</p>
 <ul class="project-keywords"><li>Cell atlases</li><li>Neuronal origins</li><li>Cell type diversification</li><li>Comparative transcriptomics</li></ul>
 </div>
 </div>
@@ -68,16 +68,17 @@ Our research combines computational biology, comparative genomics, molecular gen
 .research-projects {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 4rem;
 }
 
 .research-project {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    align-items: start;
+    align-items: center;
     padding-bottom: 3rem;
     border-bottom: 1px solid #eee;
+    position: relative;
 }
 
 .research-project:last-child {
@@ -85,27 +86,36 @@ Our research combines computational biology, comparative genomics, molecular gen
     padding-bottom: 0;
 }
 
+/* Figure bleeds to the left */
+.research-project .project-figure {
+    margin-left: -80px;
+}
+
+.research-project .project-figure img {
+    width: calc(100% + 80px);
+    max-width: none;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Reverse: figure on right, bleeds to the right */
 .research-project.reverse {
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 1fr;
 }
 
 .research-project.reverse .project-figure {
     order: 2;
+    margin-left: 0;
+    margin-right: -80px;
+}
+
+.research-project.reverse .project-figure img {
+    width: calc(100% + 80px);
 }
 
 .research-project.reverse .project-content {
     order: 1;
-}
-
-.project-figure {
-    position: relative;
-}
-
-.project-figure img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    display: block;
 }
 
 .project-content h2 {
@@ -146,19 +156,24 @@ Our research combines computational biology, comparative genomics, molecular gen
     opacity: 0.8;
 }
 
-@media (max-width: 768px) {
+/* Mobile: stack vertically, no bleed */
+@media (max-width: 900px) {
     .research-project,
     .research-project.reverse {
         grid-template-columns: 1fr;
     }
-
-    .research-project.reverse .project-figure,
-    .research-project.reverse .project-content {
+    
+    .research-project .project-figure,
+    .research-project.reverse .project-figure {
         order: unset;
+        margin-left: 0;
+        margin-right: 0;
     }
-
-    .project-figure {
-        max-width: 300px;
+    
+    .research-project .project-figure img,
+    .research-project.reverse .project-figure img {
+        width: 100%;
+        max-width: 400px;
     }
 }
 </style>
