@@ -13,8 +13,7 @@ group: research
 Our research combines computational biology, comparative genomics, and single-cell transcriptomics to understand how biological complexity emerges and evolves. We study the molecular and cellular changes underlying major evolutionary transitions.
 </p>
 
-{::nomarkdown}
-<div class="research-projects">
+<div class="research-projects" markdown="0">
 <div class="research-project">
 <div class="project-figure"><img src="/static/img/research/synaptic_diversity.svg" alt="Synaptic neurotransmission diversity"></div>
 <div class="project-content">
@@ -52,7 +51,6 @@ Our research combines computational biology, comparative genomics, and single-ce
 </div>
 </div>
 </div>
-{:/nomarkdown}
 
 <a href="/" class="section-link" style="margin-top: 2rem; display: inline-block;">← Back to home</a>
 
