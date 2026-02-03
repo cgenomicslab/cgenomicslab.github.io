@@ -15,7 +15,6 @@ Our research combines computational biology, comparative genomics, and single-ce
 
 {::nomarkdown}
 <div class="research-projects">
-
 <div class="research-project">
 <div class="project-figure"><img src="/static/img/research/synaptic_diversity.svg" alt="Synaptic neurotransmission diversity"></div>
 <div class="project-content">
@@ -25,7 +24,6 @@ Our research combines computational biology, comparative genomics, and single-ce
 <ul class="project-keywords"><li>Synaptic proteins</li><li>Opisthokonta</li><li>Phylogenetics</li><li>scRNA-seq integration</li></ul>
 </div>
 </div>
-
 <div class="research-project reverse">
 <div class="project-figure"><img src="/static/img/research/cell_type_evolution.svg" alt="Cell type evolution"></div>
 <div class="project-content">
@@ -35,7 +33,6 @@ Our research combines computational biology, comparative genomics, and single-ce
 <ul class="project-keywords"><li>Cell atlases</li><li>Neuronal origins</li><li>Cell type diversification</li><li>Comparative transcriptomics</li></ul>
 </div>
 </div>
-
 <div class="research-project">
 <div class="project-figure"><img src="/static/img/research/gpcr_evolution.svg" alt="GPCR and olfactory system evolution"></div>
 <div class="project-content">
@@ -45,7 +42,6 @@ Our research combines computational biology, comparative genomics, and single-ce
 <ul class="project-keywords"><li>Olfactory receptors</li><li>GPCR phylogenetics</li><li>Ancestral reconstruction</li><li>Protein language models</li></ul>
 </div>
 </div>
-
 <div class="research-project reverse">
 <div class="project-figure"><img src="/static/img/research/glutamate.svg" alt="Glutamate signaling evolution"></div>
 <div class="project-content">
@@ -55,7 +51,6 @@ Our research combines computational biology, comparative genomics, and single-ce
 <ul class="project-keywords"><li>Glutamate receptors</li><li>iGluRs and mGluRs</li><li>Domain evolution</li><li>Cross-species expression</li></ul>
 </div>
 </div>
-
 </div>
 {:/nomarkdown}
 
@@ -68,17 +63,16 @@ Our research combines computational biology, comparative genomics, and single-ce
 .research-projects {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 3rem;
 }
 
 .research-project {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
+    grid-template-columns: 2fr 3fr;
+    gap: 2.5rem;
+    align-items: start;
     padding-bottom: 3rem;
     border-bottom: 1px solid #eee;
-    position: relative;
 }
 
 .research-project:last-child {
@@ -86,36 +80,23 @@ Our research combines computational biology, comparative genomics, and single-ce
     padding-bottom: 0;
 }
 
-/* Figure bleeds to the left */
-.research-project .project-figure {
-    margin-left: -80px;
-}
-
-.research-project .project-figure img {
-    width: calc(100% + 80px);
-    max-width: none;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-}
-
-/* Reverse: figure on right, bleeds to the right */
 .research-project.reverse {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 2fr;
 }
 
 .research-project.reverse .project-figure {
     order: 2;
-    margin-left: 0;
-    margin-right: -80px;
-}
-
-.research-project.reverse .project-figure img {
-    width: calc(100% + 80px);
 }
 
 .research-project.reverse .project-content {
     order: 1;
+}
+
+.project-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
 }
 
 .project-content h2 {
@@ -156,24 +137,19 @@ Our research combines computational biology, comparative genomics, and single-ce
     opacity: 0.8;
 }
 
-/* Mobile: stack vertically, no bleed */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .research-project,
     .research-project.reverse {
         grid-template-columns: 1fr;
     }
     
-    .research-project .project-figure,
-    .research-project.reverse .project-figure {
+    .research-project.reverse .project-figure,
+    .research-project.reverse .project-content {
         order: unset;
-        margin-left: 0;
-        margin-right: 0;
     }
     
-    .research-project .project-figure img,
-    .research-project.reverse .project-figure img {
-        width: 100%;
-        max-width: 400px;
+    .project-figure {
+        max-width: 350px;
     }
 }
 </style>
