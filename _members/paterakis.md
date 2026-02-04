@@ -1,5 +1,5 @@
 ---
-name: kostis Paterakis
+name: Kostis Paterakis
 startdate: 2025-11-01
 position: MSc Student
 image: /static/img/members/kpaterakis.jpg
