@@ -3,18 +3,13 @@ title: Research
 layout: default
 group: research
 ---
-
 <div class="container">
 <section style="padding: 2rem 0;">
-
 <h1 class="section-title" style="font-size: 1.5rem; margin-bottom: 1rem;">Research</h1>
-
 <p class="research-intro" style="margin-bottom: 2.5rem; line-height: 1.7;">
 Our research combines computational biology, comparative genomics, and single-cell transcriptomics to understand how biological complexity emerges and evolves. We study the molecular and cellular changes underlying major evolutionary transitions.
 </p>
-
 <div class="research-projects">
-
 <div class="research-project">
 <div class="project-figure"><img src="/static/img/research/synaptic_diversity.svg" alt="Synaptic neurotransmission diversity"></div>
 <div class="project-content">
@@ -24,7 +19,6 @@ Our research combines computational biology, comparative genomics, and single-ce
 <ul class="project-keywords"><li>Synaptic proteins</li><li>Opisthokonta</li><li>Phylogenetics</li><li>scRNA-seq integration</li></ul>
 </div>
 </div>
-
 <div class="research-project reverse">
 <div class="project-figure"><img src="/static/img/research/cell_type_evolution.svg" alt="Cell type evolution"></div>
 <div class="project-content">
@@ -34,7 +28,6 @@ Our research combines computational biology, comparative genomics, and single-ce
 <ul class="project-keywords"><li>Cell atlases</li><li>Neuronal origins</li><li>Cell type diversification</li><li>Comparative transcriptomics</li></ul>
 </div>
 </div>
-
 <div class="research-project">
 <div class="project-figure"><img src="/static/img/research/gpcr_evolution.svg" alt="GPCR and olfactory system evolution"></div>
 <div class="project-content">
@@ -44,7 +37,6 @@ Our research combines computational biology, comparative genomics, and single-ce
 <ul class="project-keywords"><li>Olfactory receptors</li><li>GPCR phylogenetics</li><li>Ancestral reconstruction</li><li>Protein language models</li></ul>
 </div>
 </div>
-
 <div class="research-project reverse">
 <div class="project-figure"><img src="/static/img/research/glutamate.svg" alt="Glutamate signaling evolution"></div>
 <div class="project-content">
@@ -54,67 +46,65 @@ Our research combines computational biology, comparative genomics, and single-ce
 <ul class="project-keywords"><li>Glutamate receptors</li><li>iGluRs and mGluRs</li><li>Domain evolution</li><li>Cross-species expression</li></ul>
 </div>
 </div>
-
 </div>
-
 <a href="/" class="section-link" style="margin-top: 2rem; display: inline-block;">← Back to home</a>
-
 </section>
 </div>
-
 <style>
 .research-projects {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 4rem;
 }
-
 .research-project {
     display: grid;
-    grid-template-columns: 2fr 3fr;
-    gap: 2.5rem;
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
     padding-bottom: 3rem;
     border-bottom: 1px solid #eee;
 }
-
 .research-project:last-child {
     border-bottom: none;
     padding-bottom: 0;
 }
-
-.research-project.reverse {
-    grid-template-columns: 3fr 2fr;
+/* Figure bleeds left */
+.research-project .project-figure {
+    position: relative;
+    left: -60px;
+    width: calc(100% + 60px);
 }
-
-.research-project.reverse .project-figure {
-    order: 2;
-}
-
-.research-project.reverse .project-content {
-    order: 1;
-}
-
-.project-figure img {
+.research-project .project-figure img {
     width: 100%;
     height: auto;
     border-radius: 8px;
     display: block;
 }
-
+/* Reverse layout: figure on right, bleeds right */
+.research-project.reverse {
+    grid-template-columns: 1fr 1fr;
+}
+.research-project.reverse .project-figure {
+    order: 2;
+    left: auto;
+    right: -60px;
+    width: calc(100% + 60px);
+    position: relative;
+}
+.research-project.reverse .project-content {
+    order: 1;
+}
 .project-content h2 {
     margin: 0 0 1rem 0;
     font-size: 1.25rem;
     font-weight: 500;
     color: #333;
 }
-
 .project-content p {
     margin: 0 0 1rem 0;
     line-height: 1.7;
     color: #555;
 }
-
 .project-keywords {
     display: flex;
     flex-wrap: wrap;
@@ -123,7 +113,6 @@ Our research combines computational biology, comparative genomics, and single-ce
     padding: 0;
     list-style: none;
 }
-
 .project-keywords li {
     background: #f5f5f5;
     padding: 0.25rem 0.75rem;
@@ -131,7 +120,6 @@ Our research combines computational biology, comparative genomics, and single-ce
     font-size: 0.8rem;
     color: #666;
 }
-
 .funding-logo {
     height: 20px;
     width: auto;
@@ -139,20 +127,22 @@ Our research combines computational biology, comparative genomics, and single-ce
     margin-left: 0.5rem;
     opacity: 0.8;
 }
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .research-project,
     .research-project.reverse {
         grid-template-columns: 1fr;
     }
-    
-    .research-project.reverse .project-figure,
-    .research-project.reverse .project-content {
+    .research-project .project-figure,
+    .research-project.reverse .project-figure {
+        position: static;
+        left: auto;
+        right: auto;
+        width: 100%;
+        max-width: 400px;
         order: unset;
     }
-    
-    .project-figure {
-        max-width: 350px;
+    .research-project.reverse .project-content {
+        order: unset;
     }
 }
 </style>
