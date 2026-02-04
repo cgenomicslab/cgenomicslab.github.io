@@ -13,7 +13,7 @@ github: cgenomicslab
 twitter:
 website: https://imbb.forth.gr/en/research/Alexandros-Pittis.62/
 ---
-I am interested in understanding how biological complexity emerges and which genetic changes underlie it. Genome fusion, lateral gene transfers, gene duplications and functional diversification, all continuously generate new material for selection and innovation, and have contributed to major shifts in evolution such as the emergence of complex eukaryotic cells, multicellularity, neural system and behavior. To gain insights, in the lab we use sequence diversity approaches, genome comparisons, we thoroughly study how key genes evolve via phylogenetic analyses, and integrate functional information coming from experimental and computational sources. I try and enjoy to approach questions by combining perspectives and methods, and by looking for connections across different levels of biological organization.
+I am interested in understanding how biological complexity emerges and which genetic changes underlie it. Genome fusion, lateral gene transfers, gene duplications and functional diversification, all continuously generate new material for selection and innovation, and have contributed to major shifts in evolution such as the emergence of complex eukaryotic cells, multicellularity, neural system and behavior. To gain insights, in the lab we use sequence diversity approaches, genome comparisons, we thoroughly study how key genes evolve via phylogenetic analyses, and integrate functional information coming from experimental and computational sources.
 
 - Biology degree **University of Athens (NKUA), Athens, Greece**
 - MSc Bioinformatics **Universitat Pompeu Fabra (UPF), Barcelona, Spain**
