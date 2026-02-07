@@ -17,7 +17,7 @@ is based at the Institute of Molecular Biology and Biotechnology of the Foundati
 </div>
 <div class="hero-figure">
 <img src="/static/img/logo/4squares.png" alt="Comparative Genomics" onerror="this.style.display='none'; this.parentElement.innerHTML='Add image:<br>/static/img/logo/<br>4squares.png';">
-</div>
+/div>
 </div>
 </div>
 </section>
@@ -30,26 +30,26 @@ is based at the Institute of Molecular Biology and Biotechnology of the Foundati
 <div class="research-areas">
 <div class="research-area">
 <h3>Comparative Genomics</h3>
-<p>Analyzing genome sequences across the Tree of Life to uncover evolutionary patterns and genomic innovations.</p>
+<p>We analyze genome sequences in different scales across the Tree of Life to uncover evolutionary patterns and genomic innovations linked to phenotypes and traits.</p>
 </div>
 <div class="research-area">
 <h3>Gene Family Evolution</h3>
-<p>Tracing the ancestry and diversification of gene families to understand how molecular functions emerged and evolved.</p>
-</div>
-<div class="research-area">
-<h3>Single-Cell Transcriptomics</h3>
-<p>Applying single-cell and single-nucleus RNA sequencing to characterize cellular diversity and evolution.</p>
+<p>Analyzing thoroughly gene families and their evolution to understand how molecular functions and ultimately biological systems emerged and diversify.</p>
 </div>
 <div class="research-area">
 <h3>Molecular genetics</h3>
-<p>Functional genetics to test evolutionary hypotheses. We make use of the model fungus <i>Aspergillus nidulans</i>.</p>
+<p>Functional genetics to characterize gene functions and test evolutionary hypotheses. We use extensively the genetic tools of the model fungus <i>Aspergillus nidulans</i>.</p>
+</div>
+<div class="research-area">
+<h3>Single-Cell Transcriptomics</h3>
+<p>Applying single-cell and single-nucleus RNA sequencing to characterize cellular diversity and evolution. We also largely focus on integrating gene evolution to understand how gene regulation changes after gene duplication, as a model of neo- / sub-functionalization.</p>
 </div>
 <div class="research-area">
 <h3>Computational Methods</h3>
-<p>Developing bioinformatics pipelines to extract evolutionary insights from large-scale datasets.</p>
+<p>Developing computational and statistical frameworks to extract insights from large-scale datasets.</p>
 </div>
 </div>
-<a href="/research" class="section-link">More about our projects →</a>
+<a href="/research" class="section-link">More about our Projects →</a>
 </div>
 </section>
 {::nomarkdown}
@@ -263,10 +263,10 @@ function showCopySuccess(btn, display, toggleBtn) {
 <h2 class="section-title">Join</h2>
 <div class="join-content">
 <p>
-We are always open to discuss with motivated people at all career stages who share our interest in evolutionary and computational approaches.
+We are always open to discuss with motivated people at all career stages who share an interest in computational and evolutionary biology.
 </p>
 <p>
-If interested contact <a href="#contact">Alexandros Pittis</a> with a short CV and research interests.
+If interested contact <a href="#contact">Alexandros Pittis</a> with a short CV and your interests.
 </p>
 </div>
 <a href="/join" class="section-link">More information →</a>

@@ -1,0 +1,7 @@
+_site/
+.bundle/
+.DS_Store
+Gemfile.lock
+vendor/
+.ipynb_checkpoints/
+
