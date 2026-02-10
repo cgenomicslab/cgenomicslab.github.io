@@ -17,5 +17,5 @@ I am interested in using computation as a mechanism for understanding how biolog
 ## Research Interests
 - Protein–ligand interactions
 - Receptor evolution
-- Statistics
-- Machine learning
+- Biological data analysis
+- Machine learning 
