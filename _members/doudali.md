@@ -13,11 +13,12 @@ github:
 
 ---
 
-I am interested in how proteins evolve and how this shapes their function. I study membrane transporters — how they evolve, how they are structured, and what they carry across membranes. My broader interests span neurobiology, immunology and molecular biology. I am curious about unravelling the complexity of biological systems.
+I am interested in how evolution shapes function and phenotype — from the molecular level to broader biological systems. I study membrane transporters — how they evolve, how they are structured, and what they carry across membranes.
 
 ## Research Interests
-- Protein Evolution
-- Membrane transporter/receptor structure & function
-- Molecular Docking
+- Comparative Genomics
+- Membrane Transporters
+- Evolution
+- Single-cell analysis
 - Differential gene expression
-- Molecular basis of behavior
+  
