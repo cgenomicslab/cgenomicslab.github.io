@@ -19,6 +19,7 @@ I am interested in how evolution shapes function and phenotype — from the mole
 - Comparative Genomics
 - Membrane Transporters
 - Evolution
+- Molecular Biology
 - Single-cell analysis
 - Differential gene expression
   
