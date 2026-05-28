@@ -22,6 +22,6 @@ github: https://github.com/KostisPat2570
 
 # Research Interests
 
-* Evolutionary History Disambigulation and Ancestry Inference
+* Evolutionary History Disambiguation and Ancestry Inference
 * Comparative Genomics and Phylogenomics
 * Computational Biology and Bioinformatics
