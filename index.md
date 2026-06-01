@@ -281,6 +281,17 @@ For a publication list, see
 </p>
 </div>
 </section>
+<section id="teaching">
+<div class="container">
+<h2 class="section-title">Teaching</h2>
+<div class="join-content">
+<p>
+Data analysis is an essential part of modern biological research. We coordinate the institute-wide <a href="https://github.com/cgenomicslab/imbb-data-analysis" target="_blank">IMBB Data Analysis Course</a> — a hands-on introduction to Python, data analysis, and computational biology for wet-lab researchers — and participate in graduate programs at the University of Crete.
+</p>
+</div>
+<a href="/teaching" class="section-link">More about teaching →</a>
+</div>
+</section>
 <section id="contact">
 <div class="container">
 <h2 class="section-title">Contact</h2>
