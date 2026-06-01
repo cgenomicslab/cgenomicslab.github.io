@@ -5,10 +5,10 @@ position: MSc Student
 image: /static/img/members/kpaterakis.jpg
 altimage: /static/img/members/kpaterakis_alt.jpg
 email: paterako@gmail.com
-# email2: 
-orcid: https://orcid.org/0009-0001-6015-7400
+# email2:
+orcid: 0009-0001-6015-7400
 scholar:
-github: https://github.com/KostisPat2570
+github: KostisPat2570
 
 
 ---
