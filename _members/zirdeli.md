@@ -1,7 +1,7 @@
 ---
 name: Iordana Zirdeli
 startdate: 2024-09-01
-position: MSc Bioinformatics
+position: PhD student
 image: /static/img/members/izirdeli.jpg
 altimage: /static/img/members/izirdeli_alt.jpg
 email: iordana_zirdeli@imbb.forth.gr
@@ -19,4 +19,4 @@ I am interested in using computation as a mechanism for understanding how biolog
 - Receptor evolution
 - Phylogenomics
 - Biological data analysis
-- Machine learning 
+- Machine learning

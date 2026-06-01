@@ -1,6 +1,8 @@
 ---
 name: Amalia Kapsetaki
 startdate: 2024-09-01
+enddate: 2026-03-31      # ← set her actual end date
+subsequent: Bioinformatician in Pavlopoulos Lab at IMBB-FORTH  # optional: e.g. "PhD at University of X"
 position: MSc Student
 image: /static/img/members/akapsetaki.jpg
 altimage: /static/img/members/akapsetaki_alt.jpg
