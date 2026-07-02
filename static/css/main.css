@@ -849,10 +849,16 @@ footer {
     border-top: 1px solid var(--border);
 }
 
+footer .container {
+    position: relative;
+}
+
 .footer-logo {
-    display: block;
-    margin: 0 auto 0.75rem;
-    width: 46px;
+    position: absolute;
+    right: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
     height: auto;
     image-rendering: pixelated;
     opacity: 0.9;
@@ -1147,6 +1153,13 @@ footer a:hover {
 
     .sidebar-footer {
         display: none;
+    }
+
+    .footer-logo {
+        position: static;
+        transform: none;
+        display: block;
+        margin: 0 auto 0.75rem;
     }
 
     .site-intro {
