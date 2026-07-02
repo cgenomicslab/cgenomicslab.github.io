@@ -221,6 +221,11 @@ a.map-link::after,
     line-height: 1.45;
 }
 
+.site-sub strong {
+    font-weight: 800;
+    color: var(--text);
+}
+
 .site-mission {
     font-size: 1.25rem;
     line-height: 1.55;

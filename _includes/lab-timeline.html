@@ -1,13 +1,7 @@
 <div class="timeline-section">
 <h3 class="subsection-title">Lab Timeline</h3>
 
-<div class="timeline-legend">
-<span><span class="legend-box" style="background: #652c90;"></span>Group Leader</span>
-<span><span class="legend-box" style="background: #BE9A60;"></span>Postdoc</span>
-<span><span class="legend-box" style="background: #e9c46a;"></span>PhD</span>
-<span><span class="legend-box" style="background: #7fb069;"></span>MSc</span>
-<span><span class="legend-box" style="background: #a9c5e8;"></span>Undergraduate</span>
-</div>
+<div class="timeline-legend" id="timeline-legend"></div>
 
 <div class="timeline-container" id="timeline-container"></div>
 <div class="timeline-axis" id="timeline-axis"></div>
@@ -45,14 +39,38 @@ document.addEventListener('DOMContentLoaded', function() {
     var nowIndex = (now.getFullYear() - startYear) * 12 + now.getMonth(); // 0-based current month
     var totalMonths = nowIndex + 1;                                       // extend to current month
 
+    // Ordered category definitions (previous palette). Legend shows only those present.
+    var categories = [
+        { label: 'Group Leader',  color: '#B9375E', test: function(p){ return p.includes('group leader') || p.includes('principal investigator') || p.includes(' pi'); } },
+        { label: 'Postdoc',       color: '#BE9A60', test: function(p){ return p.includes('postdoc'); } },
+        { label: 'PhD',           color: '#e9c46a', test: function(p){ return p.includes('phd'); } },
+        { label: 'MSc',           color: '#CEDDBB', test: function(p){ return p.includes('msc') || p.includes('master'); } },
+        { label: 'Undergraduate', color: '#FFE0E9', test: function(p){ return p.includes('undergraduate') || p.includes('bsc'); } }
+    ];
+
     function getColor(position) {
         var pos = position.toLowerCase();
-        if (pos.includes('group leader') || pos.includes('principal investigator') || pos.includes(' pi')) return '#652c90';
-        if (pos.includes('postdoc')) return '#BE9A60';
-        if (pos.includes('phd')) return '#e9c46a';
-        if (pos.includes('msc') || pos.includes('master')) return '#7fb069';
-        if (pos.includes('undergraduate') || pos.includes('bsc')) return '#a9c5e8';
+        for (var i = 0; i < categories.length; i++) {
+            if (categories[i].test(pos)) return categories[i].color;
+        }
         return '#434343';
+    }
+
+    // Build legend from categories actually present among the people
+    var legend = document.getElementById('timeline-legend');
+    if (legend) {
+        var present = {};
+        members.forEach(function(m){
+            var pos = (m.position || '').toLowerCase();
+            for (var i = 0; i < categories.length; i++) {
+                if (categories[i].test(pos)) { present[i] = true; break; }
+            }
+        });
+        var lh = '';
+        categories.forEach(function(c, i){
+            if (present[i]) lh += '<span><span class="legend-box" style="background:' + c.color + ';"></span>' + c.label + '</span>';
+        });
+        legend.innerHTML = lh;
     }
 
     function render(){

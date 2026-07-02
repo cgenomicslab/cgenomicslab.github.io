@@ -6,7 +6,7 @@ layout: default
 {::nomarkdown}
 <div class="container site-intro">
 <header class="site-header">
-<h1 class="site-title"><span class="brand">IMBB</span> Comparative Genomics Lab<span class="site-sub">Protein family · Transcriptional regulation · Nervous system evolution + Biological data analysis</span></h1>
+<h1 class="site-title"><span class="brand">IMBB</span> Comparative Genomics Lab<span class="site-sub">Protein family · Transcriptional regulation · Nervous system <strong>evolution</strong> + Biological <strong>data analysis</strong></span></h1>
 </header>
 <p class="site-mission">We combine comparative genomics, phylogenomics and single-cell transcriptomics to understand how molecular and cellular complexity — especially of the nervous system — emerges and evolves.</p>
 <p class="site-affil"><a href="https://www.imbb.forth.gr/en/research/Alexandros-Pittis.62/" target="_blank">CGLab</a> is based at <a href="https://www.imbb.forth.gr/" target="_blank">IMBB-FORTH</a>, Heraklion, Crete — part of the <a href="https://www.imbb.forth.gr/en/research/lab-Evolution-Development-Cell-Biology.4/" target="_blank">Evolution, Development &amp; Cell Biology</a> division.</p>
