@@ -5,6 +5,7 @@
 {% for intern in site.data.interns %}
 <div class="intern-item">
 {% if intern.url %}<a href="{{ intern.url }}">{{ intern.name }}</a>{% else %}<span class="intern-name">{{ intern.name }}</span>{% endif %}
+{% if intern.period %}<span class="intern-period">({{ intern.period }})</span>{% endif %}
 {% if intern.origin %}<span class="intern-origin">{{ intern.origin }}</span>{% endif %}
 </div>
 {% endfor %}

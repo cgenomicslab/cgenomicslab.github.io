@@ -1,6 +1,7 @@
 ---
 name: Kostis Paterakis
 startdate: 2025-11-01
+enddate: 2026-06-30
 position: MSc Student
 tagline: Comparative genomics, phylogenomics, ancestry inference, macrosynteny
 image: /static/img/members/kpaterakis.jpg

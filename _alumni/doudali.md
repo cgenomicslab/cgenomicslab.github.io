@@ -1,6 +1,7 @@
 ---
 name: Melina Doudali
 startdate: 2024-09-01
+enddate: 2026-05-31
 position: Undergraduate
 tagline: Membrane transporter evolution, comparative genomics, single-cell transcriptomics
 image: /static/img/members/mdoudali.jpg

@@ -73,7 +73,7 @@ group: members
 {% for alum in alumni %}
 <div class="alumni-item">
 <a href="{{ alum.url }}">{{ alum.name }}</a>
-<span class="alumni-position">({{ alum.position }}, {{ alum.startdate | date: "%Y" }}–{{ alum.enddate | date: "%Y" }})</span>
+<span class="alumni-position">({{ alum.position }})</span>
 {% if alum.subsequent %}
 <span class="alumni-now">→ now {{ alum.subsequent }}</span>
 {% endif %}

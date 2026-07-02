@@ -2,11 +2,11 @@
 <h3 class="subsection-title">Lab Timeline</h3>
 
 <div class="timeline-legend">
-<span><span class="legend-box" style="background: #B9375E;"></span>Group Leader</span>
+<span><span class="legend-box" style="background: #652c90;"></span>Group Leader</span>
 <span><span class="legend-box" style="background: #BE9A60;"></span>Postdoc</span>
 <span><span class="legend-box" style="background: #e9c46a;"></span>PhD</span>
-<span><span class="legend-box" style="background: #CEDDBB;"></span>MSc</span>
-<span><span class="legend-box" style="background: #FFE0E9;"></span>Undergraduate</span>
+<span><span class="legend-box" style="background: #7fb069;"></span>MSc</span>
+<span><span class="legend-box" style="background: #a9c5e8;"></span>Undergraduate</span>
 </div>
 
 <div class="timeline-container" id="timeline-container"></div>
@@ -37,61 +37,73 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     var container = document.getElementById('timeline-container');
+    var axis = document.getElementById('timeline-axis');
     if(!container) return;
+
     var startYear = 2024;
-    var endYear = new Date().getFullYear() + 1;
-    var totalMonths = (endYear - startYear + 1) * 12;
-    var containerWidth = container.offsetWidth - 120;
-    var pixelsPerMonth = containerWidth / totalMonths;
+    var now = new Date();
+    var nowIndex = (now.getFullYear() - startYear) * 12 + now.getMonth(); // 0-based current month
+    var totalMonths = nowIndex + 1;                                       // extend to current month
 
     function getColor(position) {
         var pos = position.toLowerCase();
-        if (pos.includes('group leader') || pos.includes('principal investigator') || pos.includes(' pi')) return '#B9375E';
+        if (pos.includes('group leader') || pos.includes('principal investigator') || pos.includes(' pi')) return '#652c90';
         if (pos.includes('postdoc')) return '#BE9A60';
         if (pos.includes('phd')) return '#e9c46a';
-        if (pos.includes('msc') || pos.includes('master')) return '#CEDDBB';
-        if (pos.includes('undergraduate') || pos.includes('bsc')) return '#FFE0E9';
+        if (pos.includes('msc') || pos.includes('master')) return '#7fb069';
+        if (pos.includes('undergraduate') || pos.includes('bsc')) return '#a9c5e8';
         return '#434343';
     }
 
-    var html = '';
-    members.forEach(function(member) {
-        if (!member.startdate || member.startdate === '') return;
-        var startParts = member.startdate.split('-');
-        var startYear_m = parseInt(startParts[0]);
-        var startMonth = parseInt(startParts[1]) || 1;
-        var endYear_m, endMonth;
-        if (member.enddate && member.enddate !== '') {
-            var endParts = member.enddate.split('-');
-            endYear_m = parseInt(endParts[0]);
-            endMonth = parseInt(endParts[1]) || 12;
-        } else {
-            var now = new Date();
-            endYear_m = now.getFullYear();
-            endMonth = now.getMonth() + 1;
-        }
-        var startOffset = ((startYear_m - startYear) * 12 + (startMonth - 1)) * pixelsPerMonth;
-        var endOffset = ((endYear_m - startYear) * 12 + endMonth) * pixelsPerMonth;
-        var barWidth = Math.max(endOffset - startOffset, 8);
-        if (startOffset < 0) startOffset = 0;
-        var color = getColor(member.position);
-        var dateLabel = member.startdate.substring(0, 7) + ' – ' + (member.enddate ? member.enddate.substring(0, 7) : 'present');
-        html += '<div class="timeline-row">';
-        html += '<div class="timeline-name">' + member.name + '</div>';
-        html += '<div class="timeline-bar-container">';
-        html += '<div class="timeline-bar" style="background: ' + color + '; left: ' + startOffset + 'px; width: ' + barWidth + 'px;" title="' + member.fullName + ': ' + dateLabel + '"></div>';
-        html += '</div>';
-        html += '<div class="timeline-date">' + dateLabel + '</div>';
-        html += '</div>';
-    });
-    container.innerHTML = html;
+    function render(){
+        var isMobile = window.innerWidth <= 600;
+        var nameW = isMobile ? 88 : 104;
+        var dateW = isMobile ? 0 : 140;
+        var availWidth = Math.max(container.offsetWidth - nameW - dateW, 120);
+        var ppm = availWidth / totalMonths;
 
-    var axis = document.getElementById('timeline-axis');
-    var axisHtml = '';
-    for (var y = startYear; y <= endYear; y++) {
-        var leftPos = ((y - startYear) * 12) * pixelsPerMonth;
-        axisHtml += '<span style="position: absolute; left: ' + leftPos + 'px;">' + y + '</span>';
+        var html = '';
+        members.forEach(function(member) {
+            if (!member.startdate) return;
+            var sp = member.startdate.split('-');
+            var startIdx = (parseInt(sp[0]) - startYear) * 12 + ((parseInt(sp[1]) || 1) - 1);
+            var endIdx;
+            if (member.enddate) {
+                var ep = member.enddate.split('-');
+                endIdx = (parseInt(ep[0]) - startYear) * 12 + ((parseInt(ep[1]) || 12) - 1);
+            } else {
+                endIdx = nowIndex;
+            }
+            var startOffset = Math.max(startIdx, 0) * ppm;
+            var endOffset = (endIdx + 1) * ppm;
+            var barWidth = Math.max(endOffset - startOffset, 6);
+            var color = getColor(member.position);
+            var dateLabel = member.startdate.substring(0, 7) + ' – ' + (member.enddate ? member.enddate.substring(0, 7) : 'present');
+            html += '<div class="timeline-row">';
+            html += '<div class="timeline-name">' + member.name + '</div>';
+            html += '<div class="timeline-bar-container">';
+            html += '<div class="timeline-bar" style="background:' + color + ';left:' + startOffset + 'px;width:' + barWidth + 'px;" title="' + member.fullName + ': ' + dateLabel + '"></div>';
+            html += '</div>';
+            html += '<div class="timeline-date">' + dateLabel + '</div>';
+            html += '</div>';
+        });
+        container.innerHTML = html;
+
+        // axis: a small tick per month, taller tick + label each January
+        axis.style.marginLeft = nameW + 'px';
+        axis.style.marginRight = dateW + 'px';
+        var a = '';
+        for (var m = 0; m <= totalMonths; m++) {
+            var x = m * ppm;
+            var yearStart = (m % 12 === 0);
+            a += '<div class="axis-tick' + (yearStart ? ' axis-tick-year' : '') + '" style="left:' + x + 'px;"></div>';
+            if (yearStart) a += '<span class="axis-year" style="left:' + x + 'px;">' + (startYear + m / 12) + '</span>';
+        }
+        axis.innerHTML = '<div class="axis-inner">' + a + '</div>';
     }
-    axis.innerHTML = '<div class="axis-inner">' + axisHtml + '</div>';
+
+    render();
+    var t;
+    window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(render, 150); });
 });
 </script>
