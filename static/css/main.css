@@ -346,12 +346,20 @@ section:last-of-type {
 
 .member {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.member-foot {
+    margin-top: auto;      /* anchor email + links to the bottom → aligned across cards */
+    padding-top: 0.45rem;
 }
 
 .member-photo {
-    width: 130px;
-    height: 130px;
-    border-radius: 18px;
+    width: 138px;
+    height: 172px;         /* slightly portrait, IDL-style */
+    border-radius: 14px;
     margin: 0 auto 0.75rem;
     overflow: hidden;
     background: var(--bg-alt);
@@ -442,6 +450,7 @@ section:last-of-type {
     line-height: 1.4;
     margin: 0 auto 0.4rem;
     max-width: 210px;
+    min-height: 2.3em;     /* reserve ~2 lines so cards stay even */
 }
 
 /* Member profile links on homepage */
@@ -450,6 +459,7 @@ section:last-of-type {
     gap: 0.5rem;
     justify-content: center;
     margin-top: 0.35rem;
+    min-height: 16px;      /* keep height even whether or not there are icons */
 }
 
 .member-links a {
@@ -1153,8 +1163,8 @@ footer a:hover {
     }
 
     .member-photo {
-        width: 90px;
-        height: 90px;
+        width: 108px;
+        height: 134px;
     }
 
     .member-header {
@@ -1206,8 +1216,8 @@ footer a:hover {
     }
 
     .member-photo {
-        width: 80px;
-        height: 80px;
+        width: 92px;
+        height: 116px;
     }
 
     .member-name {
