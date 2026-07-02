@@ -2,6 +2,7 @@
 name: Eva Delidaki
 startdate: 2026-01-01
 position: MSc Student
+tagline: Comparative genomics, molecular evolution
 image: /static/img/members/edelidaki.jpg
 altimage: /static/img/members/edelidaki_alt.jpg
 email: evadelidaki@gmail.com

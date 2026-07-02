@@ -1,0 +1,15 @@
+# Interns — shown as a plain-text list (no photos) in the People section.
+# name:    intern's name
+# origin:  where they came from (University / City) — shown on the right in accent colour
+# url:     OPTIONAL — link the name to an individual page only if one exists
+#          (e.g. a member/alumni page); omit for no link.
+#
+# Replace the placeholders below with real interns.
+
+- name: Léa Pépi
+  origin: University in Bordeaux, ENSTBB Biotechnology Engineering, Bordeaux, France
+- name: Stella Tsiourva
+  origin: University of Crete, Department of Chemistry, Heraklion Crete
+- name: Konstantinos Fragkioudakis
+  origin: University of Thessaly, Department of Computer Science and Biomedical Informatics
+#   url: /members/someone/

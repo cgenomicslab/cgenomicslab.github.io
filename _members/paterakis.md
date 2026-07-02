@@ -2,6 +2,7 @@
 name: Kostis Paterakis
 startdate: 2025-11-01
 position: MSc Student
+tagline: Comparative genomics, phylogenomics, ancestry inference, macrosynteny
 image: /static/img/members/kpaterakis.jpg
 altimage: /static/img/members/kpaterakis_alt.jpg
 email: paterako@gmail.com

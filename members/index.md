@@ -1,5 +1,5 @@
 ---
-title: Members
+title: People
 layout: default
 group: members
 ---
@@ -7,7 +7,7 @@ group: members
 <div class="container">
 <section style="padding: 2rem 0;">
 
-<h1 class="section-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Lab Members</h1>
+<h1 class="section-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">People</h1>
 
 {::nomarkdown}
 <div class="members-grid">
@@ -50,6 +50,7 @@ group: members
 </div>
 <div class="member-name"><a href="{{ member.url }}">{{ member.name }}</a></div>
 <div class="member-position">{{ member.position }}</div>
+{% if member.tagline %}<div class="member-tagline">{{ member.tagline }}</div>{% endif %}
 {% if member.scholar or member.github or member.orcid %}
 <div class="member-links">
 {% if member.orcid %}<a href="https://orcid.org/{{ member.orcid }}" target="_blank" class="icon-link" title="ORCID"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg></a>{% endif %}
@@ -60,35 +61,14 @@ group: members
 </div>
 {% endfor %}
 </div>
-{:/nomarkdown}
 
-<!-- Lab Photos Gallery -->
-<div class="lab-gallery-section" style="margin: 3rem 0;">
-<h3 class="alumni-title">Lab Photos</h3>
-<div class="lab-gallery-container">
-<button class="gallery-nav gallery-prev" onclick="scrollGallery(-1)" aria-label="Previous">‹</button>
-<div class="lab-gallery" id="labGallery">
-<!-- Add your lab photos here. Name them: lab_2024.jpg, lab_2025.jpg, etc. or any name -->
-<!-- Each photo can have a data-label attribute for the caption -->
-<div class="gallery-item" data-label="2026">
-<img src="/static/img/lab/lab_2026a.jpg" alt="Lab photo 2026" onerror="this.parentElement.style.display='none';">
-</div>
-<div class="gallery-item" data-label="2026">
-<img src="/static/img/lab/lab_2026b.jpg" alt="Lab photo 2026" onerror="this.parentElement.style.display='none';">
-</div>
-<!-- Add more photos as needed -->
-</div>
-<button class="gallery-nav gallery-next" onclick="scrollGallery(1)" aria-label="Next">›</button>
-</div>
-<p class="gallery-hint" style="color: #888; font-size: 0.85rem; margin-top: 0.5rem;">← Scroll to see more photos →</p>
-</div>
+{% include lab-gallery.html %}
+{% include lab-timeline.html %}
 
-{::nomarkdown}
-<!-- Alumni Section -->
 {% assign alumni = site.alumni | sort: "enddate" | reverse %}
 {% if alumni.size > 0 %}
 <div class="alumni-section">
-<h3 class="alumni-title">Alumni</h3>
+<h3 class="subsection-title">Alumni</h3>
 <div class="alumni-list">
 {% for alum in alumni %}
 <div class="alumni-item">
@@ -102,322 +82,10 @@ group: members
 </div>
 </div>
 {% endif %}
-{:/nomarkdown}
-
-<!-- Lab Timeline -->
-<div class="timeline-section" style="margin-top: 3rem;">
-<h3 class="alumni-title">Lab Timeline</h3>
-
-<div class="timeline-legend">
-<span><span class="legend-box" style="background: #B9375E;"></span>Group Leader</span>
-<span><span class="legend-box" style="background: #BE9A60;"></span>Postdoc</span>
-<span><span class="legend-box" style="background: #e9c46a;"></span>PhD</span>
-<span><span class="legend-box" style="background: #CEDDBB;"></span>MSc</span>
-<span><span class="legend-box" style="background: #FFE0E9;"></span>Undergraduate</span>
-</div>
-
-<div class="timeline-container" id="timeline-container">
-</div>
-
-<div class="timeline-axis" id="timeline-axis">
-</div>
-
-</div>
-
-{::nomarkdown}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Collect member data
-    var members = [
-        {% assign all_people = site.members | concat: site.alumni | sort: "startdate" %}
-        {% for member in all_people %}
-        {
-            name: "{{ member.name | split: ' ' | first }}",
-            fullName: "{{ member.name }}",
-            position: "{{ member.position }}",
-            startdate: "{{ member.startdate | date: '%Y-%m-%d' }}",
-            enddate: "{{ member.enddate | date: '%Y-%m-%d' }}"
-        }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-    ];
-
-    // Timeline configuration
-    var startYear = 2024;
-    var endYear = new Date().getFullYear() + 1;
-    var totalMonths = (endYear - startYear + 1) * 12;
-    var containerWidth = document.getElementById('timeline-container').offsetWidth - 120;
-    var pixelsPerMonth = containerWidth / totalMonths;
-
-    function getColor(position) {
-        var pos = position.toLowerCase();
-        if (pos.includes('group leader') || pos.includes('principal investigator') || pos.includes(' pi')) return '#B9375E';
-        if (pos.includes('postdoc')) return '#BE9A60';
-        if (pos.includes('phd')) return '#e9c46a';
-        if (pos.includes('msc') || pos.includes('master')) return '#CEDDBB';
-        if (pos.includes('undergraduate') || pos.includes('bsc')) return '#FFE0E9';
-        return '#434343';
-    }
-
-    var container = document.getElementById('timeline-container');
-    var html = '';
-
-    members.forEach(function(member) {
-        if (!member.startdate || member.startdate === '') return;
-
-        var startParts = member.startdate.split('-');
-        var startYear_m = parseInt(startParts[0]);
-        var startMonth = parseInt(startParts[1]) || 1;
-
-        var endYear_m, endMonth;
-        if (member.enddate && member.enddate !== '') {
-            var endParts = member.enddate.split('-');
-            endYear_m = parseInt(endParts[0]);
-            endMonth = parseInt(endParts[1]) || 12;
-        } else {
-            var now = new Date();
-            endYear_m = now.getFullYear();
-            endMonth = now.getMonth() + 1;
-        }
-
-        var startOffset = ((startYear_m - startYear) * 12 + (startMonth - 1)) * pixelsPerMonth;
-        var endOffset = ((endYear_m - startYear) * 12 + endMonth) * pixelsPerMonth;
-        var barWidth = Math.max(endOffset - startOffset, 8);
-
-        if (startOffset < 0) startOffset = 0;
-
-        var color = getColor(member.position);
-        var dateLabel = member.startdate.substring(0, 7) + ' – ' + (member.enddate ? member.enddate.substring(0, 7) : 'present');
-
-        html += '<div class="timeline-row">';
-        html += '<div class="timeline-name">' + member.name + '</div>';
-        html += '<div class="timeline-bar-container">';
-        html += '<div class="timeline-bar" style="background: ' + color + '; left: ' + startOffset + 'px; width: ' + barWidth + 'px;" title="' + member.fullName + ': ' + dateLabel + '"></div>';
-        html += '</div>';
-        html += '<div class="timeline-date">' + dateLabel + '</div>';
-        html += '</div>';
-    });
-
-    container.innerHTML = html;
-
-    var axis = document.getElementById('timeline-axis');
-    var axisHtml = '';
-    for (var y = startYear; y <= endYear; y++) {
-        var leftPos = ((y - startYear) * 12) * pixelsPerMonth;
-        axisHtml += '<span style="position: absolute; left: ' + leftPos + 'px;">' + y + '</span>';
-    }
-    axis.innerHTML = '<div class="axis-inner">' + axisHtml + '</div>';
-});
-
-// Gallery scroll function
-function scrollGallery(direction) {
-    var gallery = document.getElementById('labGallery');
-    var scrollAmount = 320;
-    gallery.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-}
-</script>
+{% include interns-list.html %}
 {:/nomarkdown}
 
 <a href="/" class="section-link" style="margin-top: 2rem; display: inline-block;">← Back to home</a>
 
 </section>
 </div>
-
-<style>
-/* Gallery Styles */
-.lab-gallery-section {
-    margin: 3rem 0;
-}
-
-.lab-gallery-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.lab-gallery {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-    scrollbar-color: #ddd #f5f5f5;
-    padding: 0.5rem 0;
-    flex: 1;
-}
-
-.lab-gallery::-webkit-scrollbar {
-    height: 6px;
-}
-
-.lab-gallery::-webkit-scrollbar-track {
-    background: #f5f5f5;
-    border-radius: 3px;
-}
-
-.lab-gallery::-webkit-scrollbar-thumb {
-    background: #ddd;
-    border-radius: 3px;
-}
-
-.gallery-item {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-    position: relative;
-}
-
-.gallery-item img {
-    height: 220px;
-    width: auto;
-    border-radius: 8px;
-    display: block;
-}
-
-.gallery-item::after {
-    content: attr(data-label);
-    position: absolute;
-    bottom: 8px;
-    left: 8px;
-    background: rgba(0,0,0,0.6);
-    color: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-}
-
-.gallery-nav {
-    background: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    transition: all 0.2s;
-    flex-shrink: 0;
-}
-
-.gallery-nav:hover {
-    background: #FFE0E9;
-    border-color: #B9375E;
-    color: #B9375E;
-}
-
-/* Timeline Styles */
-.timeline-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    font-size: 0.9rem;
-}
-.timeline-legend span {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-}
-.legend-box {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    border-radius: 3px;
-}
-.timeline-container {
-    position: relative;
-    margin-bottom: 0.5rem;
-}
-.timeline-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.4rem;
-    height: 22px;
-}
-.timeline-name {
-    width: 80px;
-    min-width: 80px;
-    text-align: right;
-    padding-right: 1rem;
-    font-size: 0.85rem;
-    color: #434343;
-    font-weight: 500;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.timeline-bar-container {
-    position: relative;
-    flex: 1;
-    height: 14px;
-}
-.timeline-bar {
-    position: absolute;
-    height: 14px;
-    border-radius: 3px;
-    min-width: 8px;
-    cursor: pointer;
-    transition: transform 0.15s ease;
-}
-.timeline-bar:hover {
-    opacity: 0.85;
-    transform: scaleY(1.15);
-}
-.timeline-date {
-    width: 140px;
-    min-width: 140px;
-    padding-left: 0.75rem;
-    font-size: 0.75rem;
-    color: #888;
-    white-space: nowrap;
-}
-.timeline-axis {
-    position: relative;
-    margin-left: 80px;
-    margin-right: 140px;
-    padding-left: 1rem;
-    height: 24px;
-    border-top: 1px solid #ddd;
-}
-.axis-inner {
-    position: relative;
-    height: 100%;
-}
-.timeline-axis span {
-    font-size: 0.75rem;
-    color: #888;
-    padding-top: 4px;
-}
-
-/* Alumni */
-.alumni-section {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #eee;
-}
-.alumni-title {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #666;
-    margin: 0 0 1rem 0;
-}
-
-@media (max-width: 600px) {
-    .timeline-name {
-        width: 60px;
-        min-width: 60px;
-        font-size: 0.75rem;
-    }
-    .timeline-date {
-        display: none;
-    }
-    .timeline-axis {
-        margin-right: 0;
-    }
-    .gallery-nav {
-        display: none;
-    }
-}
-</style>

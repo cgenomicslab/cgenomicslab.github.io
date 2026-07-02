@@ -2,6 +2,7 @@
 name: Melina Doudali
 startdate: 2024-09-01
 position: Undergraduate
+tagline: Membrane transporter evolution, comparative genomics, single-cell transcriptomics
 image: /static/img/members/mdoudali.jpg
 altimage: /static/img/members/mdoudali_alt.jpg
 email: melinadoud@gmail.com

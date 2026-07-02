@@ -2,6 +2,7 @@
 name: Yiannis Pyrris
 startdate: 2024-01-01
 position: PhD Student
+tagline: Protein evolution, synapse origins, membrane transport, cell biology
 image: /static/img/members/ypyrris.jpg
 altimage: /static/img/members/ypyrris_alt.jpg
 email: yannis.pyrris@gmail.com

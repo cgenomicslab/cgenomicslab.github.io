@@ -2,6 +2,7 @@
 name: Iordana Zirdeli
 startdate: 2024-09-01
 position: PhD student
+tagline: Olfactory receptor evolution, protein–ligand interactions, phylogenomics, machine learning
 image: /static/img/members/izirdeli.jpg
 altimage: /static/img/members/izirdeli_alt.jpg
 email: iordana_zirdeli@imbb.forth.gr

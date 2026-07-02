@@ -8,14 +8,19 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Avenir (native on Apple devices) with Nunito Sans as the web fallback -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
-    {% include header.html %}
-    <main>
-        {{ content }}
-    </main>
-    {% include footer.html %}
+    <div class="layout">
+        {% include header.html %}
+        <div class="content">
+            <main>
+                {{ content }}
+            </main>
+            {% include footer.html %}
+        </div>
+    </div>
 </body>
 </html>

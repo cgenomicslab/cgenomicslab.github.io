@@ -1,0 +1,97 @@
+<div class="timeline-section">
+<h3 class="subsection-title">Lab Timeline</h3>
+
+<div class="timeline-legend">
+<span><span class="legend-box" style="background: #B9375E;"></span>Group Leader</span>
+<span><span class="legend-box" style="background: #BE9A60;"></span>Postdoc</span>
+<span><span class="legend-box" style="background: #e9c46a;"></span>PhD</span>
+<span><span class="legend-box" style="background: #CEDDBB;"></span>MSc</span>
+<span><span class="legend-box" style="background: #FFE0E9;"></span>Undergraduate</span>
+</div>
+
+<div class="timeline-container" id="timeline-container"></div>
+<div class="timeline-axis" id="timeline-axis"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var members = [
+        {% assign all_people = site.members | concat: site.alumni | sort: "startdate" %}
+        {% for member in all_people %}
+        {
+            name: "{{ member.name | split: ' ' | first }}",
+            fullName: "{{ member.name }}",
+            position: "{{ member.position }}",
+            startdate: "{{ member.startdate | date: '%Y-%m-%d' }}",
+            enddate: "{{ member.enddate | date: '%Y-%m-%d' }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ];
+
+    // Group Leader first, then by start date (earliest first)
+    members.sort(function(a, b){
+      var ga = /group leader|principal investigator/i.test(a.position) ? 0 : 1;
+      var gb = /group leader|principal investigator/i.test(b.position) ? 0 : 1;
+      if(ga !== gb) return ga - gb;
+      return (a.startdate || '').localeCompare(b.startdate || '');
+    });
+
+    var container = document.getElementById('timeline-container');
+    if(!container) return;
+    var startYear = 2024;
+    var endYear = new Date().getFullYear() + 1;
+    var totalMonths = (endYear - startYear + 1) * 12;
+    var containerWidth = container.offsetWidth - 120;
+    var pixelsPerMonth = containerWidth / totalMonths;
+
+    function getColor(position) {
+        var pos = position.toLowerCase();
+        if (pos.includes('group leader') || pos.includes('principal investigator') || pos.includes(' pi')) return '#B9375E';
+        if (pos.includes('postdoc')) return '#BE9A60';
+        if (pos.includes('phd')) return '#e9c46a';
+        if (pos.includes('msc') || pos.includes('master')) return '#CEDDBB';
+        if (pos.includes('undergraduate') || pos.includes('bsc')) return '#FFE0E9';
+        return '#434343';
+    }
+
+    var html = '';
+    members.forEach(function(member) {
+        if (!member.startdate || member.startdate === '') return;
+        var startParts = member.startdate.split('-');
+        var startYear_m = parseInt(startParts[0]);
+        var startMonth = parseInt(startParts[1]) || 1;
+        var endYear_m, endMonth;
+        if (member.enddate && member.enddate !== '') {
+            var endParts = member.enddate.split('-');
+            endYear_m = parseInt(endParts[0]);
+            endMonth = parseInt(endParts[1]) || 12;
+        } else {
+            var now = new Date();
+            endYear_m = now.getFullYear();
+            endMonth = now.getMonth() + 1;
+        }
+        var startOffset = ((startYear_m - startYear) * 12 + (startMonth - 1)) * pixelsPerMonth;
+        var endOffset = ((endYear_m - startYear) * 12 + endMonth) * pixelsPerMonth;
+        var barWidth = Math.max(endOffset - startOffset, 8);
+        if (startOffset < 0) startOffset = 0;
+        var color = getColor(member.position);
+        var dateLabel = member.startdate.substring(0, 7) + ' – ' + (member.enddate ? member.enddate.substring(0, 7) : 'present');
+        html += '<div class="timeline-row">';
+        html += '<div class="timeline-name">' + member.name + '</div>';
+        html += '<div class="timeline-bar-container">';
+        html += '<div class="timeline-bar" style="background: ' + color + '; left: ' + startOffset + 'px; width: ' + barWidth + 'px;" title="' + member.fullName + ': ' + dateLabel + '"></div>';
+        html += '</div>';
+        html += '<div class="timeline-date">' + dateLabel + '</div>';
+        html += '</div>';
+    });
+    container.innerHTML = html;
+
+    var axis = document.getElementById('timeline-axis');
+    var axisHtml = '';
+    for (var y = startYear; y <= endYear; y++) {
+        var leftPos = ((y - startYear) * 12) * pixelsPerMonth;
+        axisHtml += '<span style="position: absolute; left: ' + leftPos + 'px;">' + y + '</span>';
+    }
+    axis.innerHTML = '<div class="axis-inner">' + axisHtml + '</div>';
+});
+</script>

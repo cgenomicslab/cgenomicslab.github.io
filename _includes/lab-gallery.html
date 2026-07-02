@@ -1,0 +1,52 @@
+<div class="lab-gallery-section">
+<h3 class="subsection-title">Lab Photos</h3>
+<div class="lab-gallery-container">
+<button class="gallery-nav gallery-prev" onclick="scrollGallery(-1)" aria-label="Previous">‹</button>
+<div class="lab-gallery" id="labGallery">
+<!-- Add lab photos here (any name). data-label = caption. -->
+<div class="gallery-item" data-label="2026">
+<img src="/static/img/lab/lab_2026a.jpg" alt="Lab photo 2026" onerror="this.parentElement.style.display='none';">
+</div>
+<div class="gallery-item" data-label="2026">
+<img src="/static/img/lab/lab_2026b.jpg" alt="Lab photo 2026" onerror="this.parentElement.style.display='none';">
+</div>
+</div>
+<button class="gallery-nav gallery-next" onclick="scrollGallery(1)" aria-label="Next">›</button>
+</div>
+<p class="gallery-hint">← Scroll to see more photos →</p>
+</div>
+
+<script>
+function scrollGallery(direction) {
+    var gallery = document.getElementById('labGallery');
+    gallery.scrollBy({ left: direction * 320, behavior: 'smooth' });
+}
+</script>
+
+<style>
+.lab-gallery-section { margin: 3rem 0 0; }
+.lab-gallery-container { position: relative; display: flex; align-items: center; gap: 0.5rem; }
+.lab-gallery {
+    display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory;
+    scrollbar-width: thin; scrollbar-color: #ddd #f5f5f5; padding: 0.5rem 0; flex: 1;
+}
+.lab-gallery::-webkit-scrollbar { height: 6px; }
+.lab-gallery::-webkit-scrollbar-track { background: #f5f5f5; border-radius: 3px; }
+.lab-gallery::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+.gallery-item { flex: 0 0 auto; scroll-snap-align: start; position: relative; }
+.gallery-item img { height: 220px; width: auto; border-radius: 10px; display: block; }
+.gallery-item::after {
+    content: attr(data-label); position: absolute; bottom: 8px; left: 8px;
+    background: rgba(0,0,0,0.6); color: #fff; padding: 0.25rem 0.5rem;
+    border-radius: 4px; font-size: 0.8rem;
+}
+.gallery-nav {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 50%;
+    width: 36px; height: 36px; font-size: 1.5rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); transition: all 0.2s; flex-shrink: 0;
+}
+.gallery-nav:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
+.gallery-hint { color: #888; font-size: 0.85rem; margin-top: 0.5rem; }
+@media (max-width: 600px) { .gallery-nav { display: none; } }
+</style>

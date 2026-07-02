@@ -27,6 +27,9 @@ Beyond our own research, we contribute to training across IMBB-FORTH and the Uni
 </ul>
 <a href="https://github.com/cgenomicslab/imbb-data-analysis" target="_blank" class="workshop-link">Course materials on GitHub →</a>
 </div>
+<div class="workshop-figure">
+<a href="https://github.com/cgenomicslab/imbb-data-analysis" target="_blank"><img src="/static/img/teaching/imbb_data_analysis_balloons.svg" alt="IMBB Data Analysis Course"></a>
+</div>
 </div>
 
 <!-- Graduate Programs -->
@@ -67,15 +70,42 @@ Beyond our own research, we contribute to training across IMBB-FORTH and the Uni
     color: #333;
     margin: 2.5rem 0 1.25rem;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid #FFE0E9;
+    border-bottom: 2px solid #ede7f4;
 }
 
 .workshop-feature {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
     border: 1px solid #e5e5e5;
-    border-left: 3px solid #B9375E;
+    border-left: 3px solid #652c90;
     border-radius: 8px;
     padding: 1.75rem;
     background: #fff;
+}
+
+.workshop-figure {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.workshop-figure img {
+    width: 240px;
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 720px) {
+    .workshop-feature {
+        grid-template-columns: 1fr;
+    }
+    .workshop-figure {
+        order: -1;
+    }
+    .workshop-figure img {
+        width: 180px;
+    }
 }
 
 .workshop-body h3 {
@@ -86,7 +116,7 @@ Beyond our own research, we contribute to training across IMBB-FORTH and the Uni
 }
 
 .workshop-meta {
-    color: #B9375E;
+    color: #652c90;
     font-size: 0.85rem;
     margin: 0 0 1rem 0;
     font-weight: 500;
@@ -118,7 +148,7 @@ Beyond our own research, we contribute to training across IMBB-FORTH and the Uni
 .workshop-link {
     display: inline-block;
     margin-top: 0.5rem;
-    color: #B9375E;
+    color: #652c90;
     font-weight: 500;
     font-size: 0.95rem;
 }
@@ -135,6 +165,7 @@ Beyond our own research, we contribute to training across IMBB-FORTH and the Uni
     padding: 1.25rem 2.5rem 1.25rem 1.25rem;
     background: #fff;
     border: 1px solid #e5e5e5;
+    border-left: 3px solid #652c90;
     border-radius: 8px;
     text-decoration: none;
     color: inherit;
@@ -142,8 +173,8 @@ Beyond our own research, we contribute to training across IMBB-FORTH and the Uni
 }
 
 .program-card:hover {
-    border-color: #B9375E;
-    box-shadow: 0 2px 8px rgba(185, 55, 94, 0.1);
+    border-color: #652c90;
+    box-shadow: 0 2px 8px rgba(101, 44, 144, 0.1);
 }
 
 .program-card h4 {
@@ -171,6 +202,6 @@ Beyond our own research, we contribute to training across IMBB-FORTH and the Uni
 
 .program-card:hover .program-arrow {
     transform: translateX(4px);
-    color: #B9375E;
+    color: #652c90;
 }
 </style>

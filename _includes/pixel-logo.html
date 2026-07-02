@@ -1,0 +1,122 @@
+<canvas id="pixel-logo" class="pixel-logo" aria-label="CGLab" role="img" title="CGLab"></canvas>
+<script>
+(function(){
+  var canvas = document.getElementById('pixel-logo');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var dpr = Math.max(1, window.devicePixelRatio || 1);
+
+  // ============================================================
+  //  Pixel logo — cursor-repel physics (à la idl.uw.edu).
+  //  Rects spring to their home position and flee the cursor.
+  //  ---- tweakables ----
+  var BOX    = 11;     // px size of each square
+  var PAD    = 3.0;    // empty room (in box units) around the word so rects can fly out
+  var REPEL  = 2600;   // how hard the cursor pushes rects away
+  var RANGE  = 6.0;    // cursor influence radius (in box units) — bigger = wider clearance
+  var RMIN   = 1.3;    // min distance (box units) to cap the push near the cursor
+  var SPRING = 0.075;  // pull back to home position (bigger = snappier return)
+  var DAMP   = 0.72;   // velocity damping (smaller = smoother/quicker settle)
+  var GHOST  = "#d7d9dd";
+  var COLORS = ["#939597", "#652c90", "#d5a928"]; // 0=C gray, 1=G purple, 2=Lab amber
+  // ============================================================
+
+  // [x, y, colorIndex] in box-width units — exact from static/img/logo/new_logo.svg
+  var CELLS=[[1.198,0.0,0],[2.409,0.0,0],[5.509,0.0,1],[6.72,0.0,1],[0.0,0.045,0],[4.311,0.045,1],[8.622,0.045,2],[17.438,0.045,2],[0.0,1.255,0],[4.311,1.255,1],[8.622,1.255,2],[12.996,1.255,2],[14.207,1.255,2],[15.405,1.255,2],[17.438,1.255,2],[0.0,2.466,0],[4.311,2.466,1],[6.72,2.466,1],[8.622,2.466,2],[15.405,2.466,2],[17.438,2.466,2],[0.0,3.677,0],[4.311,3.677,1],[6.72,3.677,1],[8.622,3.677,2],[12.996,3.677,2],[14.207,3.677,2],[15.405,3.677,2],[17.438,3.677,2],[18.635,3.677,2],[19.846,3.677,2],[0.0,4.888,0],[1.198,4.888,0],[2.409,4.888,0],[4.311,4.888,1],[5.509,4.888,1],[6.72,4.888,1],[8.622,4.888,2],[9.82,4.888,2],[11.031,4.888,2],[12.996,4.888,2],[14.207,4.888,2],[15.405,4.888,2],[17.438,4.888,2],[18.635,4.888,2],[19.846,4.888,2]];
+  var GRID_W = 20.846, GRID_H = 5.888;
+
+  var nodes = [], W = 0, H = 0, running = false;
+  var mouse = { x: -1e5, y: -1e5, active: false };
+
+  function build(){
+    nodes = [];
+    for(var i=0;i<CELLS.length;i++){
+      var hx = (CELLS[i][0] + PAD) * BOX;
+      var hy = (CELLS[i][1] + PAD) * BOX;
+      nodes.push({ hx:hx, hy:hy, x:hx, y:hy, vx:0, vy:0, color: COLORS[CELLS[i][2]] });
+    }
+    W = (GRID_W + 2*PAD) * BOX;
+    H = (GRID_H + 2*PAD) * BOX;
+    canvas.width = W*dpr; canvas.height = H*dpr;
+    // NB: display size is controlled by CSS (width:100%); do NOT pin it in px here.
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    draw();
+    layout();
+  }
+
+  // Pull the transparent PAD out of the layout box with negative margins, so the
+  // WORD (not the padded canvas) aligns to the left / stays inside the sidebar.
+  function layout(){
+    var rect = canvas.getBoundingClientRect();
+    if(!rect.width) return;
+    var pad = PAD * BOX * (rect.width / W);
+    canvas.style.marginLeft   = (-pad) + 'px';
+    canvas.style.marginTop    = (-pad) + 'px';
+    canvas.style.marginBottom = (-pad) + 'px';
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var i, p;
+    ctx.fillStyle = GHOST;
+    for(i=0;i<nodes.length;i++){ p = nodes[i]; ctx.fillRect(p.hx, p.hy, BOX, BOX); }
+    for(i=0;i<nodes.length;i++){
+      p = nodes[i];
+      ctx.fillStyle = p.color;
+      ctx.fillRect(p.x, p.y, BOX, BOX);
+    }
+  }
+
+  function step(){
+    var range = RANGE * BOX, rmin = RMIN * BOX, moving = false;
+    for(var i=0;i<nodes.length;i++){
+      var p = nodes[i];
+      var ax = (p.hx - p.x) * SPRING;
+      var ay = (p.hy - p.y) * SPRING;
+      if(mouse.active){
+        var dx = (p.x + BOX/2) - mouse.x;
+        var dy = (p.y + BOX/2) - mouse.y;
+        var d  = Math.sqrt(dx*dx + dy*dy) || 0.0001;
+        if(d < range){
+          var dd = Math.max(d, rmin);
+          var f = (REPEL / (dd*dd)) * (1 - d/range);
+          ax += (dx/d) * f;
+          ay += (dy/d) * f;
+        }
+      }
+      p.vx = (p.vx + ax) * DAMP;
+      p.vy = (p.vy + ay) * DAMP;
+      p.x += p.vx; p.y += p.vy;
+      if(Math.abs(p.vx) + Math.abs(p.vy) > 0.05 ||
+         Math.abs(p.x-p.hx) + Math.abs(p.y-p.hy) > 0.05) moving = true;
+    }
+    draw();
+    return moving;
+  }
+
+  function run(){
+    if(running) return;
+    running = true;
+    requestAnimationFrame(function loop(){
+      var moving = step();
+      if(moving || mouse.active) requestAnimationFrame(loop);
+      else running = false;
+    });
+  }
+
+  function toLocal(e){
+    var r = canvas.getBoundingClientRect();
+    mouse.x = (e.clientX - r.left) * (W / r.width);
+    mouse.y = (e.clientY - r.top)  * (H / r.height);
+  }
+  canvas.addEventListener('pointermove', function(e){ toLocal(e); mouse.active = true; run(); });
+  canvas.addEventListener('pointerenter', function(e){ toLocal(e); mouse.active = true; run(); });
+  canvas.addEventListener('pointerleave', function(){ mouse.active = false; run(); });
+  window.addEventListener('resize', layout);
+  window.addEventListener('load', layout);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+  setTimeout(layout, 200);
+
+  build();
+})();
+</script>

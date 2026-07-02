@@ -3,59 +3,18 @@ title: CGLab
 layout: default
 ---
 
-<section class="hero">
-<div class="container">
-<div class="hero-inner">
-<div class="hero-content">
-<h1>Comparative Genomics Lab @ IMBB-FORTH</h1>
-<p class="hero-intro">
-<a href="https://www.imbb.forth.gr/en/research/Alexandros-Pittis.62/" target="_blank">CGLab</a>
-is based at the Institute of Molecular Biology and Biotechnology of the Foundation for Research and Technology Hellas
-(<a href="https://www.imbb.forth.gr/" target="_blank">IMBB-FORTH</a>) in Heraklion, Crete. We are part of the
-<a href="https://www.imbb.forth.gr/en/research/lab-Evolution-Development-Cell-Biology.4/" target="_blank">Evolution, Development &amp; Cell Biology</a> division.
-</p>
-</div>
-<div class="hero-figure">
-<img src="/static/img/logo/4squares.png" alt="Comparative Genomics" onerror="this.style.display='none'; this.parentElement.innerHTML='Add image:<br>/static/img/logo/<br>4squares.png';">
-</div>
-</div>
-</div>
-</section>
-<section id="research">
-<div class="container">
-<h2 class="section-title">Research</h2>
-<p class="research-intro">
-<strong>Sequence</strong> and <strong>functional diversity</strong>, <strong>genome</strong>, <strong>protein/gene family</strong>, and <strong>cellular evolution</strong>. We are particularly focused on <strong>neural protein machinery</strong>, and work on understanding its roots and diversification in animals.
-</p>
-<div class="research-areas">
-<div class="research-area">
-<h3>Comparative Genomics</h3>
-<p>We analyze genome sequences in different scales across the Tree of Life to uncover evolutionary patterns and genomic innovations linked to phenotypes and traits.</p>
-</div>
-<div class="research-area">
-<h3>Gene Family Evolution</h3>
-<p>Analyzing thoroughly gene families and their evolution to understand how molecular functions and ultimately biological systems emerged and diversify.</p>
-</div>
-<div class="research-area">
-<h3>Molecular genetics</h3>
-<p>Functional genetics to characterize gene functions and test evolutionary hypotheses. We use extensively the genetic tools of the model fungus <i>Aspergillus nidulans</i>.</p>
-</div>
-<div class="research-area">
-<h3>Single-Cell Transcriptomics</h3>
-<p>Applying single-cell and single-nucleus RNA sequencing to characterize cellular diversity and evolution. We also largely focus on integrating gene evolution to understand how gene regulation changes after gene duplication, as a model of neo- / sub-functionalization.</p>
-</div>
-<div class="research-area">
-<h3>Computational Methods</h3>
-<p>Developing computational and statistical frameworks to extract insights from large-scale datasets.</p>
-</div>
-</div>
-<a href="/research" class="section-link">More about our Projects →</a>
-</div>
-</section>
 {::nomarkdown}
-<section id="members">
+<div class="container site-intro">
+<header class="site-header">
+<h1 class="site-title"><span class="brand">IMBB</span> Comparative Genomics Lab<span class="site-sub">Protein family · Transcriptional regulation · Nervous system evolution + Biological data analysis</span></h1>
+</header>
+<p class="site-mission">We combine comparative genomics, phylogenomics and single-cell transcriptomics to understand how molecular and cellular complexity — especially of the nervous system — emerges and evolves.</p>
+<p class="site-affil"><a href="https://www.imbb.forth.gr/en/research/Alexandros-Pittis.62/" target="_blank">CGLab</a> is based at <a href="https://www.imbb.forth.gr/" target="_blank">IMBB-FORTH</a>, Heraklion, Crete — part of the <a href="https://www.imbb.forth.gr/en/research/lab-Evolution-Development-Cell-Biology.4/" target="_blank">Evolution, Development &amp; Cell Biology</a> division.</p>
+</div>
+{% include projects-spotlight.html %}
+<section id="people">
 <div class="container">
-<h2 class="section-title">Members</h2>
+<h2 class="section-title">People</h2>
 <div class="members-grid">
 {% assign current_members = site.members | where_exp: "m", "m.enddate == nil" %}
 
@@ -96,6 +55,7 @@ is based at the Institute of Molecular Biology and Biotechnology of the Foundati
 </div>
 <div class="member-name"><a href="{{ member.url }}">{{ member.name }}</a></div>
 <div class="member-position">{{ member.position }}</div>
+{% if member.tagline %}<div class="member-tagline">{{ member.tagline }}</div>{% endif %}
 {% if member.email %}
 <button class="email-toggle-btn" onclick="toggleEmail(this)" data-email="{{ member.email }}" title="Show email">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -116,10 +76,12 @@ is based at the Institute of Molecular Biology and Biotechnology of the Foundati
 </div>
 {% endfor %}
 </div>
+{% include lab-gallery.html %}
+{% include lab-timeline.html %}
 {% assign alumni = site.alumni | sort: "enddate" | reverse %}
 {% if alumni.size > 0 %}
 <div class="alumni-section">
-<h3 class="alumni-title">Alumni</h3>
+<h3 class="subsection-title">Alumni</h3>
 <div class="alumni-list">
 {% for alum in alumni %}
 <div class="alumni-item">
@@ -133,7 +95,8 @@ is based at the Institute of Molecular Biology and Biotechnology of the Foundati
 </div>
 </div>
 {% endif %}
-<a href="/members" class="section-link">All members →</a>
+{% include interns-list.html %}
+<a href="/members" class="section-link">Individual pages →</a>
 </div>
 </section>
 
@@ -221,9 +184,9 @@ function showCopySuccess(btn, display, toggleBtn) {
     margin-top: 0.25rem;
 }
 .email-toggle-btn:hover {
-    background: #FFE0E9;
-    border-color: #B9375E;
-    color: #B9375E;
+    background: #f3edf9;
+    border-color: #652c90;
+    color: #652c90;
 }
 .email-display {
     display: inline-flex;
@@ -284,12 +247,17 @@ For a publication list, see
 <section id="teaching">
 <div class="container">
 <h2 class="section-title">Teaching</h2>
+<div class="teaching-layout">
 <div class="join-content">
 <p>
 Data analysis is an essential part of modern biological research. We coordinate the institute-wide <a href="https://github.com/cgenomicslab/imbb-data-analysis" target="_blank">IMBB Data Analysis Course</a> — a hands-on introduction to Python, data analysis, and computational biology for wet-lab researchers — and participate in graduate programs at the University of Crete.
 </p>
-</div>
 <a href="/teaching" class="section-link">More about teaching →</a>
+</div>
+<div class="teaching-figure">
+<a href="https://github.com/cgenomicslab/imbb-data-analysis" target="_blank"><img src="/static/img/teaching/imbb_data_analysis_balloons.svg" alt="IMBB Data Analysis Course"></a>
+</div>
+</div>
 </div>
 </section>
 <section id="contact">
@@ -335,7 +303,7 @@ N. Plastira 100, Vassilika Vouton<br>
     line-height: 1.6;
 }
 .contact-info a {
-    color: #B9375E;
+    color: #652c90;
 }
 .contact-address {
     color: #666;

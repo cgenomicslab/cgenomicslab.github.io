@@ -68,11 +68,9 @@ Our research combines computational biology, comparative genomics, and single-ce
     border-bottom: none;
     padding-bottom: 0;
 }
-/* Figure bleeds left */
 .research-project .project-figure {
     position: relative;
-    left: -80px;
-    width: calc(100% + 80px);
+    width: 100%;
 }
 .research-project .project-figure img {
     width: 100%;
@@ -80,16 +78,9 @@ Our research combines computational biology, comparative genomics, and single-ce
     border-radius: 8px;
     display: block;
 }
-/* Reverse layout: figure on right, bleeds right */
-.research-project.reverse {
-    grid-template-columns: 1fr 1fr;
-}
+/* Reverse layout: figure on the right */
 .research-project.reverse .project-figure {
     order: 2;
-    left: auto;
-    right: -80px;
-    width: calc(100% + 80px);
-    position: relative;
 }
 .research-project.reverse .project-content {
     order: 1;

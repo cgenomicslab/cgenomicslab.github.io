@@ -5,3 +5,7 @@ Gemfile.lock
 vendor/
 .ipynb_checkpoints/
 *~
+
+# working notes / stray assets
+idl-people-page-reference.md
+static/img/logo/idl-290.png

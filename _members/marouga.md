@@ -2,6 +2,7 @@
 name: Athena Marouga
 startdate: 2026-01-01
 position: MSc Student
+tagline: Comparative genomics, bioinformatics, biotechnology
 image: /static/img/members/amarou.jpg
 altimage: /static/img/members/amarou_alt.jpg
 email: athenamarou@gmail.com
