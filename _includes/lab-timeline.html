@@ -10,7 +10,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     var members = [
-        {% assign all_people = site.members | concat: site.alumni | sort: "startdate" %}
+        {% assign all_people = site.members | sort: "startdate" %}
         {% for member in all_people %}
         {
             name: "{{ member.name | split: ' ' | first }}",

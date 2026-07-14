@@ -43,8 +43,7 @@ _includes/
   lab-gallery.html            Lab photo carousel
   lab-timeline.html           Members timeline (auto-built from dates)
   interns-list.html           Interns text list
-_members/*.md                 One file per current lab member
-_alumni/*.md                  One file per past member
+_members/*.md                 One file per person (current + alumni; alumni have an enddate)
 _data/interns.yml             Interns (plain-text list)
 research/index.html           Full Research page
 teaching/index.html           Full Teaching page
@@ -83,14 +82,18 @@ Free text for the person's own page (bio, education, research interests).
 
 ### Alumni
 
-Same as members but in `_alumni/`, with `enddate` (and optional `subsequent`):
+Alumni are **not** a separate collection — a person becomes alumni simply by
+adding an `enddate` to their existing `_members/*.md` file. **Do not move or rename
+the file**: keeping it in `_members/` means their page URL (`/members/surname/`)
+never changes, so links and search-engine results stay valid.
 
 ```yaml
 enddate: 2026-03-31
 subsequent: PhD at University of X    # optional "→ now …"
 ```
 
-Alumni show as a plain-text list (no photos).
+Once `enddate` is set, the person drops out of the People grid and shows in the
+Alumni list (plain text, no photo) automatically.
 
 ### Interns
 

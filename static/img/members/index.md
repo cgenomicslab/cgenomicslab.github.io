@@ -103,7 +103,7 @@ Our research is focused on <strong>computational biology</strong>, <strong>compa
 </div>
 {% endfor %}
 </div>
-{% assign alumni = site.alumni | sort: "enddate" | reverse %}
+{% assign alumni = site.members | where_exp: "m", "m.enddate" | sort: "enddate" | reverse %}
 {% if alumni.size > 0 %}
 <div class="alumni-section">
 <h3 class="alumni-title">Alumni</h3>

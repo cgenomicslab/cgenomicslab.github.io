@@ -67,7 +67,7 @@ group: members
 {% include lab-gallery.html %}
 {% include lab-timeline.html %}
 
-{% assign alumni = site.alumni | sort: "enddate" | reverse %}
+{% assign alumni = site.members | where_exp: "m", "m.enddate" | sort: "enddate" | reverse %}
 {% if alumni.size > 0 %}
 <div class="alumni-section">
 <h3 class="subsection-title">Alumni</h3>

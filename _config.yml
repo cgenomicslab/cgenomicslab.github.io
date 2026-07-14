@@ -28,8 +28,6 @@ exclude:
 collections:
   members:
     output: true
-  alumni:
-    output: true
   publications:
     output: false
   posts:
@@ -40,11 +38,6 @@ defaults:
   - scope:
       path: ""
       type: "members"
-    values:
-      layout: "member"
-  - scope:
-      path: ""
-      type: "alumni"
     values:
       layout: "member"
   - scope:
