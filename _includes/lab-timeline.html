@@ -15,12 +15,36 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: "{{ member.name | split: ' ' | first }}",
             fullName: "{{ member.name }}",
-            position: "{{ member.position }}",
-            startdate: "{{ member.startdate | date: '%Y-%m-%d' }}",
-            enddate: "{{ member.enddate | date: '%Y-%m-%d' }}"
+            // One segment per role. A member with a `roles:` list in their front
+            // matter (position changed over time, e.g. MSc → PhD) gets one bar per
+            // role; otherwise a single segment from the top-level position/dates.
+            segments: [
+                {% if member.roles %}
+                {% for r in member.roles %}
+                {
+                    position: "{{ r.position }}",
+                    startdate: "{{ r.startdate | date: '%Y-%m-%d' }}",
+                    enddate: "{{ r.enddate | date: '%Y-%m-%d' }}"
+                }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+                {% else %}
+                {
+                    position: "{{ member.position }}",
+                    startdate: "{{ member.startdate | date: '%Y-%m-%d' }}",
+                    enddate: "{{ member.enddate | date: '%Y-%m-%d' }}"
+                }
+                {% endif %}
+            ]
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
     ];
+
+    // Convenience fields derived from the segments (used for sorting/legend).
+    members.forEach(function(m){
+        m.segments = (m.segments || []).filter(function(s){ return s.startdate; });
+        m.startdate = m.segments.length ? m.segments[0].startdate : '';
+        m.position = m.segments.length ? m.segments[0].position : '';
+    });
 
     // Group Leader first, then by start date (earliest first)
     members.sort(function(a, b){
@@ -61,10 +85,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (legend) {
         var present = {};
         members.forEach(function(m){
-            var pos = (m.position || '').toLowerCase();
-            for (var i = 0; i < categories.length; i++) {
-                if (categories[i].test(pos)) { present[i] = true; break; }
-            }
+            m.segments.forEach(function(seg){
+                var pos = (seg.position || '').toLowerCase();
+                for (var i = 0; i < categories.length; i++) {
+                    if (categories[i].test(pos)) { present[i] = true; break; }
+                }
+            });
         });
         var lh = '';
         categories.forEach(function(c, i){
@@ -80,28 +106,44 @@ document.addEventListener('DOMContentLoaded', function() {
         var availWidth = Math.max(container.offsetWidth - nameW - dateW, 120);
         var ppm = availWidth / totalMonths;
 
+        function monthIndex(dateStr, fallbackMonth){
+            var p = dateStr.split('-');
+            return (parseInt(p[0]) - startYear) * 12 + ((parseInt(p[1]) || fallbackMonth) - 1);
+        }
+
         var html = '';
         members.forEach(function(member) {
-            if (!member.startdate) return;
-            var sp = member.startdate.split('-');
-            var startIdx = (parseInt(sp[0]) - startYear) * 12 + ((parseInt(sp[1]) || 1) - 1);
-            var endIdx;
-            if (member.enddate) {
-                var ep = member.enddate.split('-');
-                endIdx = (parseInt(ep[0]) - startYear) * 12 + ((parseInt(ep[1]) || 12) - 1);
-            } else {
-                endIdx = nowIndex;
-            }
-            var startOffset = Math.max(startIdx, 0) * ppm;
-            var endOffset = (endIdx + 1) * ppm;
-            var barWidth = Math.max(endOffset - startOffset, 6);
-            var color = getColor(member.position);
-            var dateLabel = member.startdate.substring(0, 7) + ' – ' + (member.enddate ? member.enddate.substring(0, 7) : 'present');
+            if (!member.segments.length) return;
+
+            var bars = '';
+            var overallStart = null, lastEnd = null, openEnded = false;
+            member.segments.forEach(function(seg) {
+                if (!seg.startdate) return;
+                var startIdx = monthIndex(seg.startdate, 1);
+                var endIdx, segEndLabel;
+                if (seg.enddate) {
+                    endIdx = monthIndex(seg.enddate, 12);
+                    segEndLabel = seg.enddate.substring(0, 7);
+                } else {
+                    endIdx = nowIndex;
+                    segEndLabel = 'present';
+                    openEnded = true;
+                }
+                var startOffset = Math.max(startIdx, 0) * ppm;
+                var endOffset = (endIdx + 1) * ppm;
+                var barWidth = Math.max(endOffset - startOffset, 6);
+                var color = getColor(seg.position);
+                var segLabel = seg.startdate.substring(0, 7) + ' – ' + segEndLabel;
+                bars += '<div class="timeline-bar" style="background:' + color + ';left:' + startOffset + 'px;width:' + barWidth + 'px;" title="' + member.fullName + ' — ' + seg.position + ': ' + segLabel + '"></div>';
+
+                if (overallStart === null) overallStart = seg.startdate;
+                lastEnd = seg.enddate ? seg.enddate.substring(0, 7) : null;
+            });
+
+            var dateLabel = overallStart.substring(0, 7) + ' – ' + (openEnded || !lastEnd ? 'present' : lastEnd);
             html += '<div class="timeline-row">';
             html += '<div class="timeline-name">' + member.name + '</div>';
-            html += '<div class="timeline-bar-container">';
-            html += '<div class="timeline-bar" style="background:' + color + ';left:' + startOffset + 'px;width:' + barWidth + 'px;" title="' + member.fullName + ': ' + dateLabel + '"></div>';
-            html += '</div>';
+            html += '<div class="timeline-bar-container">' + bars + '</div>';
             html += '<div class="timeline-date">' + dateLabel + '</div>';
             html += '</div>';
         });

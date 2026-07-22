@@ -2,6 +2,14 @@
 name: Iordana Zirdeli
 startdate: 2024-09-01
 position: PhD student
+# Timeline roles: one coloured bar per position held (MSc → PhD).
+# Adjust the transition dates below to the actual months.
+roles:
+  - position: MSc Student
+    startdate: 2024-09-01
+    enddate: 2025-09-30      # ← set the actual month her MSc ended
+  - position: PhD Student
+    startdate: 2025-10-01    # ← set the actual month her PhD began
 tagline: Olfactory receptor evolution, protein–ligand interactions, phylogenomics, machine learning
 image: /static/img/members/izirdeli.jpg
 altimage: /static/img/members/izirdeli_alt.jpg
