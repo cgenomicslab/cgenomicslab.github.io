@@ -1,7 +1,7 @@
 ---
 name: Alexandros Pittis
 startdate: 2024-01-01
-position: Group Leader
+position: Group Leader (Researcher C)
 tagline: Nervous system evolution, eukaryotic cellular transitions, gene family evolution, single-cell transcriptomics
 image: /static/img/members/apittis.jpg
 altimage: /static/img/members/apittis_alt.jpg
