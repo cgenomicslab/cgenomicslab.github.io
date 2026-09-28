@@ -10,7 +10,8 @@
     <!-- GitHub Pages cannot send HTTP headers, so the policy is set here. Inline
          scripts/styles are used throughout the site, hence 'unsafe-inline'. -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:{% if site.goatcounter.code and site.goatcounter.code != "" %} https://{{ site.goatcounter.code }}.goatcounter.com{% endif %}; frame-src https://www.google.com; connect-src 'self'{% if site.goatcounter.code and site.goatcounter.code != "" %} https://{{ site.goatcounter.code }}.goatcounter.com{% endif %}; object-src 'none'; base-uri 'self'; form-action 'self'">
-    <link rel="icon" href="/static/img/logo/4squares_pixel.png" type="image/png">
+    <link rel="icon" href="/static/img/logo/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/static/img/logo/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Avenir (native on Apple devices) with Nunito Sans as the web fallback -->

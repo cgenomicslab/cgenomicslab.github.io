@@ -17,7 +17,7 @@
     fetch('https://{{ site.goatcounter.code }}.goatcounter.com/counter/TOTAL.json')
         .then(function(r){ return r.ok ? r.json() : null; })
         .then(function(d){
-            if (!d || !/^[0-9][0-9.,\s  ]*$/.test(d.count)) return;
+            if (!d || !/^[1-9][0-9.,\s  ]*$/.test(d.count)) return;
             document.getElementById('visitor-count-value').textContent = d.count;
             box.hidden = false;
         })
