@@ -123,20 +123,28 @@ Edit `_data/interns.yml`:
 ### Visitors page (map + statistics)
 
 `/visitors/` shows a world bubble map and bar charts of site visits. Visits are counted
-with [Umami](https://umami.is/) (no cookies, no personal data). The page never talks to
-Umami directly: the daily GitHub Actions build runs `scripts/fetch_stats.py`, which writes
-the aggregated numbers to `static/data/visitors.json`.
+with [GoatCounter](https://www.goatcounter.com/) (open source, no cookies, no personal
+data). The page never talks to GoatCounter directly: the daily GitHub Actions build runs
+`scripts/fetch_stats.py`, which writes the aggregated numbers to
+`static/data/visitors.json`.
 
 One-time setup:
 
-1. Create a website for `cgenomicslab.org` in Umami (Cloud or self-hosted) and paste its
-   **website id** into `umami.website_id` in `_config.yml` (this id is public).
-2. Create an Umami **API key** and store it as the repository secret `UMAMI_API_KEY`
-   (GitHub → Settings → Secrets and variables → Actions). Never commit the key.
-   For a self-hosted Umami also set `UMAMI_API_URL` in the workflow and update
-   `umami.script` and the Content-Security-Policy in `_layouts/default.html`.
+1. Create a GoatCounter site and put its **code** (the `CODE` in `CODE.goatcounter.com`)
+   into `goatcounter.code` in `_config.yml`. The code is public.
+2. In GoatCounter, create an **API token** with only "Read statistics" and store it as the
+   repository secret `GOATCOUNTER_API_KEY` (GitHub → Settings → Secrets and variables →
+   Actions). Never commit the token.
+3. In GoatCounter → Settings → Data collection, enable **Region** for all countries
+   (needed for the country → regions drill-down).
+
+**History is kept in the repo.** `.github/workflows/stats-archive.yml` saves each finished
+month to `_data/visitors_archive.json` (committed by `github-actions[bot]`). "Last 12
+months" and "All time" are built from those months plus the running one. Do not edit or
+delete that file: it is the site's own copy of its history.
 
 Files: `visitors/index.html` (page + styles), `static/js/visitors.js` (charts),
+`static/js/gc.js` (GoatCounter's `count.js`, ISC licence, served from this site),
 `static/data/world.json` (base map, regenerate with `scripts/build_worldmap.py`).
 Preview locally with synthetic numbers: `python3 scripts/fetch_stats.py --demo`
 (do not commit the resulting `visitors.json`).

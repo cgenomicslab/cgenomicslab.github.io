@@ -1,8 +1,9 @@
 {% comment %}
-  Privacy-friendly visitor analytics (Umami): no cookies, no personal data stored,
-  honours the browser's "Do Not Track" setting. Only loaded on the production site
-  and only when a website id is configured in _config.yml.
+  Privacy-friendly visitor counting (GoatCounter): no cookies, no personal data
+  stored. Only loaded on the production site and only when a site code is set in
+  _config.yml. The script is GoatCounter's count.js, served from this site
+  (static/js/gc.js) so that no third-party code is loaded.
 {% endcomment %}
-{% if jekyll.environment == "production" and site.umami.website_id and site.umami.website_id != "" %}
-<script defer src="{{ site.umami.script }}" data-website-id="{{ site.umami.website_id }}" data-domains="cgenomicslab.org" data-do-not-track="true"></script>
+{% if jekyll.environment == "production" and site.goatcounter.code and site.goatcounter.code != "" %}
+<script data-goatcounter="https://{{ site.goatcounter.code }}.goatcounter.com/count" async src="/static/js/gc.js"></script>
 {% endif %}

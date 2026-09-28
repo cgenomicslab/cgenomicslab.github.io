@@ -32,7 +32,7 @@ group: visitors
 
 <div class="vz-card">
 <h3 class="vz-card-title">Countries</h3>
-<p class="vz-card-hint">Select a country to see its cities.</p>
+<p class="vz-card-hint">Select a country to see its regions.</p>
 <div id="vz-countries"></div>
 </div>
 
@@ -53,9 +53,9 @@ group: visitors
 </div>
 
 <p class="vz-privacy">
-Counted with <a href="https://umami.is/" target="_blank" rel="noopener noreferrer">Umami</a>, without cookies.
-No personal data or IP addresses are stored; locations are approximate (city level at most) and only
-aggregated numbers are shown. Browsers with “Do Not Track” enabled are not counted.
+Counted with <a href="https://www.goatcounter.com/" target="_blank" rel="noopener noreferrer">GoatCounter</a>, an open-source counter that uses no cookies.
+No personal data or IP addresses are stored; locations are approximate (region level at most) and only
+aggregated numbers are shown.
 </p>
 
 <a href="/" class="section-link" style="margin-top: 2rem; display: inline-block;">← Back to home</a>
@@ -68,7 +68,7 @@ aggregated numbers are shown. Browsers with “Do Not Track” enabled are not c
 <style>
 #visitors {
     --vz-bar: #652c90;          /* series colour (site purple) */
-    --vz-bar-soft: #a98bc9;     /* same hue, lighter step: cities */
+    --vz-bar-soft: #a98bc9;     /* same hue, lighter step: regions */
     --vz-land: #eceef1;
     --vz-land-on: #ddd3ea;
     --vz-ink: #1b1b1b;
@@ -136,10 +136,10 @@ button.vz-row:focus-visible, .vz-more:focus-visible, .vz-range:focus-visible { o
 .vz-row-value { text-align: right; font-variant-numeric: tabular-nums; color: var(--vz-ink-2); }
 .vz-caret { color: var(--vz-ink-3); transition: transform 0.15s; display: inline-block; text-align: center; }
 .vz-country.open .vz-caret { transform: rotate(90deg); }
-.vz-cities { margin: 0.15rem 0 0.6rem 1.2rem; padding-left: 0.6rem; border-left: 2px solid var(--vz-line); }
-.vz-city { font-size: 0.83rem; color: var(--vz-ink-2); grid-template-columns: minmax(0, 9.2rem) minmax(0, 1fr) 3.5rem; }
-.vz-city .vz-row-track { height: 10px; }
-.vz-city .vz-row-bar { background: var(--vz-bar-soft); }
+.vz-regions { margin: 0.15rem 0 0.6rem 1.2rem; padding-left: 0.6rem; border-left: 2px solid var(--vz-line); }
+.vz-region { font-size: 0.83rem; color: var(--vz-ink-2); grid-template-columns: minmax(0, 9.2rem) minmax(0, 1fr) 3.5rem; }
+.vz-region .vz-row-track { height: 10px; }
+.vz-region .vz-row-bar { background: var(--vz-bar-soft); }
 .vz-more { font: inherit; font-size: 0.85rem; margin-top: 0.5rem; padding: 0.3rem 0.25rem; background: none; border: 0; color: var(--vz-bar); cursor: pointer; border-radius: 6px; }
 .vz-more:hover { color: #8a5ed3; }
 .vz-empty-note { font-size: 0.85rem; color: var(--vz-ink-3); margin: 0.3rem 0; }
@@ -170,6 +170,6 @@ line.vz-axis { stroke: #c9cdd3; stroke-width: 1; }
     .vz-card { padding: 0.9rem 0.9rem 1rem; }
     .vz-row { grid-template-columns: minmax(0, 7rem) minmax(0, 1fr) 3rem; }
     button.vz-row { grid-template-columns: 0.8rem minmax(0, 6.2rem) minmax(0, 1fr) 3rem; }
-    .vz-city { grid-template-columns: minmax(0, 5.6rem) minmax(0, 1fr) 3rem; }
+    .vz-region { grid-template-columns: minmax(0, 5.6rem) minmax(0, 1fr) 3rem; }
 }
 </style>

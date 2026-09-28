@@ -9,3 +9,4 @@ vendor/
 # working notes / stray assets
 idl-people-page-reference.md
 static/img/logo/idl-290.png
+__pycache__/

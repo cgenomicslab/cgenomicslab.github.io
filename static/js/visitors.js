@@ -93,8 +93,12 @@
   function renderTiles(r) {
     var box = $('vz-tiles');
     clear(box);
-    [['Visitors', r.totals.visitors], ['Visits', r.totals.visits],
-     ['Page views', r.totals.pageviews], ['Countries', r.countries.length]].forEach(function (t) {
+    var unit = r.unit === 'day' ? 'day' : 'month';
+    var pts = r.series || [];
+    var busiest = pts.reduce(function (m, p) { return Math.max(m, p.visitors); }, 0);
+    var average = pts.length ? Math.round(r.totals.visitors / pts.length) : 0;
+    [['Visitors', r.totals.visitors], ['Countries', r.countries.length],
+     ['Average per ' + unit, average], ['Busiest ' + unit, busiest]].forEach(function (t) {
       var tile = el('div', 'vz-tile');
       tile.appendChild(el('div', 'vz-tile-value', compact(t[1] || 0)));
       tile.appendChild(el('div', 'vz-tile-label', t[0]));
@@ -204,16 +208,16 @@
       item.appendChild(row);
 
       if (open) {
-        var cities = el('div', 'vz-cities');
-        if (c.cities && c.cities.length) {
-          var cmax = c.cities[0].visitors;
-          c.cities.forEach(function (city) {
-            cities.appendChild(barRow(city.name, city.visitors, Math.max(cmax, 1), { cls: 'vz-city' }));
+        var regions = el('div', 'vz-regions');
+        if (c.regions && c.regions.length) {
+          var cmax = c.regions[0].visitors;
+          c.regions.forEach(function (region) {
+            regions.appendChild(barRow(region.name, region.visitors, Math.max(cmax, 1), { cls: 'vz-region' }));
           });
         } else {
-          cities.appendChild(el('p', 'vz-empty-note', 'No city-level data for this country.'));
+          regions.appendChild(el('p', 'vz-empty-note', 'No regional data for this country.'));
         }
-        item.appendChild(cities);
+        item.appendChild(regions);
       }
       box.appendChild(item);
     });
@@ -292,8 +296,7 @@
         'M' + x + ',' + (y + h) + 'V' + (y + rr) + 'Q' + x + ',' + y + ' ' + (x + rr) + ',' + y +
         'H' + (x + bw - rr) + 'Q' + (x + bw) + ',' + y + ' ' + (x + bw) + ',' + (y + rr) +
         'V' + (y + h) + 'Z' }));
-      bindTip(g, fmt.format(p.visitors) + ' visitors',
-        periodLabel(p.t, r.unit, true) + ' · ' + fmt.format(p.pageviews) + ' page views');
+      bindTip(g, fmt.format(p.visitors) + ' visitors', periodLabel(p.t, r.unit, true));
       s.appendChild(g);
       if (i % every === 0) {
         var t = svg('text', { x: m.l + i * band + band / 2, y: H - 6, 'text-anchor': 'middle', 'class': 'vz-tick' });

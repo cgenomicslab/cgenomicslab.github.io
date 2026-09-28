@@ -1,0 +1,42 @@
+name: Archive visitor statistics
+
+# Once a month is over, its totals are saved to _data/visitors_archive.json, so
+# the Visitors page keeps its history in this repository.
+# Runs daily (a run with nothing new makes one API call and no commit), shortly
+# before the daily site build.
+
+on:
+  schedule:
+    - cron: "47 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "stats-archive"
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Archive finished months
+        run: python3 scripts/fetch_stats.py --archive
+        env:
+          GOATCOUNTER_API_KEY: ${{ secrets.GOATCOUNTER_API_KEY }}
+
+      - name: Commit the archive
+        run: |
+          git add _data/visitors_archive.json
+          if git diff --cached --quiet; then
+            echo "nothing new to archive"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Archive visitor statistics"
+          git push

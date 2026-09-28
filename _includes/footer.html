@@ -3,6 +3,25 @@
         <img class="footer-logo" src="/static/img/logo/4squares_pixel.png" alt="CGLab">
         <p>© {{ 'now' | date: "%Y" }} CGLab @ <a href="https://www.imbb.forth.gr/" target="_blank" rel="noopener noreferrer">IMBB-FORTH</a> ·
            <a href="https://github.com/cgenomicslab/cgenomicslab.github.io" target="_blank" rel="noopener noreferrer">GitHub</a>
+           {% if site.goatcounter.code and site.goatcounter.code != "" %}<span id="visitor-count" hidden> · <a href="/visitors/"><span id="visitor-count-value"></span> visitors</a></span>{% endif %}
         </p>
     </div>
 </footer>
+{% if site.goatcounter.code and site.goatcounter.code != "" %}
+<script>
+// Total visitors so far, from GoatCounter's public counter (needs the setting
+// "Allow adding visitor counts on your website"). Stays hidden if unavailable.
+(function(){
+    var box = document.getElementById('visitor-count');
+    if (!box || !window.fetch) return;
+    fetch('https://{{ site.goatcounter.code }}.goatcounter.com/counter/TOTAL.json')
+        .then(function(r){ return r.ok ? r.json() : null; })
+        .then(function(d){
+            if (!d || !/^[0-9][0-9.,\s  ]*$/.test(d.count)) return;
+            document.getElementById('visitor-count-value').textContent = d.count;
+            box.hidden = false;
+        })
+        .catch(function(){});
+})();
+</script>
+{% endif %}
