@@ -23,6 +23,17 @@ exclude:
   - node_modules/
   - vendor/
   - README.md
+  - scripts/
+  # stray/backup files that must not be published
+  - static/img/members/index.md
+  - static/css/main_backp.css
+
+# Visitor analytics (Umami). Leave website_id empty to disable tracking.
+# The website id is public (it is embedded in every page); the API key is NOT
+# stored here — it lives in the repository secret UMAMI_API_KEY.
+umami:
+  website_id: ""
+  script: "https://cloud.umami.is/script.js"
 
 # Collections - simplified
 collections:

@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
         {% assign all_people = site.members | sort: "startdate" %}
         {% for member in all_people %}
         {
-            name: "{{ member.name | split: ' ' | first }}",
-            fullName: "{{ member.name }}",
+            name: {{ member.name | split: ' ' | first | jsonify }},
+            fullName: {{ member.name | jsonify }},
             // One segment per role. A member with a `roles:` list in their front
             // matter (position changed over time, e.g. MSc → PhD) gets one bar per
             // role; otherwise a single segment from the top-level position/dates.
@@ -22,14 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 {% if member.roles %}
                 {% for r in member.roles %}
                 {
-                    position: "{{ r.position }}",
+                    position: {{ r.position | default: "" | jsonify }},
                     startdate: "{{ r.startdate | date: '%Y-%m-%d' }}",
                     enddate: "{{ r.enddate | date: '%Y-%m-%d' }}"
                 }{% unless forloop.last %},{% endunless %}
                 {% endfor %}
                 {% else %}
                 {
-                    position: "{{ member.position }}",
+                    position: {{ member.position | default: "" | jsonify }},
                     startdate: "{{ member.startdate | date: '%Y-%m-%d' }}",
                     enddate: "{{ member.enddate | date: '%Y-%m-%d' }}"
                 }
@@ -71,6 +71,13 @@ document.addEventListener('DOMContentLoaded', function() {
         { label: 'MSc',           color: '#CEDDBB', test: function(p){ return p.includes('msc') || p.includes('master'); } },
         { label: 'Undergraduate', color: '#FFE0E9', test: function(p){ return p.includes('undergraduate') || p.includes('bsc'); } }
     ];
+
+    // Member data comes from front matter — escape it before building HTML.
+    function esc(s) {
+        return String(s).replace(/[&<>"']/g, function(c){
+            return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+        });
+    }
 
     function getColor(position) {
         var pos = position.toLowerCase();
@@ -134,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var barWidth = Math.max(endOffset - startOffset, 6);
                 var color = getColor(seg.position);
                 var segLabel = seg.startdate.substring(0, 7) + ' – ' + segEndLabel;
-                bars += '<div class="timeline-bar" style="background:' + color + ';left:' + startOffset + 'px;width:' + barWidth + 'px;" title="' + member.fullName + ' — ' + seg.position + ': ' + segLabel + '"></div>';
+                bars += '<div class="timeline-bar" style="background:' + color + ';left:' + startOffset + 'px;width:' + barWidth + 'px;" title="' + esc(member.fullName + ' — ' + seg.position + ': ' + segLabel) + '"></div>';
 
                 if (overallStart === null) overallStart = seg.startdate;
                 lastEnd = seg.enddate ? seg.enddate.substring(0, 7) : null;
@@ -142,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             var dateLabel = overallStart.substring(0, 7) + ' – ' + (openEnded || !lastEnd ? 'present' : lastEnd);
             html += '<div class="timeline-row">';
-            html += '<div class="timeline-name">' + member.name + '</div>';
+            html += '<div class="timeline-name">' + esc(member.name) + '</div>';
             html += '<div class="timeline-bar-container">' + bars + '</div>';
             html += '<div class="timeline-date">' + dateLabel + '</div>';
             html += '</div>';

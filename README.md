@@ -48,6 +48,8 @@ _data/interns.yml             Interns (plain-text list)
 research/index.html           Full Research page
 teaching/index.html           Full Teaching page
 join/ internal/               Other sub-pages
+visitors/                     Visitors map + statistics
+scripts/                      Build-time helpers (statistics, base map)
 static/css/main.css           All site styling
 static/img/                   Images (members, lab, research, logos, teaching)
 ```
@@ -117,6 +119,27 @@ Edit `_data/interns.yml`:
 - **Teaching**: text on the homepage `#teaching` section (`index.md`) and the full `teaching/index.html`.
 - **Lab photos**: drop images in `static/img/lab/` and add `<div class="gallery-item">` blocks in `_includes/lab-gallery.html`.
 - **Navigation / sidebar**: `_includes/header.html` (nav links, and the IMBB/FORTH footer logos).
+
+### Visitors page (map + statistics)
+
+`/visitors/` shows a world bubble map and bar charts of site visits. Visits are counted
+with [Umami](https://umami.is/) (no cookies, no personal data). The page never talks to
+Umami directly: the daily GitHub Actions build runs `scripts/fetch_stats.py`, which writes
+the aggregated numbers to `static/data/visitors.json`.
+
+One-time setup:
+
+1. Create a website for `cgenomicslab.org` in Umami (Cloud or self-hosted) and paste its
+   **website id** into `umami.website_id` in `_config.yml` (this id is public).
+2. Create an Umami **API key** and store it as the repository secret `UMAMI_API_KEY`
+   (GitHub → Settings → Secrets and variables → Actions). Never commit the key.
+   For a self-hosted Umami also set `UMAMI_API_URL` in the workflow and update
+   `umami.script` and the Content-Security-Policy in `_layouts/default.html`.
+
+Files: `visitors/index.html` (page + styles), `static/js/visitors.js` (charts),
+`static/data/world.json` (base map, regenerate with `scripts/build_worldmap.py`).
+Preview locally with synthetic numbers: `python3 scripts/fetch_stats.py --demo`
+(do not commit the resulting `visitors.json`).
 
 ---
 

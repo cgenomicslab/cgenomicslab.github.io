@@ -1,0 +1,11 @@
+# Keep the build toolchain patched: GitHub Actions and Ruby gems.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "monthly"

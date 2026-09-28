@@ -1,0 +1,8 @@
+{% comment %}
+  Privacy-friendly visitor analytics (Umami): no cookies, no personal data stored,
+  honours the browser's "Do Not Track" setting. Only loaded on the production site
+  and only when a website id is configured in _config.yml.
+{% endcomment %}
+{% if jekyll.environment == "production" and site.umami.website_id and site.umami.website_id != "" %}
+<script defer src="{{ site.umami.script }}" data-website-id="{{ site.umami.website_id }}" data-domains="cgenomicslab.org" data-do-not-track="true"></script>
+{% endif %}

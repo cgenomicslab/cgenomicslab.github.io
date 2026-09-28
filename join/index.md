@@ -33,9 +33,9 @@ We can help identify funding opportunities for your stay, including:
 </p>
 
 <ul>
-<li><a href="https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships" target="_blank">Marie Skłodowska-Curie Postdoctoral Fellowships</a></li>
-<li><a href="https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships/" target="_blank">EMBO Postdoctoral Fellowships</a></li>
-<li><a href="https://www.embo.org/funding/fellowships-grants-and-career-support/scientific-exchange-grants/" target="_blank">EMBO Scientific Exchange Grants</a></li>
+<li><a href="https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships" target="_blank" rel="noopener noreferrer">Marie Skłodowska-Curie Postdoctoral Fellowships</a></li>
+<li><a href="https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships/" target="_blank" rel="noopener noreferrer">EMBO Postdoctoral Fellowships</a></li>
+<li><a href="https://www.embo.org/funding/fellowships-grants-and-career-support/scientific-exchange-grants/" target="_blank" rel="noopener noreferrer">EMBO Scientific Exchange Grants</a></li>
 </ul>
 
 <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #333;">CGLab participates in the following UoC postgraduate programs:</h3>

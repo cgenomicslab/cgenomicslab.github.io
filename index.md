@@ -9,7 +9,7 @@ layout: default
 <h1 class="site-title"><span class="brand">IMBB</span> Comparative Genomics Lab<span class="site-sub">Protein family · Transcriptional regulation · Nervous system <strong>evolution</strong> + Biological <strong>data analysis</strong></span></h1>
 </header>
 <p class="site-mission">We combine comparative genomics, phylogenomics and single-cell transcriptomics to understand how molecular and cellular complexity — especially of the nervous system — emerges and evolves.</p>
-<p class="site-affil"><a href="https://www.imbb.forth.gr/en/research/Alexandros-Pittis.62/" target="_blank">CGLab</a> is based at <a href="https://www.imbb.forth.gr/" target="_blank">IMBB-FORTH</a>, Heraklion, Crete — part of the <a href="https://www.imbb.forth.gr/en/research/lab-Evolution-Development-Cell-Biology.4/" target="_blank">Evolution, Development &amp; Cell Biology</a> division.</p>
+<p class="site-affil"><a href="https://www.imbb.forth.gr/en/research/Alexandros-Pittis.62/" target="_blank" rel="noopener noreferrer">CGLab</a> is based at <a href="https://www.imbb.forth.gr/" target="_blank" rel="noopener noreferrer">IMBB-FORTH</a>, Heraklion, Crete — part of the <a href="https://www.imbb.forth.gr/en/research/lab-Evolution-Development-Cell-Biology.4/" target="_blank" rel="noopener noreferrer">Evolution, Development &amp; Cell Biology</a> division.</p>
 </div>
 {% include projects-spotlight.html %}
 <section id="people">
@@ -45,7 +45,7 @@ layout: default
 <div class="member">
 <div class="member-photo">
 {% if member.image %}
-<img src="{{ member.image }}" alt="{{ member.name }}" class="main-img">
+<img src="{{ member.image }}" alt="{{ member.name | escape }}" class="main-img">
 {% if member.altimage %}
 <img src="{{ member.altimage }}" alt="" class="alt-img">
 {% endif %}
@@ -53,12 +53,12 @@ layout: default
 <div class="member-photo-placeholder">{{ member.name | slice: 0 }}{{ member.name | split: ' ' | last | slice: 0 }}</div>
 {% endif %}
 </div>
-<div class="member-name"><a href="{{ member.url }}">{{ member.name }}</a></div>
-<div class="member-position">{{ member.position }}</div>
-{% if member.tagline %}<div class="member-tagline">{{ member.tagline }}</div>{% endif %}
+<div class="member-name"><a href="{{ member.url }}">{{ member.name | escape }}</a></div>
+<div class="member-position">{{ member.position | escape }}</div>
+{% if member.tagline %}<div class="member-tagline">{{ member.tagline | escape }}</div>{% endif %}
 <div class="member-foot">
 {% if member.email %}
-<button class="email-toggle-btn" onclick="toggleEmail(this)" data-email="{{ member.email }}" title="Show email">
+<button class="email-toggle-btn" onclick="toggleEmail(this)" data-email="{{ member.email | split: "" | reverse | join: "" | replace: "@", "|" | escape }}" title="Show email">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
 <span class="email-label">email</span>
 </button>
@@ -70,9 +70,9 @@ layout: default
 </div>
 {% endif %}
 <div class="member-links">
-{% if member.orcid %}<a href="https://orcid.org/{{ member.orcid }}" target="_blank" class="icon-link" title="ORCID"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg></a>{% endif %}
-{% if member.scholar %}<a href="https://scholar.google.com/citations?user={{ member.scholar }}" target="_blank" class="icon-link" title="Google Scholar"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg></a>{% endif %}
-{% if member.github %}<a href="https://github.com/{{ member.github }}" target="_blank" class="icon-link" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>{% endif %}
+{% if member.orcid %}<a href="https://orcid.org/{{ member.orcid }}" target="_blank" rel="noopener noreferrer" class="icon-link" title="ORCID"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg></a>{% endif %}
+{% if member.scholar %}<a href="https://scholar.google.com/citations?user={{ member.scholar }}" target="_blank" rel="noopener noreferrer" class="icon-link" title="Google Scholar"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg></a>{% endif %}
+{% if member.github %}<a href="https://github.com/{{ member.github }}" target="_blank" rel="noopener noreferrer" class="icon-link" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>{% endif %}
 </div>
 </div>
 </div>
@@ -87,10 +87,10 @@ layout: default
 <div class="alumni-list">
 {% for alum in alumni %}
 <div class="alumni-item">
-<a href="{{ alum.url }}">{{ alum.name }}</a>
-<span class="alumni-position">({{ alum.position }})</span>
+<a href="{{ alum.url }}">{{ alum.name | escape }}</a>
+<span class="alumni-position">({{ alum.position | escape }})</span>
 {% if alum.subsequent %}
-<span class="alumni-now">→ now {{ alum.subsequent }}</span>
+<span class="alumni-now">→ now {{ alum.subsequent | escape }}</span>
 {% endif %}
 </div>
 {% endfor %}
@@ -103,7 +103,8 @@ layout: default
 
 <script>
 function toggleEmail(btn) {
-    var email = btn.getAttribute('data-email');
+    // Stored reversed with "|" for "@" so harvesters don't find it in the markup
+    var email = btn.getAttribute('data-email').split('').reverse().join('').replace('|', '@');
     var display = btn.nextElementSibling;
     var emailText = display.querySelector('.email-text');
 
@@ -241,7 +242,7 @@ If interested contact <a href="#contact">Alexandros Pittis</a> with a short CV a
 <h2 class="section-title">Publications</h2>
 <p class="publications-intro">
 For a publication list, see
-<a href="https://scholar.google.com/citations?user=YbX4E3cAAAAJ" target="_blank">Google Scholar</a>.
+<a href="https://scholar.google.com/citations?user=YbX4E3cAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
 </p>
 </div>
 </section>
@@ -251,12 +252,12 @@ For a publication list, see
 <div class="teaching-layout">
 <div class="join-content">
 <p>
-Data analysis is an essential part of modern biological research. We coordinate the institute-wide <a href="https://github.com/cgenomicslab/imbb-data-analysis" target="_blank">IMBB Data Analysis Course</a> — a hands-on introduction to Python, data analysis, and computational biology for wet-lab researchers — and participate in graduate programs at the University of Crete.
+Data analysis is an essential part of modern biological research. We coordinate the institute-wide <a href="https://github.com/cgenomicslab/imbb-data-analysis" target="_blank" rel="noopener noreferrer">IMBB Data Analysis Course</a> — a hands-on introduction to Python, data analysis, and computational biology for wet-lab researchers — and participate in graduate programs at the University of Crete.
 </p>
 <a href="/teaching" class="section-link">More about teaching →</a>
 </div>
 <div class="teaching-figure">
-<a href="https://github.com/cgenomicslab/imbb-data-analysis" target="_blank"><img src="/static/img/teaching/imbb_data_analysis_balloons.svg" alt="IMBB Data Analysis Course"></a>
+<a href="https://github.com/cgenomicslab/imbb-data-analysis" target="_blank" rel="noopener noreferrer"><img src="/static/img/teaching/imbb_data_analysis_balloons.svg" alt="IMBB Data Analysis Course"></a>
 </div>
 </div>
 </div>
@@ -280,8 +281,8 @@ N. Plastira 100, Vassilika Vouton<br>
 </p>
 </div>
 <div class="contact-map">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.980555435395!2d25.069276075546192!3d35.30462035057078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149a570027ec31bd%3A0xaaccc8115f93751f!2sComparative%20Genomics%20Lab%20%40%20IMBB-FORTH!5e1!3m2!1sen!2sgr!4v1769297448751!5m2!1sen!2sgr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-<a href="https://maps.app.goo.gl/zGpFGo7fDnC1gNFm7" target="_blank" class="map-link">Open in Google Maps ↗</a>
+<iframe title="Map: CGLab at IMBB-FORTH" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.980555435395!2d25.069276075546192!3d35.30462035057078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x149a570027ec31bd%3A0xaaccc8115f93751f!2sComparative%20Genomics%20Lab%20%40%20IMBB-FORTH!5e1!3m2!1sen!2sgr!4v1769297448751!5m2!1sen!2sgr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<a href="https://maps.app.goo.gl/zGpFGo7fDnC1gNFm7" target="_blank" rel="noopener noreferrer" class="map-link">Open in Google Maps ↗</a>
 </div>
 </div>
 </div>

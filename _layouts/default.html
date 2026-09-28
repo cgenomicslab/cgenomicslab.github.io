@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}CGLab</title>
-    <meta name="description" content="{{ site.description }}">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>{% if page.title %}{{ page.title | escape }} | {% endif %}CGLab</title>
+    <meta name="description" content="{{ site.description | escape }}">
+    {% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- GitHub Pages cannot send HTTP headers, so the policy is set here. Inline
+         scripts/styles are used throughout the site, hence 'unsafe-inline'. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self' https://cloud.umami.is https://api-gateway.umami.dev; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <link rel="icon" href="/static/img/logo/4squares_pixel.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Avenir (native on Apple devices) with Nunito Sans as the web fallback -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/main.css">
+    {% include analytics.html %}
 </head>
 <body>
     <div class="layout">
