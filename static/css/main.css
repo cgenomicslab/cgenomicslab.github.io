@@ -1606,3 +1606,105 @@ section[id] {
     max-width: 800px;
     border-radius: 8px;
 }
+
+/* ============================================
+   MOBILE — edge-to-edge, IDL-style
+   Narrow 16px gutters (shared by the top bar and the content, so the logo
+   and the text line up) and slightly smaller, tighter type.
+   Keep this block last so it wins over the rules above.
+   ============================================ */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        line-height: 1.55;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .sidebar {
+        padding: 0.75rem 1rem;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar nav a {
+        padding: 0.7rem 0;
+    }
+
+    section {
+        padding: 2.25rem 0;
+    }
+
+    .site-intro {
+        padding-top: 1.25rem;
+    }
+
+    .site-header {
+        margin-bottom: 0.8rem;
+    }
+
+    .site-title {
+        font-size: 1.45rem;
+        line-height: 1.25;
+    }
+
+    .site-sub {
+        font-size: 0.72rem;
+        letter-spacing: 1.2px;
+    }
+
+    .site-mission {
+        font-size: 1.05rem;
+        line-height: 1.45;
+        margin-bottom: 0.7rem;
+    }
+
+    .site-affil {
+        font-size: 0.88rem;
+    }
+
+    .section-title {
+        margin-bottom: 1rem;
+    }
+
+    .join-content {
+        font-size: 1rem;
+    }
+
+    .join-content p {
+        line-height: 1.6;
+    }
+
+    .publications-intro {
+        font-size: 1rem;
+    }
+
+    .members-grid {
+        gap: 1.5rem 0.75rem;
+    }
+
+    .member-tagline {
+        font-size: 0.78rem;
+    }
+
+    footer {
+        padding: 1.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15.5px;
+    }
+
+    .site-title {
+        font-size: 1.35rem;
+    }
+
+    .member-photo {
+        width: 112px;
+        height: 140px;
+    }
+}
