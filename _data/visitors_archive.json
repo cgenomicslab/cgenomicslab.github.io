@@ -1,4 +1,148 @@
 {
- "months": {},
+ "months": {
+  "2026-09": {
+   "archived": "2026-10-01",
+   "browsers": [
+    {
+     "name": "Chrome",
+     "value": 38
+    },
+    {
+     "name": "Firefox",
+     "value": 2
+    },
+    {
+     "name": "Safari",
+     "value": 1
+    }
+   ],
+   "countries": [
+    {
+     "code": "GR",
+     "regions": [
+      {
+       "name": "Attica",
+       "visitors": 15
+      },
+      {
+       "name": "Crete",
+       "visitors": 13
+      },
+      {
+       "name": "Central Macedonia",
+       "visitors": 1
+      }
+     ],
+     "visitors": 37
+    },
+    {
+     "code": "BG",
+     "regions": [
+      {
+       "name": "Sofia-Capital",
+       "visitors": 2
+      }
+     ],
+     "visitors": 2
+    },
+    {
+     "code": "RS",
+     "regions": [],
+     "visitors": 2
+    }
+   ],
+   "devices": [
+    {
+     "name": "Phones",
+     "value": 23
+    },
+    {
+     "name": "Tablets and small laptops",
+     "value": 1
+    },
+    {
+     "name": "Computer monitors",
+     "value": 13
+    },
+    {
+     "name": "Large monitors",
+     "value": 4
+    }
+   ],
+   "pages": [
+    {
+     "name": "/",
+     "value": 17
+    },
+    {
+     "name": "/visitors",
+     "value": 12
+    },
+    {
+     "name": "/research",
+     "value": 3
+    },
+    {
+     "name": "/members/pittis",
+     "value": 2
+    },
+    {
+     "name": "/teaching",
+     "value": 2
+    },
+    {
+     "name": "/internal",
+     "value": 1
+    },
+    {
+     "name": "/members/paterakis",
+     "value": 1
+    },
+    {
+     "name": "/members/doudali",
+     "value": 1
+    },
+    {
+     "name": "/members/kapsetaki",
+     "value": 1
+    },
+    {
+     "name": "/join",
+     "value": 1
+    }
+   ],
+   "referrers": [
+    {
+     "name": "Google",
+     "value": 2
+    },
+    {
+     "name": "chatgpt.com",
+     "value": 1
+    }
+   ],
+   "systems": [
+    {
+     "name": "Android",
+     "value": 23
+    },
+    {
+     "name": "Linux",
+     "value": 15
+    },
+    {
+     "name": "Windows",
+     "value": 2
+    },
+    {
+     "name": "iOS",
+     "value": 1
+    }
+   ],
+   "totals": {
+    "visitors": 41
+   }
+  }
+ },
  "since": "2026-09-28"
 }
