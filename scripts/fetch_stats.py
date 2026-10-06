@@ -20,7 +20,8 @@ _data/visitors_archive.json (committed by .github/workflows/stats-archive.yml),
 so the history lives in this repository and does not depend on the counter
 keeping it. "Last 12 months" and "All time" are built from the archived months
 plus the running month. Monthly visitor counts are added up, so someone who
-visits in two different months counts twice.
+visits in two different months counts twice. While the history is short
+(up to DAILY_UP_TO days) these periods are charted per day instead of per month.
 
 All dates are UTC days, which is how GoatCounter stores its statistics.
 Only the Python standard library is used.
@@ -47,6 +48,7 @@ MAX_REGION_COUNTRIES = 30  # countries that get a region breakdown
 MAX_REGIONS = 15          # regions per country
 MAX_ROWS = 10             # pages / referrers / browsers / ...
 MIN_REGION_VISITORS = 1   # raise to hide regions with very few visitors
+DAILY_UP_TO = 92          # periods up to this many days are charted per day, not per month
 PAUSE = 0.3               # seconds between calls (limit: 4 calls / second)
 
 # The archive keeps longer lists than the page shows, so that rankings stay
@@ -120,7 +122,7 @@ def named(rows):
 
 def snapshot(api, start, end, limits):
     """Everything the page shows for one period (whole days, both included)."""
-    _, total = api.days(start, end)
+    days, total = api.days(start, end)
 
     countries = []
     for i, row in enumerate(api.rows("stats/locations", start, end, limits["countries"])):
@@ -144,6 +146,7 @@ def snapshot(api, start, end, limits):
 
     return {
         "totals": {"visitors": total},
+        "days": {d: n for d, n in days.items() if n},
         "countries": countries,
         "pages": pages,
         "referrers": named(api.rows("stats/toprefs", start, end, limits["rows"] + 5)),
@@ -300,8 +303,22 @@ def fetch(api):
     for key, label, keys in (("12m", "Last 12 months", [month_key(m) for m in months[-12:]]),
                              ("all", "All time", [month_key(m) for m in months])):
         data = for_page(combine([records[k] for k in keys]))
-        data.update(label=label, unit="month", series=[
-            {"t": k, "visitors": records[k]["totals"]["visitors"]} for k in keys])
+        start = max(first, dt.date.fromisoformat(keys[0] + "-01"))
+        span = (today - start).days + 1
+        if span <= DAILY_UP_TO:
+            # a short history: one bar per day reads better than one or two month bars
+            days = {}
+            for k in keys:
+                if "days" not in records[k]:      # archived before daily counts were kept
+                    m = dt.date.fromisoformat(k + "-01")
+                    records[k]["days"], _ = api.days(max(m, first), min(month_end(m), today))
+                days.update(records[k]["days"])
+            series = [{"t": d.isoformat(), "visitors": days.get(d.isoformat(), 0)}
+                      for d in (start + dt.timedelta(days=i) for i in range(span))]
+            data.update(label=label, unit="day", series=series)
+        else:
+            data.update(label=label, unit="month", series=[
+                {"t": k, "visitors": records[k]["totals"]["visitors"]} for k in keys])
         out["ranges"][key] = data
     return out
 
