@@ -3,24 +3,18 @@ title: Publications
 layout: default
 group: publications
 ---
-
+{::nomarkdown}
 <div class="container">
-<section style="padding: 2rem 0;">
+<section class="pubs-page">
 
-<h1 class="section-title" style="font-size: 1.5rem; margin-bottom: 1rem;">Publications</h1>
+<h1 class="section-title">Publications</h1>
+<p class="publications-intro">Work from CGLab at IMBB-FORTH. Earlier papers are on <a href="https://scholar.google.com/citations?user=YbX4E3cAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>.</p>
 
-<p class="publications-intro">
-For a complete and up-to-date list, see <a href="https://scholar.google.com/citations?user=YbX4E3cAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
-</p>
-
-<h3 style="font-size: 1rem; margin: 2rem 0 1rem; color: #333;">Selected Publications</h3>
-
-{% assign sorted_pubs = site.publications | sort: "year" | reverse %}
-{% for pub in sorted_pubs %}
-<div class="publication-item">
-<div class="publication-year">{{ pub.year }}</div>
-<div class="publication-title"><a href="{{ pub.link | escape }}" target="_blank" rel="noopener noreferrer">{{ pub.title | escape }}</a></div>
-<div class="publication-authors">{{ pub.authors }}. <em>{{ pub.journal }}</em>.</div>
+{% assign by_year = site.publications | sort: "date" | reverse | group_by_exp: "p", "p.date | date: '%Y'" %}
+{% for year in by_year %}
+<h2 class="pub-year">{{ year.name }}</h2>
+<div class="pub-list">
+{% for p in year.items %}{% include pub-row.html pub=p %}{% endfor %}
 </div>
 {% endfor %}
 
@@ -28,3 +22,4 @@ For a complete and up-to-date list, see <a href="https://scholar.google.com/cita
 
 </section>
 </div>
+{:/nomarkdown}

@@ -1,0 +1,22 @@
+---
+title: Research layout options
+layout: default
+noindex: true
+sitemap: false
+---
+{%- comment -%} Temporary page to compare the homepage Research options; delete once one is chosen. {%- endcomment -%}
+<div class="container">
+<section class="research-home">
+<h1 class="section-title">Research layout options</h1>
+<p class="publications-intro">Pick one and set <code>research_style</code> in <code>_config.yml</code>.</p>
+
+<h2 class="subsection-title">A · spotlight</h2>
+{% include research-spotlight.html %}
+
+<h2 class="subsection-title" style="margin-top:3rem">B · accordion</h2>
+{% include research-accordion.html %}
+
+<h2 class="subsection-title" style="margin-top:3rem">C · grid</h2>
+{% include research-grid.html %}
+</section>
+</div>

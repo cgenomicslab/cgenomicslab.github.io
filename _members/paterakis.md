@@ -14,15 +14,15 @@ github: KostisPat2570
 
 
 ---
-# Education and Experience
+## Education and Experience
 
 * Bachelor of Science (BSc) in **Biology** - Biology Department, University of Crete, **Greece**
   * **Bachelor Thesis**: *"Evolutionary Patterns in Mitochondria-originated Nuclear Pseudogenes (NUMTs)"* in Dr. Ladoukakis' Lab of Population Genetics and Evolution, University of Crete, **Greece**
   * **Bachelor Internship**: *"Population Genetics simulations for Three-Spined Sticklebacks"* in Dr. Merila's Ecological Genetics Research Unit, University of Helsinki, **Finland**
 * Master of Science (MSc) in **Bioinformatics** - School of Medicine, University of Crete, **Greece**
-  * **Master Thesis**: *"CGSyn: A Comprehensive Tool for Comparative Macrosynteny Analysis"* in Dr. Pittis' Comparative Genomics Lab, Institue of Molecular Biology and Biotechnology, FORTH, **Greece**
+  * **Master Thesis**: *"CGSyn: A Comprehensive Tool for Comparative Macrosynteny Analysis"* in Dr. Pittis' Comparative Genomics Lab, Institute of Molecular Biology and Biotechnology, FORTH, **Greece**
 
-# Research Interests
+## Research Interests
 
 * Evolutionary History Disambiguation and Ancestry Inference
 * Comparative Genomics and Phylogenomics

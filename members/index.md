@@ -5,9 +5,9 @@ group: members
 ---
 
 <div class="container">
-<section style="padding: 2rem 0;">
+<section class="page">
 
-<h1 class="section-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">People</h1>
+<h1 class="section-title">People</h1>
 
 {::nomarkdown}
 <div class="members-grid">

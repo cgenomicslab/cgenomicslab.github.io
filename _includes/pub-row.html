@@ -1,0 +1,14 @@
+{%- comment -%}
+One publication as a compact row: thumbnail + title, authors, venue and links.
+Used on the homepage, /publications/, /research/ and member pages.
+Usage: {% include pub-row.html pub=pub %}
+{%- endcomment -%}
+{%- assign p = include.pub -%}
+<article class="pub-row">
+<a class="pub-thumb" href="{{ p.url }}" tabindex="-1" aria-hidden="true">{% if p.thumb %}<img src="{{ p.thumb }}" alt="" width="480" height="300" loading="lazy">{% endif %}</a>
+<div class="pub-body">
+<a class="pub-title" href="{{ p.url }}">{{ p.title | escape }}</a>
+<div class="pub-authors">{% include pub-authors.html pub=p %}</div>
+<div class="pub-meta"><em>{{ p.venue | escape }}</em>, {{ p.date | date: "%Y" }}{% if p.status == "preprint" %}<span class="pub-badge">Preprint</span>{% endif %}<span class="pub-links">{% include pub-links.html pub=p %}</span></div>
+</div>
+</article>

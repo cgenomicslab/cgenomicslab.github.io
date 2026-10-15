@@ -1,0 +1,16 @@
+# WebApps run by the lab (shown on /webapps/). Code repositories live on GitHub ("Code" in the menu).
+#   name, url:  app name and address
+#   tagline:    one line under the name
+#   text:       two or three sentences (Markdown)
+#   img:        screenshot in static/img/webapps/ (webp, ~1440 px wide)
+#   paper:      file name in _publications/ (without .md) describing the app
+#   tags:       short keywords
+
+- name: KEDROS
+  url: https://kedros.cgenomicslab.org
+  tagline: A comparative genomics and high-resolution phylogenetic profiling workspace
+  text: |
+    Builds gene trees for any protein family across UniProt reference proteomes, splits them into subfamilies at gene duplications and profiles each subfamily across organism sets you choose. Finds lineage-specific genes and the residues that separate them, shown on AlphaFold structures. Runs in the browser, no installation or code.
+  img: /static/img/webapps/kedros.webp
+  paper: kedros
+  tags: [Gene trees, Phylogenetic profiling, Subfamilies, AlphaFold]

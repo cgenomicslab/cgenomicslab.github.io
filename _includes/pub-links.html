@@ -1,0 +1,5 @@
+{%- comment -%} "PDF · bioRxiv · Code · …" line of a publication. Usage: {% include pub-links.html pub=pub %} {%- endcomment -%}
+{%- assign p = include.pub -%}
+{%- if p.pdf -%}<a href="{{ p.pdf }}" target="_blank" rel="noopener noreferrer">PDF</a>{%- endif -%}
+{%- if p.doi -%}{% if p.pdf %}<span class="pub-sep">·</span>{% endif %}<a href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener noreferrer">{% if p.status == "preprint" %}{{ p.venue }}{% else %}DOI{% endif %}</a>{%- endif -%}
+{%- for l in p.links -%}<span class="pub-sep">·</span><a href="{{ l.url }}" target="_blank" rel="noopener noreferrer">{{ l.label | escape }}</a>{%- endfor -%}

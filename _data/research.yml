@@ -1,0 +1,76 @@
+# Research themes. One entry per theme; used by the homepage (grid or carousel,
+# see research_style in _config.yml) and by the full Research page (/research/).
+#
+#   id:       anchor on /research/ (e.g. /research/#olfaction); publications list
+#             the ids of their themes in `themes:` and appear under them automatically
+#   title:    theme name
+#   img:      figure in static/img/research/ (webp, white background, ~1400 px wide)
+#   strip:    images shown side by side on the homepage (theme figure + panels from its papers)
+#   blurb:    one sentence for the homepage
+#   text:     paragraphs for the Research page (Markdown)
+#   keywords: shown as small tags on the Research page
+#   members:  file names in _members/ (without .md) of the people working on it
+#   funding:  optional funder logo shown on the Research page
+#   tool:     optional {label, url} button (e.g. a web server)
+#   home:     false = not shown as a tile on the homepage
+
+- id: neurotransmission
+  title: Origins of Neurotransmission
+  img: /static/img/research/synaptic_diversity.webp
+  strip: [/static/img/research/synaptic_diversity.webp, /static/img/research/panels/bouton.webp, /static/img/research/panels/opisthokont-matrix.webp]
+  blurb: When did the machinery that makes, packs and senses neurotransmitters appear? Much of it, it turns out, before neurons.
+  text: |
+    Neurons are built from parts that are older than neurons. We trace the enzymes, vesicular transporters and receptors of chemical neurotransmission across animals, fungi and their unicellular relatives, to find when each part appeared and what it did before there were synapses.
+
+    Monoamine synthesis and its vesicular transporters are already present in fungi, where they sit in the endolysosomal system and modulate secondary metabolism. In sponges and cnidarians, acetylcholine and the monoamines are made by broad-specificity enzymes and expressed in neuronal and non-neuronal cells alike. Specialization into the dedicated transmitter systems of bilaterians came later, through gene duplication.
+  keywords: [Monoamines, Acetylcholine, Opisthokonta, Phylogenetics, Metabolomics]
+  members: [pyrris, pittis]
+  funding: { img: /static/img/logo/elidek_logo_en.png, alt: HFRI funded }
+
+- id: cell-types
+  title: Cell Type Evolution
+  img: /static/img/research/cell_type_evolution.webp
+  strip: [/static/img/research/cell_type_evolution.webp, /static/img/research/panels/neuron-heatmap.webp]
+  blurb: Comparing single-cell atlases across species to trace how neuronal and other cell types originated and diversified.
+  text: |
+    We compare single-cell transcriptomic atlases across animals to trace the evolutionary history of cell types. Gene families with well-resolved phylogenies act as markers: where their members are expressed, and with what, tells us how cell identities were assembled and later split.
+
+    In cnidarians, for example, muscle-type nicotinic receptor subunits are co-expressed with Rapsyn-related genes in muscle cells, placing cholinergic neuromuscular signaling in the cnidarian–bilaterian ancestor.
+  keywords: [Cell atlases, scRNA-seq, Neuronal origins, Comparative transcriptomics]
+  members: [pittis]
+  funding: { img: /static/img/logo/elidek_logo_en.png, alt: HFRI funded }
+
+- id: olfaction
+  title: Olfactory System Evolution
+  img: /static/img/research/gpcr_evolution.webp
+  strip: [/static/img/research/gpcr_evolution.webp, /static/img/research/panels/or-tree-silhouettes.webp, /static/img/research/panels/or-umap.webp]
+  blurb: How the vertebrate olfactory code was assembled by gene duplication, read through protein language models and ancestral receptors.
+  text: |
+    Olfactory receptors are the largest gene family devoted to a single function in animals, and each odorant is read by a combination of them. We ask how this combinatorial code was first assembled and how gene duplication reshaped it.
+
+    Combining phylogenetics, receptor–odorant interactions predicted with paired protein and chemical language models, and ancestral sequence reconstruction, we place the origin of the code at the first duplication of the family, in the gnathostome ancestor, where the two copies diverged into distinct chemical subspaces.
+  keywords: [Olfactory receptors, GPCRs, Ancestral reconstruction, Protein language models]
+  members: [zirdeli]
+
+- id: glutamate
+  title: Glutamate Signaling Evolution
+  img: /static/img/research/glutamate.webp
+  strip: [/static/img/research/glutamate.webp]
+  blurb: Reconstructing how ionotropic and metabotropic glutamate receptors diversified, and where they are expressed across species.
+  text: |
+    Glutamate is the main excitatory neurotransmitter of vertebrate nervous systems, acting through both ionotropic and metabotropic receptors. We trace the evolutionary history of these receptor families across the tree of life.
+
+    By combining protein domain phylogenetics with single-cell expression data, we investigate how glutamate receptor families diversified and how their expression is partitioned among cell types and species.
+  keywords: [iGluRs, mGluRs, Domain evolution, Cross-species expression]
+  members: [kapsetaki]
+
+- id: tools
+  title: Comparative Genomics Tools
+  img: /static/img/pubs/kedros-thumb.webp
+  blurb: KEDROS, a web workspace for gene trees and high-resolution phylogenetic profiling across reference proteomes.
+  text: |
+    We build tools that make comparative genomics usable without code. KEDROS builds gene trees for any protein family across UniProt reference proteomes, splits them into subfamilies at gene duplications, and profiles each subfamily across organism sets chosen by the user — from lineage-specific genes down to the residues that separate them.
+  keywords: [Phylogenetic profiling, Gene trees, Web server]
+  members: [marouga, pittis]
+  tool: { label: Open KEDROS, url: "https://kedros.cgenomicslab.org" }
+  home: false

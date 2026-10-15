@@ -6,9 +6,9 @@ noindex: true
 ---
 
 <div class="container">
-<section style="padding: 2rem 0;">
+<section class="page">
 
-<h1 class="section-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Internal Resources</h1>
+<h1 class="section-title">Internal Resources</h1>
 
 <p class="internal-intro" style="color: #666; margin-bottom: 2rem;">
 Lab resources and services for CGLab members.

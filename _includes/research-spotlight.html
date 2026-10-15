@@ -1,0 +1,17 @@
+{%- comment -%}
+Homepage Research, "spotlight": one theme at a time as a strip of figures (theme figure +
+panels from its papers) with an IDL-style caption chip. Data: _data/research.yml (strip).
+{%- endcomment -%}
+{%- assign themes = site.data.research | where_exp: "t", "t.home != false" -%}
+<div class="rs" data-rotate data-interval="4500">
+<div class="rs-stage">
+{% for t in themes %}
+<a class="rs-slide rot-item{% if forloop.first %} active{% endif %}" href="/research/#{{ t.id }}">
+<span class="rs-strip">{% assign imgs = t.strip | default: t.img %}{% for src in imgs %}<img src="{{ src }}" alt=""{% unless forloop.parentloop.first %} loading="lazy"{% endunless %}>{% endfor %}</span>
+<span class="rs-chip"><strong>{{ t.title }}</strong>{% if t.keywords %}<span>{{ t.keywords | slice: 0, 3 | join: " · " }}</span>{% endif %}</span>
+</a>
+{% endfor %}
+</div>
+<div class="rot-dots">{% for t in themes %}<button type="button" class="rot-dot{% if forloop.first %} active{% endif %}" aria-label="{{ t.title | escape }}"></button>{% endfor %}</div>
+</div>
+<script src="/static/js/rotator.js" defer></script>

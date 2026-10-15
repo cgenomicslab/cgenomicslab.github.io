@@ -1,10 +1,8 @@
 # Interns — shown as a plain-text list (no photos) in the People section.
 # name:    intern's name
-# origin:  where they came from (University / City) — shown on the right in accent colour
+# origin:  where they came from (University / City) — shown on the right
 # url:     OPTIONAL — link the name to an individual page only if one exists
 #          (e.g. a member/alumni page); omit for no link.
-#
-# Replace the placeholders below with real interns.
 
 - name: Elena Oikonomou
   period: Summer 2024

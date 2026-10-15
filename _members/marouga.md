@@ -1,5 +1,5 @@
 ---
-name: Athena Marouga
+name: Athena Marougka
 startdate: 2026-01-01
 position: MSc Student
 tagline: Comparative genomics, bioinformatics, biotechnology

@@ -1,0 +1,18 @@
+{%- comment -%}
+Homepage Research, "accordion": all themes in one row; the active one opens (auto-advances,
+hover or dots select). Data: _data/research.yml (img, title, keywords).
+{%- endcomment -%}
+{%- assign themes = site.data.research | where_exp: "t", "t.home != false" -%}
+<div class="ra" data-rotate data-hover-select data-interval="4000">
+<div class="ra-row">
+{% for t in themes %}
+<a class="ra-panel rot-item{% if forloop.first %} active{% endif %}" href="/research/#{{ t.id }}">
+<img src="{{ t.img }}" alt="">
+<span class="ra-label">{{ t.title }}</span>
+<span class="ra-chip"><strong>{{ t.title }}</strong>{% if t.keywords %}<span>{{ t.keywords | slice: 0, 3 | join: " · " }}</span>{% endif %}</span>
+</a>
+{% endfor %}
+</div>
+<div class="rot-dots">{% for t in themes %}<button type="button" class="rot-dot{% if forloop.first %} active{% endif %}" aria-label="{{ t.title | escape }}"></button>{% endfor %}</div>
+</div>
+<script src="/static/js/rotator.js" defer></script>

@@ -1,0 +1,28 @@
+---
+title: WebApps
+layout: default
+group: webapps
+---
+{%- comment -%} Apps are edited in _data/webapps.yml. {%- endcomment -%}
+<div class="container">
+<section class="webapps-page">
+<h1 class="section-title">WebApps</h1>
+<p class="publications-intro">Tools we build and run, free to use in the browser. Our code is on <a href="https://github.com/cgenomicslab" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+
+{% for app in site.data.webapps %}
+{%- assign paper = site.publications | where: "slug", app.paper | first -%}
+<article class="webapp" id="{{ app.name | slugify }}">
+<a class="webapp-shot" href="{{ app.url }}" target="_blank" rel="noopener noreferrer"><img src="{{ app.img }}" alt="{{ app.name }} screenshot"></a>
+<div class="webapp-body">
+<h2>{{ app.name }}</h2>
+<p class="webapp-tagline">{{ app.tagline }}</p>
+{{ app.text | markdownify }}
+{% if app.tags %}<ul class="theme-keywords">{% for k in app.tags %}<li>{{ k }}</li>{% endfor %}</ul>{% endif %}
+<p class="webapp-actions"><a class="theme-tool" href="{{ app.url }}" target="_blank" rel="noopener noreferrer">Open {{ app.name }}</a>{% if paper %}<a class="webapp-paper" href="{{ paper.url }}">Read the paper →</a>{% endif %}</p>
+</div>
+</article>
+{% endfor %}
+
+<a href="/" class="section-link">← Back to home</a>
+</section>
+</div>

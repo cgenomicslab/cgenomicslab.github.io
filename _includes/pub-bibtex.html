@@ -1,0 +1,14 @@
+{%- comment -%} BibTeX entry built from the front matter. Usage: {% include pub-bibtex.html pub=pub %} {%- endcomment -%}
+{%- assign p = include.pub -%}
+{%- assign first = p.authors | first -%}
+{%- assign key = first.name | split: " " | last | slugify: "latin" | replace: "-", "" | capitalize -%}
+@article{ {{- key -}}{{- p.date | date: "%Y" -}},
+  title   = { {{- p.title -}} },
+  author  = { {%- for a in p.authors -%}{%- assign parts = a.name | split: " " -%}{{ parts | last }}, {{ parts | pop | join: " " }}{% unless forloop.last %} and {% endunless %}{%- endfor -%} },
+  journal = { {{- p.venue -}} },
+  year    = { {{- p.date | date: "%Y" -}} },
+{%- if p.doi %}
+  doi     = { {{- p.doi -}} },{% endif %}
+{%- if p.pdf %}
+  url     = { {{- p.pdf | replace: ".full.pdf", "" -}} }{% endif %}
+}

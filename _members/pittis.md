@@ -14,11 +14,11 @@ github: cgenomicslab
 twitter:
 website: https://imbb.forth.gr/en/research/Alexandros-Pittis.62/
 ---
-I am interested in understanding how biological complexity emerges and which genetic changes underlie it. Genome fusion, lateral gene transfers, gene duplications and functional diversification, all continuously generate new material for selection and innovation, and have contributed to major shifts in evolution such as the emergence of complex eukaryotic cells, multicellularity, neural system and behavior. To gain insights, in the lab we use sequence diversity approaches, genome comparisons, we thoroughly study how key genes evolve via phylogenetic analyses, and integrate functional information coming from experimental and computational sources.
+I am interested in understanding how biological complexity emerges and which genetic changes underlie it. Genome fusion, lateral gene transfers, gene duplications and functional diversification, all continuously generate new material for selection and innovation, and have contributed to major shifts in evolution such as the emergence of complex eukaryotic cells, multicellularity, nervous systems and behavior. In the lab we combine sequence-diversity approaches and genome comparisons, study in depth how key genes evolve through phylogenetic analyses, and integrate functional information from experimental and computational sources.
 
 - Biology degree **University of Athens (NKUA), Athens, Greece**
 - MSc Bioinformatics **Universitat Pompeu Fabra (UPF), Barcelona, Spain**
-- PhD in Comparative Genomics (*Gabaldon lab*) **Centre for Genomic Regulation (CRG), Barcelona, Spain**
+- PhD in Comparative Genomics (*Gabaldón lab*) **Centre for Genomic Regulation (CRG), Barcelona, Spain**
 - Postdoctoral Researcher (*Kim lab*) **American Museum of Natural History (AMNH), New York, US**
 - EMBO Postdoctoral Fellow (*Keeling lab*) **University of British Columbia (UBC), Vancouver, Canada**
 - Fellow of the College for Life Sciences **Berlin Institute for Advanced Studies (WIKO), Berlin, Germany**
@@ -31,4 +31,4 @@ I am interested in understanding how biological complexity emerges and which gen
 - Eukaryotic cellular transitions
 - Gene family evolution
 - Single-cell transcriptomics
-- Data analysis in biological data
+- Biological data analysis

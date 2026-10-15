@@ -11,7 +11,26 @@ layout: default
 <p class="site-mission">We combine comparative genomics, phylogenomics and single-cell transcriptomics to understand how molecular and cellular complexity — especially of the nervous system — emerges and evolves.</p>
 <p class="site-affil"><a href="https://www.imbb.forth.gr/en/research/Alexandros-Pittis.62/" target="_blank" rel="noopener noreferrer">CGLab</a> is based at <a href="https://www.imbb.forth.gr/" target="_blank" rel="noopener noreferrer">IMBB-FORTH</a>, Heraklion, Crete — part of the <a href="https://www.imbb.forth.gr/en/research/lab-Evolution-Development-Cell-Biology.4/" target="_blank" rel="noopener noreferrer">Evolution, Development &amp; Cell Biology</a> division.</p>
 </div>
-{% include projects-spotlight.html %}
+<section id="research" class="research-home">
+<div class="container">
+<h2 class="section-title">Research</h2>
+{% case site.research_style %}{% when "accordion" %}{% include research-accordion.html %}{% when "grid" %}{% include research-grid.html %}{% else %}{% include research-spotlight.html %}{% endcase %}
+{% assign tools = site.data.research | where: "id", "tools" | first %}
+{% if tools %}<p class="research-tools"><a href="/webapps/" class="research-tools-label">WebApps</a> {{ tools.blurb }} <a href="{{ tools.tool.url }}" target="_blank" rel="noopener noreferrer">{{ tools.tool.label }}</a></p>{% endif %}
+<a href="/research/" class="section-link">More about our research →</a>
+</div>
+</section>
+<section id="publications">
+<div class="container">
+<h2 class="section-title">Publications</h2>
+<h3 class="subsection-title">Recent publications</h3>
+<div class="pub-list">
+{% assign recent = site.publications | sort: "date" | reverse %}
+{% for p in recent limit: 4 %}{% include pub-row.html pub=p %}{% endfor %}
+</div>
+<p class="pub-more"><a href="/publications/" class="section-link">All publications →</a><a href="https://scholar.google.com/citations?user=YbX4E3cAAAAJ" target="_blank" rel="noopener noreferrer" class="pub-scholar">Google Scholar</a></p>
+</div>
+</section>
 <section id="people">
 <div class="container">
 <h2 class="section-title">People</h2>
@@ -62,7 +81,7 @@ layout: default
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
 <span class="email-label">email</span>
 </button>
-<div class="email-display" style="display: none;">
+<div class="email-display" style="display: none;" aria-live="polite">
 <span class="email-text"></span>
 <button class="email-copy-btn" onclick="copyEmail(this)" title="Copy to clipboard">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
@@ -170,80 +189,19 @@ function showCopySuccess(btn, display, toggleBtn) {
 }
 </script>
 
-<style>
-.email-toggle-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.25rem 0.5rem;
-    background: #f5f5f5;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    color: #666;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 0.25rem;
-}
-.email-toggle-btn:hover {
-    background: #f3edf9;
-    border-color: #652c90;
-    color: #652c90;
-}
-.email-display {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.2rem 0.4rem;
-    background: #f9f9f9;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    color: #555;
-    margin-top: 0.25rem;
-}
-.email-text {
-    font-family: monospace;
-    font-size: 0.7rem;
-    user-select: all;
-}
-.email-copy-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.2rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #888;
-    border-radius: 3px;
-}
-.email-copy-btn:hover {
-    background: #e5e5e5;
-    color: #333;
-}
-</style>
 {:/nomarkdown}
 <section id="join">
 <div class="container">
 <h2 class="section-title">Join</h2>
 <div class="join-content">
 <p>
-We are always open to discuss with motivated people at all career stages who share an interest in computational and evolutionary biology.
+We are always open to discussing with motivated people at all career stages who share an interest in computational and evolutionary biology.
 </p>
 <p>
 If interested contact <a href="#contact">Alexandros Pittis</a> with a short CV and your interests.
 </p>
 </div>
 <a href="/join" class="section-link">More information →</a>
-</div>
-</section>
-<section id="publications">
-<div class="container">
-<h2 class="section-title">Publications</h2>
-<p class="publications-intro">
-For a publication list, see
-<a href="https://scholar.google.com/citations?user=YbX4E3cAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
-</p>
 </div>
 </section>
 <section id="teaching">
@@ -288,47 +246,3 @@ N. Plastira 100, Vassilika Vouton<br>
 </div>
 </section>
 
-<style>
-.contact-simple {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: start;
-}
-.contact-info h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-.contact-info p {
-    margin: 0 0 1rem 0;
-    line-height: 1.6;
-}
-.contact-info a {
-    color: #652c90;
-}
-.contact-address {
-    color: #666;
-    font-size: 0.9rem;
-}
-.contact-map {
-    position: relative;
-}
-.contact-map iframe {
-    width: 100%;
-    height: 200px;
-    border: none;
-    border-radius: 8px;
-}
-.map-link {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    color: #666;
-}
-@media (max-width: 768px) {
-    .contact-simple {
-        grid-template-columns: 1fr;
-    }
-}
-</style>

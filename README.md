@@ -39,13 +39,20 @@ _includes/
   header.html                 Left sidebar: logo, nav, IMBB/FORTH logos
   footer.html                 Footer
   pixel-logo.html             Animated pixel "CGLab" logo (cursor-repel)
-  projects-spotlight.html     Rotating Research spotlight (homepage)
+  research-spotlight.html     Homepage Research: one theme at a time (strip of figures)
+  research-accordion.html     Homepage Research: themes in a row, the active one opens
+  research-grid.html          Homepage Research: one row of tiles
+  pub-row.html                One publication row (thumbnail, title, authors, links)
   lab-gallery.html            Lab photo carousel
   lab-timeline.html           Members timeline (auto-built from dates)
   interns-list.html           Interns text list
 _members/*.md                 One file per person (current + alumni; alumni have an enddate)
 _data/interns.yml             Interns (plain-text list)
+_data/research.yml            Research themes (homepage + Research page)
+_publications/*.md            One file per paper (+ _layouts/publication.html)
 research/index.html           Full Research page
+_data/webapps.yml             WebApps (KEDROS, …) shown on webapps/index.html
+publications/index.md         Full Publications page
 teaching/index.html           Full Teaching page
 join/ internal/               Other sub-pages
 visitors/                     Visitors map + statistics
@@ -109,10 +116,56 @@ Edit `_data/interns.yml`:
 
 ### Research
 
-- The **homepage spotlight** (rotating figures + titles): edit the `PROJECTS` array at the top of
-  `_includes/projects-spotlight.html` (image, title, blurb). `INTERVAL` sets the rotation speed.
-- The **full Research page**: `research/index.html`.
-- Figures live in `static/img/research/`.
+Themes live in **`_data/research.yml`** (title, figure, one-line blurb, Research-page text,
+keywords, people, funding, optional tool button). Both the homepage and `/research/` are built
+from it.
+
+- Homepage style: `research_style` in `_config.yml`: `spotlight`, `accordion` or `grid`
+  (compare them at `/preview/`). Entries with `home: false` (e.g. Tools) are not shown there.
+- `strip:` lists the images shown side by side in the spotlight (theme figure + panels from
+  its papers, in `static/img/research/panels/`, 440 px tall webp).
+- Papers appear under a theme automatically when their `themes:` list contains the theme `id`.
+- Figures live in `static/img/research/` (webp, white background, ~1400 px wide).
+
+### Publications
+
+One Markdown file per paper in `_publications/` (only work with an IMBB-FORTH affiliation; older
+work stays on Google Scholar). Each file gets its own page at `/publications/<file-name>/` and
+shows up on the homepage (4 most recent), on `/publications/` (by year), under its research
+themes and on the page of every lab member who is an author.
+
+```yaml
+---
+title: "Paper title"
+authors:
+  - name: Firstname Lastname
+    member: surname            # file name in _members/ → name links to their page
+  - name: Alexandros A. Pittis
+    member: pittis
+    corresponding: true
+date: 2026-10-14               # posting / publication date (sorting + year)
+venue: bioRxiv
+status: preprint               # preprint | published
+doi: 10.64898/2026.10.13.758597
+pdf: https://www.biorxiv.org/content/10.64898/2026.10.13.758597v1.full.pdf
+links:                         # optional
+  - label: Code
+    url: https://github.com/...
+themes: [neurotransmission]    # ids from _data/research.yml
+thumb: /static/img/pubs/<name>-thumb.webp     # 480×300, white background
+figure: /static/img/pubs/<name>-fig.webp      # ≤1600 px wide
+figure_caption: "Short caption."
+---
+Abstract (Markdown).
+```
+
+The BibTeX entry on each paper page is generated from these fields.
+
+### WebApps
+
+Web applications run by the lab (not code repositories, which are under "Code" → GitHub):
+one entry per app in `_data/webapps.yml` (name, url, tagline, text, screenshot in
+`static/img/webapps/`, the `_publications/` file of its paper, tags). Shown at `/webapps/`.
 
 ### Teaching / lab photos / navigation
 

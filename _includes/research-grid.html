@@ -1,0 +1,14 @@
+{%- comment -%}
+Homepage Research, "grid": all themes at once, one row of image tiles with a caption chip.
+Data: _data/research.yml (img, title, keywords).
+{%- endcomment -%}
+{%- assign themes = site.data.research | where_exp: "t", "t.home != false" -%}
+<div class="rgrid">
+{% for t in themes %}
+<a class="rgrid-item" href="/research/#{{ t.id }}">
+<span class="rgrid-img"><img src="{{ t.img }}" alt="" loading="lazy"></span>
+<span class="rgrid-title">{{ t.title }}</span>
+{% if t.keywords %}<span class="rgrid-kw">{{ t.keywords | slice: 0, 3 | join: " · " }}</span>{% endif %}
+</a>
+{% endfor %}
+</div>

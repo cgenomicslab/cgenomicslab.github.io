@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title | escape }} | {% endif %}CGLab</title>
-    <meta name="description" content="{{ site.description | escape }}">
+    {%- comment -%} Page name: member pages use the person's name; the homepage is just "CGLab". {%- endcomment -%}
+    {%- assign page_name = page.title -%}
+    {%- if page.collection == "members" -%}{%- assign page_name = page.name -%}{%- endif -%}
+    {%- if page_name == site.name -%}{%- assign page_name = nil -%}{%- endif -%}
+    {%- comment -%} Description: own description, abstract (papers), tagline (people), else the site's. {%- endcomment -%}
+    {%- assign page_desc = page.description -%}
+    {%- if page_desc == nil and page.collection == "publications" -%}{%- assign page_desc = page.content | strip_html | normalize_whitespace | truncate: 160 -%}{%- endif -%}
+    {%- if page_desc == nil and page.collection == "members" and page.tagline -%}{%- assign page_desc = page.position | append: " — " | append: page.tagline -%}{%- endif -%}
+    {%- if page_desc == nil -%}{%- assign page_desc = "Comparative Genomics Lab (CGLab) at IMBB-FORTH, Heraklion, Crete: comparative genomics, phylogenomics and single-cell transcriptomics of nervous-system evolution." -%}{%- endif -%}
+    {%- assign page_img = page.figure | replace: "-fig.webp", "-og.jpg" | default: page.image | default: "/static/img/logo/og_card.png" -%}
+    <title>{% if page_name %}{{ page_name | escape }} | {% endif %}CGLab</title>
+    <meta name="description" content="{{ page_desc | escape }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
+    <meta property="og:type" content="{% if page.collection == 'publications' %}article{% else %}website{% endif %}">
+    <meta property="og:site_name" content="CGLab — IMBB Comparative Genomics Lab">
+    <meta property="og:title" content="{{ page_name | default: 'IMBB Comparative Genomics Lab' | escape }}">
+    <meta property="og:description" content="{{ page_desc | escape }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
+    <meta property="og:image" content="{{ site.url }}{{ page_img }}">
+    <meta name="twitter:card" content="summary_large_image">
     {% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <!-- GitHub Pages cannot send HTTP headers, so the policy is set here. Inline

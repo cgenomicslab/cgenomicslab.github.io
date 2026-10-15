@@ -35,12 +35,18 @@ exclude:
 goatcounter:
   code: "cgenomicslab"
 
+# Homepage Research section: "spotlight" (one theme at a time, strip of figures),
+# "accordion" (all themes in a row, the active one opens) or "grid" (one row of tiles).
+# Themes are edited in _data/research.yml. Compare all three at /preview/.
+research_style: spotlight
+
 # Collections - simplified
 collections:
   members:
     output: true
   publications:
-    output: false
+    output: true
+    permalink: /publications/:name/
   posts:
     output: true
 
@@ -51,6 +57,11 @@ defaults:
       type: "members"
     values:
       layout: "member"
+  - scope:
+      path: ""
+      type: "publications"
+    values:
+      layout: "publication"
   - scope:
       path: ""
       type: "posts"

@@ -1,0 +1,59 @@
+---
+layout: default
+group: publications
+---
+<div class="container">
+<article class="pub-page">
+
+<a href="/publications/" class="pub-back">← Publications</a>
+
+<h1 class="pub-page-title">{{ page.title | escape }}</h1>
+<p class="pub-page-authors">{% include pub-authors.html pub=page %}</p>
+<p class="pub-page-meta"><em>{{ page.venue | escape }}</em>, {{ page.date | date: "%-d %B %Y" }}{% if page.status == "preprint" %}<span class="pub-badge">Preprint</span>{% endif %}</p>
+
+{% if page.figure %}
+<figure class="pub-figure">
+<a href="{{ page.figure }}" target="_blank" rel="noopener" class="pub-figure-link" title="Open full size"><img src="{{ page.figure }}" alt="{{ page.figure_caption | strip_html | escape }}"></a>
+{% if page.figure_caption %}<figcaption>{{ page.figure_caption | markdownify | remove: "<p>" | remove: "</p>" }}</figcaption>{% endif %}
+</figure>
+{% endif %}
+
+<h2 class="pub-page-heading">Materials</h2>
+<p class="pub-page-links">{% include pub-links.html pub=page %}</p>
+
+<h2 class="pub-page-heading">Abstract</h2>
+<div class="pub-abstract">
+{{ content }}
+</div>
+
+<h2 class="pub-page-heading">Cite</h2>
+<div class="pub-bibtex">
+<button type="button" class="pub-copy" aria-label="Copy BibTeX">Copy</button>
+<pre><code id="bibtex">{% include pub-bibtex.html pub=page %}</code></pre>
+</div>
+
+{% assign others = site.publications | where_exp: "p", "p.url != page.url" | sort: "date" | reverse %}
+{% assign related = "" | split: "" %}
+{% for p in others %}{% for t in p.themes %}{% if page.themes contains t %}{% assign related = related | push: p %}{% break %}{% endif %}{% endfor %}{% endfor %}
+{% if related.size > 0 %}
+<h2 class="pub-page-heading">Related</h2>
+<div class="pub-list">
+{% for p in related %}{% include pub-row.html pub=p %}{% endfor %}
+</div>
+{% endif %}
+
+</article>
+</div>
+
+<script>
+(function(){
+  var btn = document.querySelector('.pub-copy');
+  if (!btn || !navigator.clipboard) { if (btn) btn.remove(); return; }
+  btn.addEventListener('click', function(){
+    navigator.clipboard.writeText(document.getElementById('bibtex').textContent).then(function(){
+      btn.textContent = 'Copied';
+      setTimeout(function(){ btn.textContent = 'Copy'; }, 1500);
+    });
+  });
+})();
+</script>

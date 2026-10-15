@@ -5,14 +5,14 @@ group: contact
 ---
 
 <div class="container">
-<section style="padding: 2rem 0;">
+<section class="page">
 
-<h1 class="section-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Contact</h1>
+<h1 class="section-title">Contact</h1>
 
 <div class="contact-grid">
 <div class="contact-blocks">
 <div class="contact-block">
-<h3>Alexandros Pittis, Ph.D.</h3>
+<h2>Alexandros Pittis, Ph.D.</h2>
 <p>
 Group Leader · IMBB-FORTH<br>
 alexandros.pittis@gmail.com<br>
@@ -22,7 +22,7 @@ alexandros.pittis@imbb.forth.gr<br>
 
 </div>
 <div class="contact-block">
-<h3>Address</h3>
+<h2>Address</h2>
 <p>
 Institute of Molecular Biology and Biotechnology<br>
 Foundation for Research and Technology - Hellas (FORTH)<br>

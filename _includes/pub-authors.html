@@ -1,0 +1,8 @@
+{%- comment -%} Author list of a publication; lab members link to their page. Usage: {% include pub-authors.html pub=pub %} {%- endcomment -%}
+{%- for a in include.pub.authors -%}
+{%- assign m = nil -%}
+{%- if a.member -%}{%- assign m = site.members | where: "slug", a.member | first -%}{%- endif -%}
+{%- if m -%}<a href="{{ m.url }}" class="pub-member">{{ a.name | escape }}</a>{%- else -%}{{ a.name | escape }}{%- endif -%}
+{%- if a.corresponding -%}<sup class="pub-corr" title="Corresponding author">*</sup>{%- endif -%}
+{%- unless forloop.last -%}, {% endunless -%}
+{%- endfor -%}
