@@ -145,7 +145,7 @@ Lab resources and services for CGLab members.
 {:/nomarkdown}
 
 <div class="internal-note" style="margin-top: 2rem; padding: 1rem; background: #f9f9f9; border-radius: 8px; font-size: 0.9rem; color: #666;">
-<strong>Note:</strong> Some services require being on the lab network or VPN. The handbook is visible to members of the GitHub organization. Ask Alexandros for access.
+<strong>Note:</strong> Some services require being on the lab network or VPN. The handbook is visible to members of the GitHub organization. Ask for access.
 </div>
 
 <a href="/" class="section-link" style="margin-top: 2rem; display: inline-block;">← Back to home</a>
