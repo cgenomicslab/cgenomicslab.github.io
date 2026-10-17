@@ -28,7 +28,7 @@ Lab resources and services for CGLab members.
 </div>
 <div class="internal-info">
 <h4>Synology DSM</h4>
-<p>File storage, backups, and server management</p>
+<p>File storage and your account password</p>
 </div>
 <span class="internal-arrow">→</span>
 </a>
@@ -97,32 +97,46 @@ Lab resources and services for CGLab members.
 <span class="internal-arrow">→</span>
 </a>
 
-<a href="https://www.notion.so/117d1cd705e5802191f1c9023aeccff5?v=a6e52326ac9f4473a5254a2248acf670" target="_blank" rel="noopener noreferrer" class="internal-card">
+<a href="https://github.com/cgenomicslab/.github-private/blob/main/profile/README.md" target="_blank" rel="noopener noreferrer" class="internal-card">
 <div class="internal-icon">
-<svg viewBox="0 0 24 24" fill="currentColor">
-<path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 2.026c-.42-.326-.98-.7-2.055-.607L3.01 2.467c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.934zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
 </svg>
 </div>
 <div class="internal-info">
-<h4>Notion Workspace</h4>
-<p>Lab wiki, protocols, and documentation</p>
+<h4>Lab Handbook</h4>
+<p>First week, infrastructure, code and travel (on GitHub)</p>
 </div>
 <span class="internal-arrow">→</span>
 </a>
 
-<a href="https://www.notion.so/Getting-Started-SysAdmin-123d1cd705e580bdbadbed43c245d1d4" target="_blank" rel="noopener noreferrer" class="internal-card">
+<a href="https://github.com/cgenomicslab/.github-private/blob/main/handbook/connect.md" target="_blank" rel="noopener noreferrer" class="internal-card">
 <div class="internal-icon">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-<polyline points="14 2 14 8 20 8"></polyline>
-<line x1="16" y1="13" x2="8" y2="13"></line>
-<line x1="16" y1="17" x2="8" y2="17"></line>
-<polyline points="10 9 9 9 8 9"></polyline>
+<polyline points="4 17 10 11 4 5"></polyline>
+<line x1="12" y1="19" x2="20" y2="19"></line>
 </svg>
 </div>
 <div class="internal-info">
-<h4>Getting Started Guide</h4>
-<p>Onboarding and sysadmin documentation</p>
+<h4>Connecting</h4>
+<p>SSH, VS Code, Jupyter and VPN</p>
+</div>
+<span class="internal-arrow">→</span>
+</a>
+
+<a href="https://calendar.google.com/calendar/embed?src=ff2d8e149821e78c110bee57f81cd7413412d63b2af21dc4d4fe32d079c6c4ea%40group.calendar.google.com&amp;ctz=Europe%2FAthens" target="_blank" rel="noopener noreferrer" class="internal-card">
+<div class="internal-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+<line x1="16" y1="2" x2="16" y2="6"></line>
+<line x1="8" y1="2" x2="8" y2="6"></line>
+<line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+</div>
+<div class="internal-info">
+<h4>Lab Calendar</h4>
+<p>Talks, trips and deadlines</p>
 </div>
 <span class="internal-arrow">→</span>
 </a>
@@ -131,7 +145,7 @@ Lab resources and services for CGLab members.
 {:/nomarkdown}
 
 <div class="internal-note" style="margin-top: 2rem; padding: 1rem; background: #f9f9f9; border-radius: 8px; font-size: 0.9rem; color: #666;">
-<strong>Note:</strong> Some services require being on the lab network or VPN. Contact the lab administrator if you need access.
+<strong>Note:</strong> Some services require being on the lab network or VPN. The handbook is visible to members of the GitHub organization. Ask Alexandros for access.
 </div>
 
 <a href="/" class="section-link" style="margin-top: 2rem; display: inline-block;">← Back to home</a>
