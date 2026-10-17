@@ -22,7 +22,7 @@
   text: |
     Neurons are built from parts that are older than neurons. We trace the enzymes, vesicular transporters and receptors of chemical neurotransmission across animals, fungi and their unicellular relatives, to find when each part appeared and what it did before there were synapses.
 
-    Monoamine synthesis and its vesicular transporters are present in fungi, where they sit in the endolysosomal system and modulate secondary metabolism. In sponges and cnidarians, acetylcholine and the monoamines are made by broad-specificity enzymes and expressed in neuronal and non-neuronal cells alike. Specialization into the dedicated transmitter systems of bilaterians came later, through gene duplication.
+    Monoamine synthesis and vesicular transporters’ orthologs are present in fungi, where they sit in the endolysosomal system and modulate secondary metabolism. In sponges and cnidarians, acetylcholine and the monoamines are made by broad-specificity enzymes and expressed in neuronal and non-neuronal cells alike. Specialization into the dedicated transmitter systems of bilaterians came later, through gene duplication.
   keywords: [Monoamines, Acetylcholine, Opisthokonta, Phylogenetics, Metabolomics]
   members: [pyrris, pittis]
   funding: { img: /static/img/logo/elidek_logo_en.png, alt: HFRI funded }
