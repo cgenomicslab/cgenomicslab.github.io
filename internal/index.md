@@ -15,6 +15,22 @@ Lab resources and services for CGLab members.
 </p>
 
 {::nomarkdown}
+<a href="https://usage.cgenomicslab.org/" target="_blank" rel="noopener noreferrer" class="internal-card internal-feature">
+<div class="internal-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<line x1="4" y1="20" x2="4" y2="13"></line>
+<line x1="10" y1="20" x2="10" y2="8"></line>
+<line x1="16" y1="20" x2="16" y2="11"></line>
+<line x1="22" y1="20" x2="22" y2="4"></line>
+<line x1="2" y1="20" x2="23" y2="20"></line>
+</svg>
+</div>
+<div class="internal-info">
+<h4>Lab portal: server usage &amp; resources</h4>
+<p>Live CPU, memory and storage per person and team, backup and server health, good practices and all lab links. Sign in with your lab account (CGLab members and friends).</p>
+</div>
+<span class="internal-arrow">→</span>
+</a>
 <h3 style="font-size: 1rem; color: #666; margin: 1.5rem 0 1rem; font-weight: 500;">Lab Servers</h3>
 <div class="internal-grid">
 
@@ -226,5 +242,21 @@ Lab resources and services for CGLab members.
     font-size: 1.25rem;
     color: #ccc;
     transition: all 0.2s ease;
+}
+.internal-feature {
+    margin-bottom: 1.5rem;
+    border-color: #d9c8ea;
+    background: #faf7fd;
+}
+.internal-feature .internal-icon {
+    background: #f3edf9;
+    color: #652c90;
+}
+.internal-feature .internal-info h4 {
+    font-weight: 600;
+    color: #1b1b1b;
+}
+.internal-feature .internal-info p {
+    color: #555;
 }
 </style>
