@@ -142,6 +142,446 @@
    "totals": {
     "visitors": 41
    }
+  },
+  "2026-10": {
+   "archived": "2026-11-01",
+   "browsers": [
+    {
+     "name": "Chrome",
+     "value": 196
+    },
+    {
+     "name": "Safari",
+     "value": 80
+    },
+    {
+     "name": "Firefox",
+     "value": 12
+    }
+   ],
+   "countries": [
+    {
+     "code": "GR",
+     "regions": [
+      {
+       "name": "Attica",
+       "visitors": 80
+      },
+      {
+       "name": "Crete",
+       "visitors": 70
+      },
+      {
+       "name": "Central Macedonia",
+       "visitors": 17
+      },
+      {
+       "name": "South Aegean",
+       "visitors": 3
+      },
+      {
+       "name": "West Greece",
+       "visitors": 3
+      }
+     ],
+     "visitors": 215
+    },
+    {
+     "code": "US",
+     "regions": [
+      {
+       "name": "Virginia",
+       "visitors": 6
+      },
+      {
+       "name": "California",
+       "visitors": 3
+      },
+      {
+       "name": "Georgia",
+       "visitors": 2
+      },
+      {
+       "name": "New York",
+       "visitors": 2
+      },
+      {
+       "name": "North Carolina",
+       "visitors": 2
+      },
+      {
+       "name": "Pennsylvania",
+       "visitors": 2
+      },
+      {
+       "name": "Arkansas",
+       "visitors": 1
+      },
+      {
+       "name": "Illinois",
+       "visitors": 1
+      },
+      {
+       "name": "Washington",
+       "visitors": 1
+      }
+     ],
+     "visitors": 22
+    },
+    {
+     "code": "ES",
+     "regions": [
+      {
+       "name": "Madrid",
+       "visitors": 5
+      },
+      {
+       "name": "Catalonia",
+       "visitors": 3
+      }
+     ],
+     "visitors": 8
+    },
+    {
+     "code": "EE",
+     "regions": [
+      {
+       "name": "Harjumaa",
+       "visitors": 7
+      }
+     ],
+     "visitors": 7
+    },
+    {
+     "code": "TR",
+     "regions": [
+      {
+       "name": "Istanbul",
+       "visitors": 7
+      }
+     ],
+     "visitors": 7
+    },
+    {
+     "code": "EG",
+     "regions": [
+      {
+       "name": "Port Said",
+       "visitors": 5
+      }
+     ],
+     "visitors": 5
+    },
+    {
+     "code": "SG",
+     "regions": [],
+     "visitors": 5
+    },
+    {
+     "code": "CN",
+     "regions": [],
+     "visitors": 4
+    },
+    {
+     "code": "GB",
+     "regions": [
+      {
+       "name": "England",
+       "visitors": 3
+      }
+     ],
+     "visitors": 3
+    },
+    {
+     "code": "KR",
+     "regions": [
+      {
+       "name": "Seoul",
+       "visitors": 3
+      }
+     ],
+     "visitors": 3
+    },
+    {
+     "code": "DE",
+     "regions": [
+      {
+       "name": "Thuringia",
+       "visitors": 2
+      }
+     ],
+     "visitors": 2
+    },
+    {
+     "code": "AU",
+     "regions": [
+      {
+       "name": "Australian Capital Territory",
+       "visitors": 1
+      }
+     ],
+     "visitors": 1
+    },
+    {
+     "code": "CH",
+     "regions": [
+      {
+       "name": "Bern",
+       "visitors": 1
+      }
+     ],
+     "visitors": 1
+    },
+    {
+     "code": "JP",
+     "regions": [
+      {
+       "name": "Tokyo",
+       "visitors": 1
+      }
+     ],
+     "visitors": 1
+    },
+    {
+     "code": "MX",
+     "regions": [
+      {
+       "name": "Zacatecas",
+       "visitors": 1
+      }
+     ],
+     "visitors": 1
+    },
+    {
+     "code": "NL",
+     "regions": [],
+     "visitors": 1
+    },
+    {
+     "code": "SE",
+     "regions": [
+      {
+       "name": "Uppsala County",
+       "visitors": 1
+      }
+     ],
+     "visitors": 1
+    },
+    {
+     "code": "TH",
+     "regions": [
+      {
+       "name": "Bangkok",
+       "visitors": 1
+      }
+     ],
+     "visitors": 1
+    }
+   ],
+   "days": {
+    "2026-10-01": 1,
+    "2026-10-02": 4,
+    "2026-10-03": 2,
+    "2026-10-04": 5,
+    "2026-10-05": 12,
+    "2026-10-06": 10,
+    "2026-10-07": 18,
+    "2026-10-08": 1,
+    "2026-10-09": 6,
+    "2026-10-10": 8,
+    "2026-10-11": 8,
+    "2026-10-12": 1,
+    "2026-10-13": 4,
+    "2026-10-14": 7,
+    "2026-10-15": 15,
+    "2026-10-16": 20,
+    "2026-10-17": 20,
+    "2026-10-18": 10,
+    "2026-10-19": 6,
+    "2026-10-20": 8,
+    "2026-10-21": 15,
+    "2026-10-22": 11,
+    "2026-10-23": 14,
+    "2026-10-24": 1,
+    "2026-10-25": 1,
+    "2026-10-26": 6,
+    "2026-10-27": 11,
+    "2026-10-28": 17,
+    "2026-10-29": 24,
+    "2026-10-30": 13,
+    "2026-10-31": 8
+   },
+   "devices": [
+    {
+     "name": "Phones",
+     "value": 94
+    },
+    {
+     "name": "Tablets and small laptops",
+     "value": 2
+    },
+    {
+     "name": "Computer monitors",
+     "value": 180
+    },
+    {
+     "name": "Large monitors",
+     "value": 12
+    }
+   ],
+   "pages": [
+    {
+     "name": "/",
+     "value": 116
+    },
+    {
+     "name": "/visitors",
+     "value": 34
+    },
+    {
+     "name": "/research",
+     "value": 16
+    },
+    {
+     "name": "/members/zirdeli",
+     "value": 12
+    },
+    {
+     "name": "/publications",
+     "value": 11
+    },
+    {
+     "name": "/members/pittis",
+     "value": 11
+    },
+    {
+     "name": "/publications/olfactory-code",
+     "value": 8
+    },
+    {
+     "name": "/publications/pre-neuronal-origins",
+     "value": 8
+    },
+    {
+     "name": "/publications/pre-bilaterian-signaling",
+     "value": 8
+    },
+    {
+     "name": "/internal",
+     "value": 8
+    },
+    {
+     "name": "/join",
+     "value": 8
+    },
+    {
+     "name": "/publications/kedros",
+     "value": 7
+    },
+    {
+     "name": "/members/marouga",
+     "value": 7
+    },
+    {
+     "name": "/webapps",
+     "value": 5
+    },
+    {
+     "name": "/contact",
+     "value": 5
+    },
+    {
+     "name": "/members/pyrris",
+     "value": 5
+    },
+    {
+     "name": "/members/tsiftsis",
+     "value": 4
+    },
+    {
+     "name": "/teaching",
+     "value": 4
+    },
+    {
+     "name": "/404.html",
+     "value": 3
+    },
+    {
+     "name": "/members/delidaki",
+     "value": 3
+    },
+    {
+     "name": "/members",
+     "value": 2
+    },
+    {
+     "name": "/robots.txt",
+     "value": 1
+    },
+    {
+     "name": "/members/kapsetaki",
+     "value": 1
+    }
+   ],
+   "referrers": [
+    {
+     "name": "Google",
+     "value": 37
+    },
+    {
+     "name": "chatgpt.com",
+     "value": 8
+    },
+    {
+     "name": "github.com",
+     "value": 2
+    },
+    {
+     "name": "duckduckgo.com",
+     "value": 1
+    },
+    {
+     "name": "scholar.google.com",
+     "value": 1
+    },
+    {
+     "name": "webmail01.uoa.gr",
+     "value": 1
+    },
+    {
+     "name": "gemini.google.com",
+     "value": 1
+    },
+    {
+     "name": "webmail.imbb.forth.gr",
+     "value": 1
+    }
+   ],
+   "systems": [
+    {
+     "name": "Windows",
+     "value": 89
+    },
+    {
+     "name": "iOS",
+     "value": 68
+    },
+    {
+     "name": "Linux",
+     "value": 52
+    },
+    {
+     "name": "macOS",
+     "value": 49
+    },
+    {
+     "name": "Android",
+     "value": 30
+    }
+   ],
+   "totals": {
+    "visitors": 287
+   }
   }
  },
  "since": "2026-09-28"
